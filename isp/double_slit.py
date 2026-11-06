@@ -50,9 +50,9 @@ def slit_preparation(n_modes: int, slit_a: int, slit_b: int,
     Only that one column carries physical content — it is what a particle
     emitted from the source actually does. The remaining columns are an
     arbitrary orthonormal completion, required because a process needs a full
-    transition matrix. Every prediction in the notebook depends only on the
-    source column and is therefore independent of `seed`; the notebook checks
-    this explicitly.
+    transition matrix. The screen distributions depend only on the source column
+    and are therefore independent of `seed`. The divisibility verdict uses the
+    whole matrix; notebook 05 checks it for several seeds.
     """
     v = np.zeros(n_modes, dtype=complex)
     v[slit_a] = v[slit_b] = 1 / np.sqrt(2)
@@ -119,7 +119,8 @@ def make_double_slit_process(n_modes: int = 24, slit_a: int = 10, slit_b: int = 
     """
     The double slit as a PairwiseProcess, ready for check_divisibility_lp().
 
-    Divisible exactly when coherence == 0.
+    Divisible when coherence == 0. For coherence > 0 it is indivisible for every
+    seed checked in notebook 05 (the source column alone can always be matched).
     """
     if times is None:
         times = [0.0, 1.0, 2.0]

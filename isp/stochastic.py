@@ -49,8 +49,15 @@ class PairwiseProcess:
     is exactly this case (see isp.double_slit), so it cannot be expressed as a
     StochasticProcess without changing the physics.
 
-    Barandes' definition of a process is this family of matrices; divisibility is
-    then a *question* about the family, not something baked into its storage.
+    This container is more general than Barandes' definition, not a copy of it.
+    He specifies a process by Gamma(t <- t0) from its allowed conditioning times
+    only, and makes "no assumption ... that the transition probabilities
+    p(i, t|j, t0) exist as part of the laws for all real-valued choices of t0";
+    the allowed t0 are the division events, assumed to include an initial time 0
+    (Barandes, arXiv:2507.21192, §2.2, p. 9). Storing only the (0, j) entries
+    reproduces his form. Storing other pairs is a modelling choice of this lab.
+    Either way, divisibility is a *question* about the matrices, not something
+    baked into their storage.
 
     matrices maps (i, j) with i < j to Gamma(t_j, t_i).
     """

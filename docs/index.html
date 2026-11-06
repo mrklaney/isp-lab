@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISP Lab</title>
+<style>
+  :root { --bg: #fdfdfc; --fg: #1d1d1f; --muted: #5b5b60; --link: #1a5fb4; --rule: #e3e3e0; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #161618; --fg: #ececee; --muted: #a2a2a8; --link: #8ab4f8; --rule: #333336; } }
+  body { background: var(--bg); color: var(--fg); font: 17px/1.55 Georgia, "Times New Roman", serif; margin: 0; padding: 0 16px; }
+  main { max-width: 720px; margin: 48px auto 64px; }
+  h1 { font-size: 1.9rem; margin: 0 0 .3rem; }
+  h2 { font-size: 1.15rem; margin: 2rem 0 .5rem; border-bottom: 1px solid var(--rule); padding-bottom: .3rem; }
+  p, li { color: var(--fg); }
+  .muted { color: var(--muted); font-size: .95rem; }
+  a { color: var(--link); }
+  ol { padding-left: 1.4rem; }
+  li { margin: .45rem 0; }
+  .ann { font-size: .9rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<h1>ISP Lab</h1>
+<p class="muted">Runnable notebooks on Jacob A. Barandes's indivisible stochastic processes. Each page opens in the browser; nothing to install.</p>
+
+<p>These notebooks are a computational companion to Barandes's papers. They illustrate and test his results, and credit his work and others' wherever an idea comes from them. They do not claim new physics.</p>
+
+<h2>Notebooks</h2>
+<ol>
+  <li><a href="01_stochastic_processes.html">Stochastic processes</a> <span class="ann">(<a href="annotated/01_stochastic_processes_annotated.html">study copy</a>)</span></li>
+  <li><a href="02_divisibility.html">Divisibility</a> <span class="ann">(<a href="annotated/02_divisibility_annotated.html">study copy</a>)</span></li>
+  <li><a href="03_indivisibility.html">Indivisibility</a> <span class="ann">(<a href="annotated/03_indivisibility_annotated.html">study copy</a>)</span></li>
+  <li><a href="04_quantum_emergence.html">Quantum emergence</a> <span class="ann">(<a href="annotated/04_quantum_emergence_annotated.html">study copy</a>)</span></li>
+  <li><a href="05_interference.html">Interference</a> <span class="ann">(<a href="annotated/05_interference_annotated.html">study copy</a>)</span></li>
+  <li><a href="06_division_events.html">Division events</a> <span class="ann">(<a href="annotated/06_division_events_annotated.html">study copy</a>)</span></li>
+</ol>
+<p class="muted">The study copies add long-form explanation, derivations and quoted passages from the papers.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li>Paper 1: "The Stochastic-Quantum Correspondence", <a href="https://arxiv.org/abs/2302.10778">arXiv:2302.10778</a> (<i>Philosophy of Physics</i> 3(1), 8, 2025).</li>
+  <li>Paper 2: "The Stochastic-Quantum Theorem", <a href="https://arxiv.org/abs/2309.03085">arXiv:2309.03085</a>.</li>
+  <li>Paper 3: "Quantum Systems as Indivisible Stochastic Processes", <a href="https://arxiv.org/abs/2507.21192">arXiv:2507.21192</a> (<i>Stud. Hist. Phil. Sci.</i> 119, 102213, 2026).</li>
+</ul>
+<p class="muted">Code, tests and the full reference list: <a href="https://github.com/mrklaney/isp-lab">github.com/mrklaney/isp-lab</a>. Equations render with MathJax and need an internet connection.</p>
+</main>
+</body>
+</html>

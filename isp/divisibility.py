@@ -16,7 +16,8 @@ def check_divisibility(process: StochasticProcess,
     can be satisfied by a valid stochastic matrix T(j→k).
 
     Returns a dict with keys:
-        divisible     : bool
+        divisible     : bool, or None when a singular T(i→j) leaves the
+                        inverse test undecided (use check_divisibility_lp)
         failure_mode  : "singular_matrix" | "negative_entries" |
                         "normalization_violated" | None
         at_times      : (times[i], times[j], times[k]) | None
@@ -34,12 +35,13 @@ def check_divisibility(process: StochasticProcess,
                 det_val = np.linalg.det(T_ij)
                 if abs(det_val) < tol:
                     return {
-                        "divisible": False,
+                        "divisible": None,
                         "failure_mode": "singular_matrix",
                         "at_times": (times[i], times[j], times[k]),
                         "message": (
                             f"T({times[i]},{times[j]}) is singular — "
-                            f"det={det_val:.2e}"
+                            f"det={det_val:.2e}; the inverse test can't decide, "
+                            f"use check_divisibility_lp"
                         ),
                     }
 
@@ -204,6 +206,11 @@ def check_divisibility_lp(process: StochasticProcess,
     Solved as a linear program, so it works on singular T(i→j) where
     check_divisibility() can only report "singular_matrix".
 
+    `tol` is the decision threshold: a triple counts as divisible when the
+    smallest achievable L1 residual  min ||M @ T(i→j) - T(i→k)||_1  over
+    stochastic M is <= tol. (The solver's own feasibility tolerance, about
+    1e-7, no longer decides the verdict.)
+
     Returns a dict with keys:
         divisible     : bool
         failure_mode  : "no_valid_intermediate_matrix" | None
@@ -223,12 +230,11 @@ def check_divisibility_lp(process: StochasticProcess,
                 T_ik = process.transition_from_to(i, k)
                 T_ij = process.transition_from_to(i, j)
 
-                feasible, _, M = _intermediate_lp(T_ik, T_ij, minimize_residual=False)
-                if feasible:
+                _, defect, M = _intermediate_lp(T_ik, T_ij, minimize_residual=True)
+                if defect <= tol:
                     witness = M
                     continue
 
-                _, defect, _ = _intermediate_lp(T_ik, T_ij, minimize_residual=True)
                 return {
                     "divisible": False,
                     "failure_mode": "no_valid_intermediate_matrix",
