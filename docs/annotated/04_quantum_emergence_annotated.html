@@ -8244,9 +8244,9 @@ BASIS INDEPENDENCE — rotate into the Hadamard basis:
   -&gt; 'the' stochastic state depends on basis; the trace does not.
 
 CYCLIC PROPERTY:
-  Tr(ABC) = 0.875123
-  Tr(BCA) = 0.875123   &lt;-- equal (cyclic)
-  Tr(BAC) = 0.891908   &lt;-- NOT equal (not a cyclic rotation)
+  Tr(ABC) = 0.892110
+  Tr(BCA) = 0.892110   &lt;-- equal (cyclic)
+  Tr(BAC) = 0.707769   &lt;-- NOT equal (not a cyclic rotation)
 
 PROBABILITY CONSERVATION comes free from cyclicity:
   U unitary?  U^dag U = I : True
@@ -8359,10 +8359,13 @@ The real part of the coherence has become <em>population</em> in the rotated bas
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-Quantum-Evolution-Is-Indivisible">2. Quantum Evolution Is Indivisible<a class="anchor-link" href="#2.-Quantum-Evolution-Is-Indivisible">¶</a></h2><p>The sigma_x qubit process is indivisible. Let's verify this formally and compute its
-indivisibility signature. As notebook 03 explains, the signature is a detector, not a measure
+<h2 id="2.-Quantum-Evolution-Is-Indivisible">2. Quantum Evolution Is Indivisible<a class="anchor-link" href="#2.-Quantum-Evolution-Is-Indivisible">¶</a></h2><p>This is Barandes's own example (arXiv:2302.10778, §2.1, eq. 7, a $2\times2$ $\Gamma(t \leftarrow 0)$ with diagonal
+$f(t) = \cos^2\omega t$). Here $H = \tfrac{\omega}{2}\sigma_x$, so $f = \cos^2(\omega t/2)$: the same family with his $\omega$
+replaced by $\omega/2$. He states that it is provably indivisible; the check below confirms it on a grid of times and
+computes its indivisibility signature. As notebook 03 explains, the signature is a detector, not a measure
 of how quantum a process is: the value printed below comes from the sampled times closest to
-$\omega t = \pi/2$ and $3\pi/2$ (each paired with $t = 2\pi$), where $\Gamma(t \leftarrow 0)$ is nearly singular, and it changes with the grid.</p>
+$\omega t = \pi/2$ and $3\pi/2$ (each paired with $\omega t = 2\pi$), where $|\det\Gamma(t \leftarrow 0)| = |\cos\omega t|$ is
+smallest among the samples (about 0.22; the two give the same value), and it changes with the grid.</p>
 </div>
 </div>
 </div>
@@ -8409,9 +8412,9 @@ $\omega t = \pi/2$ and $3\pi/2$ (each paired with $t = 2\pi$), where $\Gamma(t \
 </ul>
 <h4 id="Where-unitaries-come-from:-$U-=-e%5E%7B-iHt%7D$">Where unitaries come from: $U = e^{-iHt}$<a class="anchor-link" href="#Where-unitaries-come-from:-$U-=-e%5E%7B-iHt%7D$">¶</a></h4><p>Given a Hermitian $H$ (the Hamiltonian, $H = H^\dagger$),</p>
 <p>$$U(t) = e^{-iHt} \quad\text{is unitary for every } t$$</p>
-<p>because $U^\dagger U = e^{+iH^\dagger t}e^{-iHt} = e^{+iHt}e^{-iHt} = I$. <strong>Hermitian generator $\Rightarrow$ unitary evolution</strong> (Stone's theorem, in the finite-dimensional case).</p>
+<p>because $U^\dagger U = e^{+iH^\dagger t}e^{-iHt} = e^{+iHt}e^{-iHt} = I$. <strong>Hermitian generator $\Rightarrow$ unitary evolution.</strong> (The converse, that every continuous one-parameter unitary group is $e^{-iHt}$ with $H$ self-adjoint, is Stone's theorem.)</p>
 <blockquote>
-<p>🔭 <strong>Compare notebook 01.</strong> There, a valid generator $L$ (columns summing to zero) produced a valid transition matrix $T = e^{L\Delta t}$ via the <em>matrix exponential</em>. Here, a valid generator $H$ (Hermitian) produces a valid evolution $U = e^{-iHt}$ via the <em>same matrix exponential</em>. Identical structure, one condition swapped:
+<p>🔭 <strong>Compare notebook 01.</strong> There, a valid generator $L$ (columns summing to zero, off-diagonal entries $\ge 0$) produced a valid transition matrix $T = e^{L\Delta t}$ via the <em>matrix exponential</em>. Here, a valid generator $H$ (Hermitian) produces a valid evolution $U = e^{-iHt}$ via the <em>same matrix exponential</em>. Identical structure, one condition swapped:
 $$\mathbf{1}^T L = \mathbf{0}^T \;\longleftrightarrow\; H = H^\dagger$$
 Both are "the generator condition that keeps probability conserved for all time." This parallel is not decoration — it is the formal skeleton of the stochastic-quantum correspondence.</p>
 </blockquote>
@@ -8438,7 +8441,7 @@ Both are "the generator condition that keeps probability conserved for all time.
 <li><strong>Definition</strong> (arXiv:2302.10778 §3.4, eqs. 30–31). When $\Theta$ is unitary, written $U$, then $\Gamma_{ij}=|U_{ij}|^2$, and Barandes defines a unistochastic matrix as <em>"a square matrix whose individual entries are the modulus-squares of the corresponding entries of a unitary matrix."</em> <code>unitary_to_transition_matrix</code> produces exactly this object.</li>
 <li><strong>Always doubly stochastic</strong> (eq. 32). Rows sum to 1 as well as columns. The column rule is the ⭐ punchline above ($U^\dagger U=I$), and the row rule follows the same way from $UU^\dagger=I$. Consequence (derived here, not quoted): the uniform distribution is fixed by <em>every</em> unistochastic process.</li>
 <li><strong>The converse fails in general.</strong> arXiv:2309.03085, footnote 9, gives the $3\times3$ doubly stochastic matrix $\tfrac12\begin{pmatrix}0&amp;1&amp;1\\1&amp;0&amp;1\\1&amp;1&amp;0\end{pmatrix}$, which <em>"is provably not unistochastic."</em> (For $2\times2$ there is no gap.)</li>
-<li><strong>The next cell's process is Barandes' own example.</strong> §2.1, eq. 7 gives $\Gamma(t\leftarrow0)=\begin{pmatrix}f&amp;1-f\\1-f&amp;f\end{pmatrix}$ with $f(t)=\cos^2\omega t$, and states: <em>"These two time-dependent transition matrices are provably indivisible, because any matrix $\tilde\Gamma(t\leftarrow t')$ satisfying the divisibility condition above would need to have negative entries for at least some pairs of times."</em> The code uses $H=\tfrac\omega2\sigma_x$, so its $f=\cos^2(\omega t/2)$. It is the same family with $\omega$ rescaled by 2. Note the hedge "for at least some pairs of times": the try-this after the next cell finds a window on which this process is divisible (its first quarter-period; Pimenta, arXiv:2505.08785, eqs. 59–60, p. 17, gives this window for the same $\cos^2$ oscillator).</li>
+<li><strong>The next cell's process is Barandes' own example.</strong> §2.1, eq. 7 gives $\Gamma(t\leftarrow0)=\begin{pmatrix}f&amp;1-f\\1-f&amp;f\end{pmatrix}$ with $f(t)=\cos^2\omega t$, and states: <em>"These two time-dependent transition matrices are provably indivisible, because any matrix $\tilde\Gamma(t\leftarrow t')$ satisfying the divisibility condition above would need to have negative entries for at least some pairs of times."</em> The code uses $H=\tfrac\omega2\sigma_x$, so its $f=\cos^2(\omega t/2)$. It is the same family with $\omega$ rescaled by 2. Note the hedge "for at least some pairs of times": the try-this after the next cell finds a window on which this process is divisible (its first quarter-period). Pimenta (arXiv:2505.08785, §V C, p. 17) treats the same $\cos^2$ oscillator and notes that it is divisible "as long as the stochastic matrix moves towards the centre"; the Summary compares the range he lists with this window.</li>
 <li><strong>Why unistochastic processes are not a special case.</strong> The Stochastic-Quantum Theorem (arXiv:2309.03085 §4.1, statement (69)) says: <em>"Every indivisible stochastic process can be regarded as a subsystem of a unistochastic process"</em>, stated for finite configuration spaces. So the qubit here is a representative case: every ISP sits inside one like it. The proof constructs the embedding, and nothing in this repo reproduces it.</li>
 </ul>
 </div>
@@ -8530,7 +8533,7 @@ Indivisibility signature: 1.7470
 <p><strong>Three checks against earlier claims</strong></p>
 <ul>
 <li><strong>The $\sigma_z$ counterexample.</strong> There $c_k=1$ always, every candidate is $M(1)=I$, and the signature is 0, as the 📖 cell said.</li>
-<li><strong>The quarter-period window.</strong> For $0\le\omega t&lt;\pi/2$, $c$ decreases monotonically and stays positive, so every $\lambda\in(0,1]$: the process is divisible. Barandes' "for at least some pairs of times" is exactly right. The window itself is in Pimenta (arXiv:2505.08785, eqs. 59–60, p. 17: divisible for $0 \le t' \le t &lt; 1$ in his units). Indivisibility is the <em>revival</em> of contrast, not the oscillation as such.</li>
+<li><strong>The quarter-period window.</strong> For $0\le\omega t&lt;\pi/2$, $c$ decreases monotonically and stays positive, so every $\lambda\in(0,1]$: the process is divisible. Barandes' "for at least some pairs of times" is exactly right. Pimenta (arXiv:2505.08785, eq. 60, p. 17) writes the same bridge, $\tfrac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}$ plus $\cos(\pi t)/(2\cos\pi t')$ times $\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}$, which is $M(c_k/c_j)$ with his $t$ equal to $\omega t/\pi$, and notes divisibility "as long as the stochastic matrix moves towards the centre". The range he lists after his eq. 59, $0 \le t' \le t &lt; 1$, is half a period ($\omega t&lt;\pi$); by the condition above, the window is the quarter period (his $t'=0.4$, $t=0.8$ gives a diagonal entry of $-0.81$). Indivisibility is the <em>revival</em> of contrast, not the oscillation as such.</li>
 <li><strong>The sharpest version</strong> (an exact point that the 8-point grid does not sample). At $\omega t=\pi/2$, $T=M(0)=\tfrac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}$ sends <em>every</em> initial distribution to $(\tfrac12,\tfrac12)$. Yet at $\omega t=\pi$, $T=M(-1)$ is the swap, which remembers the initial distribution perfectly. No matrix $\tilde\Gamma$ of any kind can turn identical columns into distinct ones. The memory survived in the <em>phases</em> of $U$, not in the populations.</li>
 </ul>
 </div>
@@ -8696,7 +8699,7 @@ $P(\text{outcome}) = \text{Tr}(M \rho)$ gives the probability.</p>
 <li><strong>In the configuration basis it holds by construction.</strong> For $M = |i\rangle\langle i|$, $\text{Tr}(M\rho) = \rho_{ii} = p_i$,
 the stochastic state itself (Barandes, arXiv:2302.10778, §3.2, eq. 16). The check below confirms exactly this.</li>
 <li><strong>For other observables it is a claim, not a definition.</strong> Barandes argues that the textbook Born rule follows from the
-stochastic structure once the measuring device is modelled as a system with its own configurations (same paper, §4, eq. 78).
+stochastic structure once the measuring device is modelled as a system with its own configurations (same paper, §4.2, eq. 78).
 This notebook does not test that part.</li>
 </ul>
 </div>
@@ -9064,17 +9067,25 @@ max |Γ route − full ρ|                    = 0.200
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><ul>
 <li>Density matrices project onto stochastic states via their diagonal</li>
-<li>Qubit evolution under $\sigma_x$ produces an indivisible process: a bridge $t' \to t$ is valid exactly when $|\cos\omega t| \le |\cos\omega t'|$.
-The process restricted to $0 \le \omega t \le \pi/2$ is divisible (Pimenta, arXiv:2505.08785, eqs. 59–60), any window
+<li>Qubit evolution under $\sigma_x$ produces an indivisible process. The bridge
+$\Gamma(t \leftarrow t') = \Gamma(t \leftarrow 0)\,\Gamma(t' \leftarrow 0)^{-1}$ ($t &gt; t'$, $\cos\omega t' \ne 0$) is stochastic exactly when
+$|\cos\omega t| \le |\cos\omega t'|$. So the process restricted to $0 \le \omega t \le \pi/2$ is divisible, any window
 containing a revival of $|\cos\omega t|$ is not, and at $\omega t' = k\pi$, $\Gamma(t' \leftarrow 0)$ is a permutation
-and the process divides there exactly</li>
+and the process divides there exactly (Pimenta, arXiv:2505.08785, p. 18: "every passage through a permutation matrix
+constitutes a proper division event")</li>
+<li>Pimenta treats the same oscillator (arXiv:2505.08785, §V C, p. 17). His eq. 59 is this $\Gamma$ with his $t$ equal to
+$\omega t/\pi$, his eq. 60 is the bridge above, and he notes that the dynamics is divisible "as long as the stochastic
+matrix moves towards the centre", which is the condition above. The range he lists after eq. 59, $0 \le t' \le t &lt; 1$,
+is half a period ($\omega t &lt; \pi$); eq. 60 is not stochastic on all of it (his $t' = 0.4$, $t = 0.8$ gives an entry of
+$-0.81$). The window that follows from eq. 60 is the quarter period $0 \le \omega t \le \pi/2$</li>
 <li>The Born rule holds by construction in the configuration basis; for other observables Barandes derives it from the
 stochastic structure plus a model of the measuring device (not tested here)</li>
 <li>$\Gamma(t \leftarrow 0)$ acting on the diagonal reproduces the quantum populations when $\rho(0)$ is diagonal; a $\rho$ with
 configuration-basis coherences carries information the present probabilities do not</li>
 <li>This is the core of Barandes' stochastic-quantum correspondence: a quantum system, measuring devices included, can be
-modelled as an indivisible stochastic process, and every indivisible stochastic process (finite configuration space)
-is a subsystem of a unistochastic one (arXiv:2309.03085)</li>
+modelled as an indivisible stochastic process (argued in arXiv:2302.10778), and every indivisible stochastic process
+with a finite configuration space can be regarded as a subsystem of a unistochastic one (the stochastic-quantum
+theorem, arXiv:2309.03085, §4.1)</li>
 </ul>
 <p><strong>Next:</strong> Notebook 05 builds the payoff — a double-slit model where
 interference emerges from indivisibility.</p>
@@ -9098,7 +9109,7 @@ interference emerges from indivisibility.</p>
 </ul>
 <p><strong>Points to carry forward</strong></p>
 <ul>
-<li><strong>Indivisibility needs non-commutation and a revival.</strong> A Hamiltonian that commutes with the measurement basis ($\sigma_z$) gives $|U|^2=I$, which is divisible. Even $\sigma_x$ is divisible on its first quarter-period (Pimenta, arXiv:2505.08785, eqs. 59–60, shows this for the same oscillator); indivisibility shows up on a time grid that catches the contrast $|\cos\omega t|$ growing back.</li>
+<li><strong>Indivisibility needs non-commutation and a revival.</strong> A Hamiltonian that commutes with the measurement basis ($\sigma_z$) gives $|U|^2=I$, which is divisible. Even $\sigma_x$ is divisible on its first quarter-period (the bridge condition $|\cos\omega t|\le|\cos\omega t'|$; Pimenta, arXiv:2505.08785, §V C, treats the same oscillator); indivisibility shows up on a time grid that catches the contrast $|\cos\omega t|$ growing back.</li>
 <li><strong>The Born rule has three layers.</strong> In the configuration basis it holds by construction, as Barandes says himself. For other observables it is claimed via the measurement model (2302.10778 §4.2) and the theorem (2309.03085), and neither is reproduced here. Gleason's theorem does not apply to a qubit (it needs $d\ge3$); Busch's POVM version does.</li>
 <li><strong>The correspondence has two directions.</strong> The theorem proved in 2309.03085 runs one way: every ISP (finite configuration space) is a subsystem of a unistochastic process. That paper attributes the other direction, quantum systems with their measuring devices modelled as ISPs, to separate work.</li>
 </ul>

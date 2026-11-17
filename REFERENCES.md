@@ -17,21 +17,21 @@ How to read "Cited in". Numbers such as 03 or 10 are notebooks (both the clean a
 ## Barandes and ISP
 
 - **Barandes, J. A.** "The Stochastic-Quantum Correspondence." arXiv:2302.10778 (v3). Published in *Philosophy of Physics* 3(1), 8 (2025), doi:10.31389/pop.186. Local file: `papers to study/Barandes/1 Stochastic-Quantum Correspondence 2025.pdf`. Called "Paper 1" in notebook 03. **verified-on-page**; **verified 2026-10-29**
-  - Cited in: 01, 02, 03, 04, 05, 06, 09, 10, 11, 12, 13; README; lecture README.
+  - Cited in: 01, 02, 03, 04, 05, 06, 09, 10, 11, 12, 13, 18, 19; README; lecture README.
   - Sections cited: §2.1 (definition of a process, eqs. 1-3, divisibility eq. 6, "divisible" credited to Wolf and Cirac 2008, eq. 7 Gaussian example, eq. 12, footnotes 1 and 4); §2.2 (towers of conditional probabilities); §3.1-3.2 (eqs. 16, 17, 23); §3.4 (unistochastic, eqs. 30-31, footnote 6 on gauge); §3.5 "Interference" (eqs. 39-52, eq. 43); §3.7 "Division events and the Markov approximation" (eqs. 55-58, esp. eq. 57); §3.8; §4 and §4.1-4.2 (emergeables, measurement model). The notebooks quote §3.4-3.5 and §3.7 eqs. 56-58 directly.
 - **Barandes, J. A.** "The Stochastic-Quantum Theorem." arXiv:2309.03085. No journal version found on the arXiv page. Local file: `papers to study/Barandes/2 Stochastic-Quantum Theorem 2026.pdf`. Called "Paper 2" in notebook 03. **verified-on-page**; **verified 2026-10-29** (arXiv record)
-  - Cited in: 03, 04; README.
+  - Cited in: 03, 04, 18, 19; README.
   - Sections cited: §3.5 (eq. 68, as cited in notebook 03); §4, §4.1-4.2 (statement (69): every indivisible stochastic process is a subsystem of a unistochastic one); §5.7 (eq. 94, dilation dimension N <= N-tilde <= N^3); footnote 9 (the 3x3 doubly stochastic matrix that is not unistochastic).
 - **Barandes, J. A.** "Quantum Systems as Indivisible Stochastic Processes." arXiv:2507.21192. Published in *Studies in History and Philosophy of Science* 119, 102213 (2026), doi:10.1016/j.shpsa.2026.102213. Local file: `papers to study/Barandes/3 Q Theory as ISP 2025.pdf`. Called "Paper 3" in notebook 03 and "Barandes 2025" in notebook 01. **verified-on-page**; **verified 2026-10-29**
-  - Cited in: 01, 02, 03, 04, 05, 06, 15; README; aharonov-bohm-berry spike.
+  - Cited in: 01, 02, 03, 04, 05, 06, 15, 18, 19; README; aharonov-bohm-berry spike.
   - Sections cited: abstract; §2.1 (eqs. 1, 4, 5, 7: Chapman-Kolmogorov, composition, n-th order Markov); §2.2 (division events, eq. 18, eqs. 22-23); §3.2 "Schur-Hadamard Gauge Transformations", eqs. 27-30 and footnote 11, pp. 12-13 (checked on the page for nb 15); §3.4 (eq. 46, Born rule for the configuration basis); eq. 41 (rho(0) diagonal); eq. 78.
 - **Barandes, J. A., M. Hasan, and D. Kagan.** "The CHSH Game, Tsirelson's Bound, and Causal Locality." arXiv:2512.18105 (December 2025); doi:10.1103/xfpf-734d (journal not confirmed). Local file: `papers to study/2512.18105 CHSH Game Tsirelson Bound and Causal Locality.pdf`. **held-locally**; **verified 2026-10-29**
   - Cited in: 06 (§3.1, approximate division events) and 08 (§3.2 "division channels"); notebook 09 notes it does not treat algorithms.
   - The paper recasts the CHSH game as indivisible stochastic processes and derives Tsirelson's bound from Barandes's causal-locality condition. It is not about algorithms.
 - **Barandes, J. A.** "The Born Representation Theorem and the Unistochastic Theorem." arXiv:2608.04354 (August 2026). Local file: `papers to study/2608.04354 Born Representation Theorem and Unistochastic Theorem.pdf`. Described in the fitting-hilbert-reps spike as about "existence of unistochastic dilations, not fitting"; the 2026-10-29 check found that description accurate. **held-locally**; **verified 2026-10-29**
-  - Cited in: 09 (a "to check" item); fitting-hilbert-reps spike.
+  - Cited in: 09 (a "to check" item), 18; fitting-hilbert-reps spike.
 - **Pimenta, L. S.** "Divisible and indivisible Stochastic-Quantum dynamics." arXiv:2505.08785 (May 2025). Local file: `papers to study/2505.08785 Divisible and Indivisible Stochastic-Quantum Dynamics.pdf`. Described as on divisible vs. indivisible stochastic-quantum dynamics; the paper treats two-configuration systems only (conical bounds in the space of stochastic matrices). **held-locally**; **verified 2026-10-29**
-  - Cited in: 03, 04, 05, 06, 07, 08, 09.
+  - Cited in: 03, 04, 05, 06, 07, 08, 09, 18, 19.
 
 ## Textbooks
 
@@ -45,7 +45,7 @@ The 2026-10-29 check confirmed the textbook editions below are real and correctl
   - Checked: ch. 15, printed p. 240, "the reader may well feel swindled" (nb 10).
   - Cited from the scanned book but not individually checked: ch. 18 quantum jumps/electron shelving and dark states/EIT (nb 11 future work; backlog, pp. 278-281), ch. 4 ammonia (backlog, pp. 79-80), ch. 20 delayed choice and GHZ (backlog, pp. 319-325), p. 29, p. 320, p. 328 quotations (backlog). Backlog pages are now printed.
 - **Griffiths, D. J.** *Introduction to Quantum Mechanics.* 1st ed. Prentice Hall, 1995. **verified-on-page**
-  - Cited in: 10, 11, 14, 15; README; zeno-anti-zeno spike; identical-particles spike; aharonov-bohm-berry spike; backlog.
+  - Cited in: 10, 11, 14, 15, 19; README; zeno-anti-zeno spike; identical-particles spike; aharonov-bohm-berry spike; backlog.
   - Checked: §9.2.3, footnote 9, printed p. 310 (summing over frequencies assumes independent components; eqs. 9.39, 9.43) (nb 10); Afterword A.4 "The Quantum Zeno Paradox", eqs. A.14-A.20, printed pp. 383-384, including eq. A.20 and the bubble-chamber remark (nb 10, 11; zeno-anti-zeno spike); §5.1.2 "Exchange Forces", printed p. 184 (nb 14; identical-particles spike); §5.4.3 "The Most Probable Configuration", printed p. 209 (nb 14); §10.2.2, printed p. 338 ("Is Berry's phase measurable?": interference with a reference beam) (nb 15); §10.2.3, printed p. 342 (geometric phase is "minus one half the solid angle swept out by the magnetic field vector") (nb 15); §10.2.4 "The Aharonov-Bohm Effect", printed pp. 343-349, incl. p. 349 "There can be electromagnetic effects in regions where the fields are zero" (nb 15).
   - Cited but not individually checked: §9.3 (name A for the rate, nb 10); backlog items §4.4.2 p. 164, p. 3, pp. 380-383 (converted from PDF pages with an approximate offset).
 - **Nielsen, M. A., and I. L. Chuang.** *Quantum Computation and Quantum Information.* Cambridge University Press, 2000 (10th anniversary ed. 2010). The project says "Cambridge 2000/2010". **verified-on-page**
@@ -71,7 +71,7 @@ The 2026-10-29 check confirmed the textbook editions below are real and correctl
 - **Arkhipov, A., and G. Kuperberg.** "The bosonic birthday paradox." *Geometry & Topology Monographs* 18, 1-7 (2012), arXiv:1106.0849, doi:10.2140/gtm.2012.18.1. The follow-up paper on the bosonic birthday paradox; the project names only Aaronson and Arkhipov. **verified 2026-10-29**
   - Cited in: alongside Aaronson and Arkhipov (14; identical-particles spike).
 - **Aharonov, Y., and D. Bohm.** "Significance of Electromagnetic Potentials in the Quantum Theory." *Phys. Rev.* 115, 485-491 (1959). The Aharonov-Bohm effect. Details as cited on disk by Griffiths (p. 343, footnote 14) and Peskin (p. 491 footnote) agree; the paper's text not checked. **verified 2026-10-29**
-  - Cited in: 15; aharonov-bohm-berry spike.
+  - Cited in: 15, 19; aharonov-bohm-berry spike.
 - **Aharonov, Y., and J. Anandan.** "Phase Change during a Cyclic Quantum Evolution." *Phys. Rev. Lett.* 58, 1593-1596 (1987). Non-adiabatic geometric phase. **verified 2026-10-29**
   - Cited in: 15; aharonov-bohm-berry spike.
 - **Ambainis, A.** "Quantum lower bounds by quantum arguments." *J. Comput. Syst. Sci.* 64, 750-767 (2002) (conference version STOC 2000, pp. 636-643). The adversary method (query lower bounds). **verified 2026-10-29**
@@ -93,7 +93,7 @@ The 2026-10-29 check confirmed the textbook editions below are real and correctl
 - **Bravyi, S., D. P. DiVincenzo, R. I. Oliveira, and B. M. Terhal.** "The complexity of stoquastic local Hamiltonian problems." *Quantum Inf. Comput.* 8(5), 361-385 (2008). Stoquastic Hamiltonians. **verified 2026-10-29**
   - Cited in: 12; wick-rotation spike.
 - **Breuer, H.-P., E.-M. Laine, and J. Piilo.** "Measure for the Degree of Non-Markovian Behavior of Quantum Processes in Open Systems." *Phys. Rev. Lett.* 103, 210401 (2009). The "BLP" trace-distance measure of non-Markovianity. **verified 2026-10-29**
-  - Cited in: 03, 06, 07, 08, 10.
+  - Cited in: 03, 06, 07, 08, 10, 18.
 - **Brezger, B., L. Hackermüller, S. Uttenthaler, J. Petschinka, M. Arndt, and A. Zeilinger.** "Matter-Wave Interferometer for Large Molecules." *Phys. Rev. Lett.* 88, 100404 (2002). Talbot-Lau interferometer for large molecules. **verified 2026-10-29**
   - Cited in: 16; matter-wave-gratings spike.
 - **Brown, H. R.** "Aspects of objectivity in quantum mechanics." In J. Butterfield and C. Pagonis (eds.), *From Physics to Philosophy*, Cambridge University Press, 1999, pp. 45-70. Mentioned in the Barandes lecture map as "V(t) gauge, Brown 1999"; identified from the reference lists of Barandes's Papers 1 and 3, which give only "H. Brown". **verified 2026-10-29**
@@ -124,12 +124,12 @@ The 2026-10-29 check confirmed the textbook editions below are real and correctl
   - Cited in: identical-particles spike.
 - **Giardinà, C., F. Redig, and K. Vafayi.** "Correlation Inequalities for Interacting Particle Systems with Duality." *J. Stat. Phys.* 141, 242-263 (2010). Symmetric inclusion process; a different paper from the 2009 one. **verified 2026-10-29**
   - Cited in: 14.
-- **Giovannetti, V., S. Lloyd, and L. Maccone.** "Quantum limits to dynamical evolution." *Phys. Rev. A* 67, 052109 (2003). Unified and non-orthogonal speed limits (the project's description, not the title). **verified 2026-10-29**
+- **Giovannetti, V., S. Lloyd, and L. Maccone.** "Quantum limits to dynamical evolution." *Phys. Rev. A* 67, 052109 (2003), arXiv:quant-ph/0210197. Unified and non-orthogonal speed limits (the project's description, not the title). **verified 2026-10-29**; re-checked 2026-11-17 by web search (nb09 fix pass; "from memory" removed from notebook 09)
   - Cited in: 09; margolus-levitin-gamma spike.
 - **Gleason, A. M.** "Measures on the Closed Subspaces of a Hilbert Space." *J. Math. Mech.* 6(6), 885-893 (1957) (the journal is now *Indiana Univ. Math. J.*). Gleason's theorem (dimension at least 3). The local file `papers to study/Gleason's.pdf` is not this paper: it is M. Sassoli de Bianchi, "Why qubits are exceptional in Gleason's theorem: a Bloch-space perspective," arXiv:2603.07745 (2026), an exposition. If notebook 04 drew on that file, cite it as well. **verified 2026-10-29** (no longer held-locally, since the local file is a different paper)
   - Cited in: 04 (statement of the theorem, and why it does not cover a qubit).
 - **Glick, J. R., and C. Adami.** "Markovian and Non-Markovian Quantum Measurements." *Found. Phys.* 50, 1008-1055 (2020), arXiv:1701.05636, doi:10.1007/s10701-020-00362-4. Cited by Barandes in the lecture Q&A (about 66-70 min) on empirical distinction from literal collapse; the transcript spelling is "Glickadami". Identified from the reference lists of Barandes's Papers 1 and 3. **verified 2026-10-29**
-  - Cited in: 02, 06, 08; README; lecture README.
+  - Cited in: 02, 06, 08, 18; README; lecture README.
 - **Gould, P. L., G. A. Ruff, and D. E. Pritchard.** "Diffraction of atoms by light: The near-resonant Kapitza-Dirac effect." *Phys. Rev. Lett.* 56, 827-830 (1986). **verified 2026-10-29**
   - Cited in: 16; matter-wave-gratings spike.
 - **Gross, D.** "Hudson's theorem for finite-dimensional quantum systems." *J. Math. Phys.* 47, 122107 (2006). Discrete Wigner function and discrete Hudson theorem. **verified 2026-10-29**
@@ -156,10 +156,10 @@ The 2026-10-29 check confirmed the textbook editions below are real and correctl
   - Cited in: 10, 11; golden-rule-divisibility spike; zeno-anti-zeno spike.
 - **Levitin, L. B., and T. Toffoli.** "Fundamental Limit on the Rate of Quantum Dynamics: The Unified Bound Is Tight." *Phys. Rev. Lett.* 103, 160502 (2009). Tightness of max(Mandelstam-Tamm, Margolus-Levitin). **verified 2026-10-29**
   - Cited in: margolus-levitin-gamma spike.
-- **Long, G. L., Y. S. Li, W. L. Zhang, and C. C. Tu.** "Dominant gate imperfection in Grover's quantum search algorithm." *Phys. Rev. A* 61, 042305 (2000). The project cites "Long et al." for Grover under decoherence and noisy oracles; no Long paper matching that description exactly was found, and this one is about gate imperfections. **best match, unconfirmed**
+- **Long, G. L., Y. S. Li, W. L. Zhang, and C. C. Tu.** "Dominant gate imperfection in Grover's quantum search algorithm." *Phys. Rev. A* 61, 042305 (2000). A gate-imperfection (noise) study of Grover search. Notebook 09 now cites it as one of the "earlier noise studies", which this paper is; the older description (decoherence and noisy oracles) is gone. **verified 2026-11-17** (bibliographic details confirmed by web search in the nb09 fix pass; passages not checked)
   - Cited in: 09; grover-as-isp spike.
 - **Lukacs, E.** *Characteristic Functions.* 2nd ed. London: Griffin, 1970. Zeros of characteristic functions and infinite divisibility. **verified 2026-10-29** (existence and edition from standard catalogue records and a 1972 review in Crossref; the claim about zeros and infinite divisibility not checked on the page)
-  - Cited in: 16; matter-wave-gratings spike.
+  - Cited in: 16; README; matter-wave-gratings spike. Note (2026-11-17): cited without a chapter for the factor criterion and for "an infinitely divisible characteristic function never vanishes"; the chapter was not located, and the edition and publisher rest on catalogue records and a search hit, not the book itself.
 - **Mandelstam, L., and I. Tamm.** "The uncertainty relation between energy and time in non-relativistic quantum mechanics." *J. Phys. (USSR)* 9, 249-254 (1945); reprinted in *Selected Papers* (Springer, 1991), pp. 115-123. Quantum speed limit. **verified 2026-10-29** (original-journal details from standard citations; the reprint confirmed in Crossref)
   - Cited in: 07, 09; grover-as-isp spike; margolus-levitin-gamma spike.
 - **Margolus, N., and L. B. Levitin.** "The maximum speed of dynamical evolution." *Physica D* 120, 188-195 (1998). Margolus-Levitin speed limit. **verified 2026-10-29**
@@ -171,11 +171,11 @@ The 2026-10-29 check confirmed the textbook editions below are real and correctl
 - **Monras, A., A. Beige, and K. Wiesner.** "Hidden Quantum Markov Models and non-adaptive read-out of many-body states." arXiv:1002.2337 (2010). Defines hidden quantum Markov models. **verified 2026-10-29**
   - Cited in: fitting-hilbert-reps spike.
 - **Nelson, E.** "Derivation of the Schrödinger Equation from Newtonian Mechanics." *Phys. Rev.* 150, 1079-1085 (1966). Stochastic mechanics. (Barandes also cites Nelson's book *Dynamical Theories of Brownian Motion*, 1967.) **verified 2026-10-29**
-  - Cited in: 12; wick-rotation spike; backlog.
+  - Cited in: 12, 18, 19; wick-rotation spike; backlog.
 - **Ness, G., A. Alberti, and Y. Sagi.** "Quantum Speed Limit for States with a Bounded Energy Spectrum." *Phys. Rev. Lett.* 129, 140403 (2022), arXiv:2206.14803. The project notes the full text was not read and the prefactor is unchecked; that is still true. **verified 2026-10-29**
   - Cited in: 07, 09; margolus-levitin-gamma spike.
 - **Okuyama, M., and M. Ohzeki.** "Quantum Speed Limit is Not Quantum." *Phys. Rev. Lett.* 120, 070402 (2018), arXiv:1710.03498. Speed limits for classical dynamics. **verified 2026-10-29**
-  - Cited in: 07.
+  - Cited in: 07 (clean copy since 2026-11-17); README.
 - **Osterwalder, K., and R. Schrader.** "Axioms for Euclidean Green's functions." *Commun. Math. Phys.* 31, 83-112 (1973) (Part II: 42, 281-305 (1975)). Reflection positivity. **verified 2026-10-29**
   - Cited in: 12; wick-rotation spike; backlog.
 - **Pablo-Norman, B., and M. Ruiz-Altaba.** "Noise in Grover's quantum search algorithm." *Phys. Rev. A* 61, 012301 (2000; published online 1999). Grover under noise. **verified 2026-10-29**
@@ -188,11 +188,11 @@ The 2026-10-29 check confirmed the textbook editions below are real and correctl
 - **Shahbeigi, F., C. Chubb, R. Kukulski, L. Pawela, and K. Korzekwa.** "Quantum-embeddable stochastic matrices." *Quantum* 8, 1404 (2024), doi:10.22331/q-2024-07-10-1404. **verified 2026-10-29**
   - Cited in: fitting-hilbert-reps spike.
 - **Shanahan, B., A. Chenu, N. Margolus, and A. del Campo.** "Quantum Speed Limits across the Quantum-to-Classical Transition." *Phys. Rev. Lett.* 120, 070401 (2018), arXiv:1710.07335. Speed limits for classical dynamics. **verified 2026-10-29**
-  - Cited in: 07.
+  - Cited in: 07 (clean copy since 2026-11-17); README.
 - **Shenvi, N., K. R. Brown, and K. B. Whaley.** "Effects of a random noisy oracle on search algorithm complexity." *Phys. Rev. A* 68, 052313 (2003). Grover under noise. **verified 2026-10-29**
   - Cited in: 09; grover-as-isp spike.
 - **Smirne, A., A. Stabile, and B. Vacchini.** "Signatures of non-Markovianity in classical single-time probability distributions." *Phys. Scr.* T153, 014057 (2013). Flagged as a "next to check" paper cited by Rivas et al. **verified 2026-10-29**; **verified 2026-11-05** (arXiv:1211.5913; Crossref doi:10.1088/0031-8949/2013/t153/014057)
-  - Cited in: 06 (R = Kolmogorov-distance revival), 08.
+  - Cited in: 06 (R = Kolmogorov-distance revival), 08, 18.
 - **Spekkens, R. W.** "Evidence for the epistemic view of quantum states: A toy theory." *Phys. Rev. A* 75, 032110 (2007). Classical toy theory reproducing stabilizer behaviour. The wigner spike writes "2007/2016"; the toy theory is 2007 only. **verified 2026-10-29**
   - Cited in: 13; wigner spike.
 - **Srinivasan, S., G. Gordon, and B. Boots.** "Learning Hidden Quantum Markov Models." arXiv:1710.09016 (2017); *Proc. AISTATS 2018*, PMLR 84. **verified 2026-10-29** (arXiv record; the AISTATS venue from standard citation)
@@ -258,7 +258,7 @@ The three PDFs added on 2026-10-29 (`2505.08785 ...`, `2512.18105 ...`, `2608.04
 These were added when the notebooks were brought in line with the 2026-10-29 literature recheck. Every entry was checked against its arXiv record or Crossref on 2026-10-29 (**verified 2026-10-29**); passages were not checked unless the recheck reports say so (`notes/lit-recheck-2026-10-29/`).
 
 - **F. Buscemi, N. Datta** "Equivalence between divisibility and monotonic decrease of information in classical and quantum stochastic processes." Phys. Rev. A, 93, 012101 (2016). arXiv:1408.7062. **verified 2026-10-29**
-  - Cited in: 03, 06, 08, README. Note: gap rule; π/2 threshold.
+  - Cited in: 03, 06, 08, 18, README. Note: gap rule; π/2 threshold.
 - **S. Milz, K. Modi** "Quantum stochastic processes and quantum non-Markovian phenomena." PRX Quantum, 2, 030201 (2021). arXiv:2012.01894. **verified 2026-10-29**
   - Cited in: 03. Note: cited by Paper 1 for generic indivisibility.
 - **S. Milz, D. Egloff, P. Taranto, T. Theurer et al.** "When is a non-Markovian quantum process classical?." Phys. Rev. X, 10, 041049 (2020). arXiv:1907.05807. **verified 2026-10-29**
@@ -268,7 +268,7 @@ These were added when the notebooks were brought in line with the 2026-10-29 lit
 - **S. Calvo** "On the Stochastic-Quantum Correspondence." (2026). arXiv:2601.18720. **verified 2026-10-29**
   - Cited in: 05, 06. Note: preprint; matched divisibility, division-event criteria.
 - **J. Doukas** "On the emergence of quantum mechanics from stochastic processes." (2026). arXiv:2602.22095. **verified 2026-10-29**
-  - Cited in: 05. Note: preprint (v3, Oct 2026); §5.1.1 one Γ, distinct processes.
+  - Cited in: 05, 18. Note: preprint (v3, Oct 2026); §5.1.1 one Γ, distinct processes.
 - **S. L. Braunstein, C. M. Caves, G. J. Milburn** "Generalized uncertainty relations: Theory, examples, and Lorentz invariance." Ann. Phys., 247, 135–173 (1996). arXiv:quant-ph/9507004. **verified 2026-10-29**
   - Cited in: 07, README. Note: journal details from the DOI 10.1006/aphy.1996.0040.
 - **T. Nishiyama, Y. Hasegawa** "Unified speed limits in classical and quantum dynamics via temporal Fisher information." Phys. Rev. E, 114, 014120 (2026). arXiv:2504.04790. **verified 2026-10-29**
@@ -294,7 +294,7 @@ These were added when the notebooks were brought in line with the 2026-10-29 lit
 - **S. Aaronson** "Quantum Computing and Hidden Variables II: The Complexity of Sampling Histories." (2004). arXiv:quant-ph/0408119. **verified 2026-10-29**
   - Cited in: 09. Note: preprint; sampling histories gives O(N^1/3) search.
 - **P. Facchi, S. Pascazio** "Quantum Zeno effects with "pulsed" and "continuous" measurements." in Time's Arrows, Quantum Measurements and Superluminal Behavior, ed. D. Mugnai, A. Ranfagni and L. S. Schulman (CNR, Rome), 139 (2001). arXiv:quant-ph/0101044. **verified 2026-10-29**
-  - Cited in: 10, 11, README. Note: §3: the Zeno/anti-Zeno criterion.
+  - Cited in: 07, 10, 11, README. Note: §3: the Zeno/anti-Zeno criterion; notebook 07 cites it for the Zeno time τ_Z = 1/ν.
 - **P. Facchi, H. Nakazato, S. Pascazio** "From the quantum Zeno to the inverse quantum Zeno effect." Phys. Rev. Lett., 86, 2699–2703 (2001). arXiv:quant-ph/0006094. **verified 2026-10-29**
   - Cited in: 10, 11, README.
 - **A. G. Kofman, G. Kurizki** "Universal dynamical control of quantum mechanical decay: Modulation of the coupling to the continuum." Phys. Rev. Lett., 87, 270405 (2001). arXiv:quant-ph/0107076. **verified 2026-10-29**
@@ -306,7 +306,7 @@ These were added when the notebooks were brought in line with the 2026-10-29 lit
 - **H. Pashayan, J. J. Wallman, S. D. Bartlett** "Estimating outcome probabilities of quantum circuits using quasiprobabilities." Phys. Rev. Lett., 115, 070501 (2015). arXiv:1503.07525. **verified 2026-10-29**
   - Cited in: 13, README. Note: eq. 3 (Born rule as quasi-probability sum), eq. 7 (circuits), eq. 6 (unitary negativity); passage checked 2026-11-05 against arXiv text.
 - **C. Ferrie, J. Emerson** "Frame representations of quantum mechanics and the necessity of negativity in quasi-probability representations." J. Phys. A: Math. Theor., 41, 352001 (2008). arXiv:0711.2658. **verified 2026-10-29**
-  - Cited in: 13.
+  - Cited in: none since 2026-11-17 (formerly 13; notebook 13 now cites Wootters 1987 for composite d).
 - **C. Giardinà, J. Kurchan, F. Redig, K. Vafayi** "Duality and Hidden Symmetries in Interacting Particle Systems." J. Stat. Phys., 135, 25–55 (2009). **verified 2026-10-29**
   - Cited in: 14. Note: checked 2026-10-29 in the recheck.
 - **K. Yamaga** "Stochastic process emerged from lattice fermion systems by repeated measurements and large-time limit." Axioms, 9, 90 (2020). arXiv:2007.13940. **verified 2026-10-29**
@@ -355,15 +355,117 @@ Bibliographic details of these entries were checked on 2026-11-05 against the ar
 - **A. Miyake, M. Wadati** "Geometric strategy for the optimal quantum search." Phys. Rev. A, 64, 042317 (2001). arXiv:quant-ph/0109109. doi:10.1103/PhysRevA.64.042317. **verified 2026-11-05**
   - Cited in: 09, README.
 
+## Added 2026-11-09: sources for notebook 17 (negative dwell time)
+
+Bibliographic details were checked on 2026-11-09 against the arXiv records (and Crossref for Halliwell and Steinberg) (**verified 2026-11-09**). Passages were read only where noted. The literature search behind these is `notes/lit-negative-dwell-time-2026-11-09.md`.
+
+- **J. J. Halliwell** "Leggett-Garg inequalities and no-signaling in time: A quasiprobability approach." Phys. Rev. A, 93, 022123 (2016). arXiv:1508.02271. doi:10.1103/PhysRevA.93.022123. **verified 2026-11-09**
+  - Cited in: 17, README. Note: arXiv v5 PDF read 2026-11-10. Eqs. (2.1), (2.4)–(2.7) (ar5iv numbered them 15, 18–21). Eq. (2.4) prints 2 Re D; the definition (2.5) gives Re D, as in Halliwell et al. 2019 below. Typeset journal page not read.
+- **S. Goldstein, D. N. Page** "Linearly Positive Histories: Probabilities for a Robust Family of Sequences of Quantum Events." Phys. Rev. Lett., 74, 3715 (1995). arXiv:gr-qc/9403055. doi:10.1103/PhysRevLett.74.3715. **verified 2026-11-09**
+  - Cited in: 17.
+- **A. M. Steinberg** "Conditional probabilities in quantum theory and the tunneling-time controversy." Phys. Rev. A, 52, 32 (1995). arXiv:quant-ph/9502003. doi:10.1103/PhysRevA.52.32. **verified 2026-11-09**
+  - Cited in: 17, README. Note: not read; whether it already has the reflected particle's negative time behind the barrier is unchecked.
+- **D. Angulo, K. Thompson, V.-M. Nixon, A. Jiao, H. M. Wiseman, A. M. Steinberg** "Experimental evidence that a photon can spend a negative amount of time in an atom cloud." Phys. Rev. Lett., 136, 153601 (2026). arXiv:2409.03680. doi:10.1103/gjfq-k9dv. **held-locally**; **verified 2026-11-09**
+  - Cited in: 17, README. Local file: `~/Desktop/additional quantum papers/2409.03680v1.pdf` (read in full).
+- **K. Thompson, K. Li, D. Angulo, V.-M. Nixon, J. Sinclair, A. V. Sivakumar, H. M. Wiseman, A. M. Steinberg** "How much time does a photon spend as an atomic excitation before being transmitted?" APL Quantum, 2, 036108 (2025). arXiv:2310.00432. doi:10.1063/5.0288743. **verified 2026-11-09**
+  - Cited in: 17, README.
+- **J. Sinclair, D. Angulo, K. Thompson, K. Bonsma-Fisher, A. Brodutch, A. M. Steinberg** "Measuring the time atoms spend in the excited state due to a photon they do not absorb." PRX Quantum, 3, 010314 (2022). arXiv:2010.02200. doi:10.1103/PRXQuantum.3.010314. **verified 2026-11-09**
+  - Cited in: 17. Note: the journal reference is from Angulo et al.'s reference list; the arXiv page has none.
+- **J. Dressel, M. Malik, F. M. Miatto, A. N. Jordan, R. W. Boyd** "Colloquium: Understanding quantum weak values: Basics and applications." Rev. Mod. Phys., 86, 307 (2014). arXiv:1305.7154. doi:10.1103/RevModPhys.86.307. **verified 2026-11-09**
+  - Cited in: 17.
+- **D. R. M. Arvidsson-Shukur, W. F. Braasch, S. De Bièvre, J. Dressel, A. N. Jordan, C. Langrenez, M. Lostaglio, J. S. Lundeen, N. Yunger Halpern** "Properties and Applications of the Kirkwood-Dirac Distribution." New J. Phys., 26, 121201 (2024). arXiv:2403.18899. doi:10.1088/1367-2630/ada05d. **verified 2026-11-09**
+  - Cited in: 17. Note: HTML v2 searched for dwell, tunnelling and group delay, with no hits.
+- **P. Campagne-Ibarcq, L. Bretheau, E. Flurin, A. Auffèves, F. Mallet, B. Huard** "Observing Interferences between Past and Future Quantum States in Resonance Fluorescence." Phys. Rev. Lett., 112, 180402 (2014). arXiv:1311.5605. doi:10.1103/PhysRevLett.112.180402. **verified 2026-11-09**
+  - Cited in: 17.
+
+## Added 2026-11-10: notebook 17 audit
+
+Bibliographic details checked 2026-11-10 against the arXiv records or Crossref (**verified 2026-11-10**).
+
+- **A. M. Steinberg** "How much time does a tunneling particle spend in the barrier region?" Phys. Rev. Lett., 74, 2405 (1995). arXiv:quant-ph/9501015. doi:10.1103/PhysRevLett.74.2405. **verified 2026-11-10**
+  - Cited in: 17. Note: preprint read. The reflection dwell time beyond the barrier oscillates in sign, dτ_R ∝ sin(2kx + arg t); this is notebook 17's "negative time behind the barrier".
+- **J. J. Halliwell, H. Beck, B. K. B. Lee, S. O'Brien** "Quasiprobability for the arrival-time problem with links to backflow and the Leggett-Garg inequalities." Phys. Rev. A, 99, 012124 (2019). arXiv:1810.10976. doi:10.1103/PhysRevA.99.012124. **verified 2026-11-10**
+  - Cited in: 17. Note: eq. (2.3) gives q = p + Re D, the corrected form of Halliwell 2016's eq. (2.4).
+- **N. S. Williams, A. N. Jordan** "Weak Values and the Leggett-Garg Inequality in Solid-State Qubits." Phys. Rev. Lett., 100, 026804 (2008). doi:10.1103/PhysRevLett.100.026804. **verified 2026-11-10**
+- **M. F. Pusey** "Anomalous Weak Values Are Proofs of Contextuality." Phys. Rev. Lett., 113, 200401 (2014). arXiv:1409.1535. doi:10.1103/PhysRevLett.113.200401. **verified 2026-11-10**
+- **A. K. Pan** "Interference experiment, anomalous weak value, and Leggett-Garg test of macrorealism." Phys. Rev. A, 102, 032206 (2020). arXiv:2012.13875. doi:10.1103/PhysRevA.102.032206. **verified 2026-11-10**
+
+## Added 2026-11-16: sources for notebooks 18 and 19
+
+Bibliographic details were checked on 2026-11-16 against Crossref or the arXiv record (**verified 2026-11-16**), except where an entry says otherwise. Passages were not read unless noted. The literature searches behind these are `notes/lit-quantization-wallstrom-2026-11-15.md` (notebook 18) and `notes/lit-spinor-4pi-2026-11-16.md` (notebook 19). Wiener's theorem (nonzero long-time average of an overlap if and only if the point spectrum is involved), which notebook 18 cites with RAGE, is cited as a named theorem and has no entry here.
+
+### Notebook 18 (energy quantization as memory)
+
+- **T. C. Wallstrom** "Inequivalence between the Schrödinger equation and the Madelung hydrodynamic equations." Phys. Rev. A, 49, 1613 (1994). doi:10.1103/PhysRevA.49.1613. **verified 2026-11-16**
+  - Cited in: 18. Note: not read; the objection is taken from Derakhshani's and Schmelzer's restatements. The 1989 paper (Found. Phys. Lett. 2, 113) is not cited.
+- **D. T. Gillespie** "Why quantum mechanics cannot be formulated as a Markov process." Phys. Rev. A, 49, 1607 (1994). doi:10.1103/PhysRevA.49.1607. **verified 2026-11-16**
+  - Cited in: 18 (the two-level Rabi case).
+- **I. Schmelzer** "An answer to the Wallstrom objection against Nelsonian stochastics." arXiv:1101.5774 (2011). No journal version found. **verified 2026-11-16**
+  - Cited in: 18.
+- **M. Derakhshani** "A Suggested Answer To Wallstrom's Criticism: Zitterbewegung Stochastic Mechanics I." arXiv:1510.06391 (v6, 2015). No journal version found. **verified 2026-11-16**
+  - Cited in: 18.
+- **F. Kuipers** *Stochastic Mechanics and the Unification of Quantum Mechanics with Brownian Motion.* SpringerBriefs in Physics, Springer, 2023. arXiv:2301.05467. doi:10.1007/978-3-031-31448-3. **verified 2026-11-16**
+  - Cited in: 18.
+- **L. Smolin** "Could quantum mechanics be an approximation to another theory?" arXiv:quant-ph/0609109 (2006). No journal version found. **verified 2026-11-16**
+  - Cited in: 18 (section IV, the ring).
+- **L. Fritsche, M. Haugk** "Stochastic Foundation of Quantum Mechanics and the Origin of Particle Spin." arXiv:0912.3442 (2009). No journal version found. **verified 2026-11-16**
+  - Cited in: 18.
+- **M. Reddiger, B. Poirier** "Towards a mathematical theory of the Madelung equations: Takabayasi's quantization condition, quantum quasi-irrotationality, weak formulations, and the Wallstrom phenomenon." J. Phys. A: Math. Theor., 56, 193001 (2023). arXiv:2207.11367. doi:10.1088/1751-8121/acc7db. **verified 2026-11-16**
+  - Cited in: 18. Note: the arXiv v1 title is the shorter "Towards a mathematical Theory of the Madelung Equations".
+- **M. S. Foskett, C. Tronci** "Holonomy and vortex structures in quantum hydrodynamics." In *Hamiltonian Systems: Dynamics, Analysis, Applications* (eds. Fathi, Morrison, M-Seara, Tabachnikov), Math. Sci. Res. Inst. Pub. 72, 173-214. Cambridge University Press, 2024. arXiv:2003.08664. doi:10.1017/9781009320733.005. **verified 2026-11-16**
+  - Cited in: 18 (notebook 18 cites the arXiv number).
+- **D. Ruelle** "A remark on bound states in potential-scattering theory." Nuovo Cimento A, 61, 655 (1969). doi:10.1007/BF02819607. **verified 2026-11-16**
+  - Cited in: 18 (the RAGE theorem).
+- **W. O. Amrein, V. Georgescu** "On the characterization of bound states and scattering states in quantum mechanics." Helv. Phys. Acta, 46, 635 (1973). **best match, unconfirmed**
+  - Cited in: 18 (the RAGE theorem). Note: volume, pages and year are confirmed from the reference list of Enss 1978 (Crossref record of doi:10.1007/BF01940771); the title is from memory and the paper has no Crossref record.
+- **V. Enss** "Asymptotic completeness for quantum mechanical potential scattering. I. Short range potentials." Commun. Math. Phys., 61, 285 (1978). doi:10.1007/BF01940771. **verified 2026-11-16**
+  - Cited in: 18 (the RAGE theorem).
+- **P. Bocchieri, A. Loinger** "Quantum Recurrence Theorem." Phys. Rev., 107, 337 (1957). doi:10.1103/PhysRev.107.337. **verified 2026-11-16**
+  - Cited in: 18.
+
+### Notebook 19 (spinors as memory)
+
+- **H. Rauch, A. Zeilinger, G. Badurek, A. Wilfing, W. Bauspiess, U. Bonse** "Verification of coherent spinor rotation of fermions." Phys. Lett. A, 54, 425 (1975). doi:10.1016/0375-9601(75)90798-7. **verified 2026-11-16**
+  - Cited in: 19 (Bonse confirmed as an author).
+- **S. A. Werner, R. Colella, A. W. Overhauser, C. F. Eagen** "Observation of the Phase Shift of a Neutron Due to Precession in a Magnetic Field." Phys. Rev. Lett., 35, 1053 (1975). doi:10.1103/PhysRevLett.35.1053. **verified 2026-11-16**
+  - Cited in: 19.
+- **Y. Aharonov, L. Susskind** "Observability of the Sign Change of Spinors under 2π Rotations." Phys. Rev., 158, 1237 (1967). doi:10.1103/PhysRev.158.1237. **verified 2026-11-16**
+  - Cited in: 19. Note: not re-read. A critical remark exists (Hegerfeldt and Kraus, Phys. Rev. 170, 1185 (1968)) and is not cited.
+- **S. Kochen, E. P. Specker** "The Problem of Hidden Variables in Quantum Mechanics." J. Math. Mech., 17, 59 (1967). doi:10.1512/iumj.1968.17.17004. **verified 2026-11-16**
+  - Cited in: 19 (section 6, the classical spin-1/2 model). Note: the journal was renamed Indiana University Mathematics Journal in 1968, and Crossref files the paper there.
+- **J. S. Bell** "On the Problem of Hidden Variables in Quantum Mechanics." Rev. Mod. Phys., 38, 447 (1966). doi:10.1103/RevModPhys.38.447. **verified 2026-11-16**
+  - Cited in: 19. Note: not re-read.
+- **J. Ding, N. H. Rhee** "When a Matrix and Its Inverse Are Nonnegative." Missouri J. Math. Sci., 26, 98 (2014). doi:10.35834/mjms/1404997113. **verified 2026-11-16**
+  - Cited in: 19 (a stochastic matrix with a stochastic inverse is a permutation).
+- **J. F. C. Kingman** "The imbedding problem for finite Markov chains." Z. Wahrscheinlichkeitstheorie verw. Gebiete, 1, 14 (1962). doi:10.1007/BF00531768. **verified 2026-11-16**
+  - Cited in: 19.
+- **G. S. Goodman** "An intrinsic time for non-stationary finite Markov chains." Z. Wahrscheinlichkeitstheorie verw. Gebiete, 16, 165 (1970). doi:10.1007/BF00534594. **verified 2026-11-16**
+  - Cited in: 19 (the embedding result, with Kingman).
+- **V. Bargmann** "On Unitary Ray Representations of Continuous Groups." Ann. Math., 59, 1 (1954). doi:10.2307/1969831. **verified 2026-11-16**
+  - Cited in: 19. Note: Crossref gives the start page only; the end page 46 is from memory.
+- **L. S. Schulman** "A Path Integral for Spin." Phys. Rev., 176, 1558 (1968). doi:10.1103/PhysRev.176.1558. **verified 2026-11-16**
+  - Cited in: 19 (the homotopy reading of half-integer spin). Note: a different paper from the Schulman 1998 Zeno entry.
+- **D. Kult, J. Åberg, E. Sjöqvist** "Holonomy for Quantum Channels." Phys. Rev. A, 77, 012114 (2008). arXiv:0711.2140. doi:10.1103/PhysRevA.77.012114. **verified 2026-11-16**
+  - Cited in: 19.
+- **T. G. Dankel** "Mechanics on manifolds and the incorporation of spin into Nelson's stochastic mechanics." Arch. Rational Mech. Anal., 37, 192 (1970). doi:10.1007/BF00281477. **verified 2026-11-16**
+  - Cited in: 19. Note: full text not read (paywalled); still unchecked is whether its configuration manifold is SO(3) or SU(2).
+- **D. Dohrn, F. Guerra, P. Ruggiero** "Spinning particles and relativistic particles in the framework of Nelson's stochastic mechanics." In *Feynman Path Integrals*, Lecture Notes in Physics 106, 165-181. Springer, 1979. doi:10.1007/3-540-09532-2_72. **verified 2026-11-16**
+  - Cited in: 19. Note: full text not read; Crossref gives no date, so 1979 is the notebook's year.
+- **W. G. Faris** "Spin correlation in stochastic mechanics." Found. Phys., 12, 1 (1982). doi:10.1007/BF00726872. **verified 2026-11-16**
+  - Cited in: 19 (Stern-Gerlach and spin correlations). Note: full text not read.
+
 ## To verify before external sharing
 
 Still unconfirmed after the 2026-10-29 check:
 
-- [ ] Long et al.: confirm which Long paper notebook 09 and the grover-as-isp spike mean (best match: Long, Li, Zhang, Tu, PRA 61, 042305 (2000), which is about gate imperfection)
+- [x] Long et al.: Long, Li, Zhang, Tu, PRA 61, 042305 (2000), confirmed by web search 2026-11-17; notebook 09 now describes it as a gate-imperfection study (the grover-as-isp spike's older description was not revisited)
 - [ ] Azuma 2002: confirm PRA 65, 042311 (erratum 66, 019903(E)) is the intended paper
 - [ ] Ballentine: which edition the local PDF and the notebooks' section numbers follow (World Scientific 1998, or 2nd ed. 2014, whose publisher is also unconfirmed)
 - [ ] Khalfin, Mandelstam and Tamm (original journal), Lukacs, Thompson: confirmed only from standard or secondary citations
 - [ ] Partly from standard citation: Srinivasan, Gordon, Boots (AISTATS venue); Boyer, Brassard, Hoyer, Tapp (arXiv number); Gerlich et al. (authors six to eleven)
 - [ ] Barandes, Hasan, Kagan, arXiv:2512.18105: which journal the DOI 10.1103/xfpf-734d belongs to
 - [x] Aaronson and Arkhipov: that the bosonic birthday paradox is in §13 of arXiv:1011.3245 (confirmed 2026-11-05)
+- [ ] Amrein and Georgescu 1973 (Helv. Phys. Acta 46, 635): confirm the title; only volume, pages and year are confirmed (via Enss 1978's reference list)
+- [ ] Bargmann 1954 (Ann. Math. 59, 1): confirm end page 46; Crossref gives only the start page
+- [ ] Dankel 1970, Dohrn-Guerra-Ruggiero 1979, Faris 1982: full texts unread; Dankel's configuration manifold (SO(3) or SU(2)) unchecked
 - [ ] Passage-level checks: no cited passage in any entry tagged verified 2026-10-29 has been checked against the source

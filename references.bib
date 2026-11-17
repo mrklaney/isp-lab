@@ -7,7 +7,7 @@
 %   one meant), or from-memory (check before external sharing). bibmd.py reads the status as [a-z-]+, so the
 %   date goes in the rest of the note. An entry that is both held locally and checked online keeps held-locally
 %   (or verified-on-page) and says "details verified online 2026-10-29" in the note.
-% Keys are fixed (book/cite.py matches them; book/test_*.py pin the key set and the count of 134). Keys keep
+% Keys are fixed (book/cite.py matches them; book/test_*.py pin the key set; test_bibmd checks every entry parses). Keys keep
 % their original years even where a correction changed the year (barandes2023correspondence, barandes2025isp).
 
 % ---------- Barandes and ISP ----------
@@ -358,7 +358,9 @@
   volume = {67},
   pages = {052109},
   year = {2003},
-  note = {status: verified-online; checked 2026-10-29; unified and non-orthogonal speed limits}
+  eprint = {quant-ph/0210197},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; checked 2026-10-29, re-checked 2026-11-17 by web search; unified and non-orthogonal speed limits}
 }
 
 @article{glickadami,
@@ -485,7 +487,7 @@
   volume = {61},
   pages = {042305},
   year = {2000},
-  note = {status: best-match-unconfirmed; closest match found 2026-10-29 for the project's Long et al. (Grover under decoherence and noisy oracles), not confirmed as the paper meant}
+  note = {status: verified-online; checked 2026-11-17 by web search; a gate-imperfection (noise) study, cited in nb 09 as one of the earlier noise studies (was best-match-unconfirmed on 2026-10-29)}
 }
 
 @article{mandelstamtamm1945,
@@ -1424,6 +1426,486 @@
   eprint = {quant-ph/0109109},
   archiveprefix = {arXiv},
   note = {status: verified-online; checked 2026-11-05 (arXiv record, Crossref); cited in nb 09 and README}
+}
+
+% ---------- Added 2026-11-09: notebook 17 (negative dwell time) ----------
+
+@article{halliwell2016,
+  author = {J. J. Halliwell},
+  title = {Leggett-Garg inequalities and no-signaling in time: A quasiprobability approach},
+  journal = {Phys. Rev. A},
+  volume = {93},
+  pages = {022123},
+  year = {2016},
+  doi = {10.1103/PhysRevA.93.022123},
+  eprint = {1508.02271},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; checked 2026-11-09 (arXiv record, Crossref); arXiv v5 PDF read 2026-11-10: eqs. (2.1), (2.4)-(2.7) (ar5iv had numbered them 15, 18-21); eq. (2.4) prints 2 Re D where the definition (2.5) gives Re D, corrected in halliwell2019; typeset journal page not read; cited in nb 17}
+}
+
+@article{goldsteinpage1995,
+  author = {S. Goldstein and D. N. Page},
+  title = {Linearly Positive Histories: Probabilities for a Robust Family of Sequences of Quantum Events},
+  journal = {Phys. Rev. Lett.},
+  volume = {74},
+  pages = {3715},
+  year = {1995},
+  doi = {10.1103/PhysRevLett.74.3715},
+  eprint = {gr-qc/9403055},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; checked 2026-11-09 (arXiv record); passages not read; cited in nb 17}
+}
+
+@article{steinberg1995,
+  author = {A. M. Steinberg},
+  title = {Conditional probabilities in quantum theory and the tunneling-time controversy},
+  journal = {Phys. Rev. A},
+  volume = {52},
+  pages = {32},
+  year = {1995},
+  doi = {10.1103/PhysRevA.52.32},
+  eprint = {quant-ph/9502003},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; checked 2026-11-09 (arXiv record, Crossref); passages not read; cited in nb 17}
+}
+
+@article{angulo2024negative,
+  author = {D. Angulo and K. Thompson and V.-M. Nixon and A. Jiao and H. M. Wiseman and A. M. Steinberg},
+  title = {Experimental evidence that a photon can spend a negative amount of time in an atom cloud},
+  journal = {Phys. Rev. Lett.},
+  volume = {136},
+  pages = {153601},
+  year = {2026},
+  doi = {10.1103/gjfq-k9dv},
+  eprint = {2409.03680},
+  archiveprefix = {arXiv},
+  note = {status: held-locally; read in full 2026-11-09 (arXiv v1); journal reference from the arXiv record, checked 2026-11-09; local file: ~/Desktop/additional quantum papers/2409.03680v1.pdf; cited in nb 17}
+}
+
+@article{thompson2310_00432,
+  author = {K. Thompson and K. Li and D. Angulo and V.-M. Nixon and J. Sinclair and A. V. Sivakumar and H. M. Wiseman and A. M. Steinberg},
+  title = {How much time does a photon spend as an atomic excitation before being transmitted?},
+  journal = {APL Quantum},
+  volume = {2},
+  pages = {036108},
+  year = {2025},
+  doi = {10.1063/5.0288743},
+  eprint = {2310.00432},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; checked 2026-11-09 (arXiv record); body text searched by the 2026-11-09 literature agent (no split of the excitation time; App. H Fabry-Perot picture); cited in nb 17}
+}
+
+@article{sinclair2022,
+  author = {J. Sinclair and D. Angulo and K. Thompson and K. Bonsma-Fisher and A. Brodutch and A. M. Steinberg},
+  title = {Measuring the time atoms spend in the excited state due to a photon they do not absorb},
+  journal = {PRX Quantum},
+  volume = {3},
+  pages = {010314},
+  year = {2022},
+  doi = {10.1103/PRXQuantum.3.010314},
+  eprint = {2010.02200},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; checked 2026-11-09 (arXiv record; the journal reference is from Angulo et al.'s reference list, not on the arXiv page); cited in nb 17}
+}
+
+@article{dressel2014rmp,
+  author = {J. Dressel and M. Malik and F. M. Miatto and A. N. Jordan and R. W. Boyd},
+  title = {Colloquium: Understanding quantum weak values: Basics and applications},
+  journal = {Rev. Mod. Phys.},
+  volume = {86},
+  pages = {307},
+  year = {2014},
+  doi = {10.1103/RevModPhys.86.307},
+  eprint = {1305.7154},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; checked 2026-11-09 (arXiv record); passages not read; cited in nb 17}
+}
+
+@article{arvidssonshukur2024kd,
+  author = {D. R. M. Arvidsson-Shukur and W. F. Braasch and S. De Bi{\`e}vre and J. Dressel and A. N. Jordan and C. Langrenez and M. Lostaglio and J. S. Lundeen and N. Yunger Halpern},
+  title = {Properties and Applications of the Kirkwood-Dirac Distribution},
+  journal = {New J. Phys.},
+  volume = {26},
+  pages = {121201},
+  year = {2024},
+  doi = {10.1088/1367-2630/ada05d},
+  eprint = {2403.18899},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; checked 2026-11-09 (arXiv record); HTML v2 searched for dwell, tunnelling and group delay (no hits); cited in nb 17}
+}
+
+@article{campagneibarcq2014,
+  author = {P. Campagne-Ibarcq and L. Bretheau and E. Flurin and A. Auff{\`e}ves and F. Mallet and B. Huard},
+  title = {Observing Interferences between Past and Future Quantum States in Resonance Fluorescence},
+  journal = {Phys. Rev. Lett.},
+  volume = {112},
+  pages = {180402},
+  year = {2014},
+  doi = {10.1103/PhysRevLett.112.180402},
+  eprint = {1311.5605},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; checked 2026-11-09 (arXiv record); passages not read; cited in nb 17}
+}
+
+% ---------- Added 2026-11-10: notebook 17 audit ----------
+
+@article{steinberg1995prl,
+  author = {A. M. Steinberg},
+  title = {How much time does a tunneling particle spend in the barrier region?},
+  journal = {Phys. Rev. Lett.},
+  volume = {74},
+  pages = {2405},
+  year = {1995},
+  doi = {10.1103/PhysRevLett.74.2405},
+  eprint = {quant-ph/9501015},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record checked and preprint read 2026-11-10; reflection dwell time beyond the barrier oscillates as sin(2kx + arg t); sum rule eq. 1; cited in nb 17}
+}
+
+@article{halliwell2019,
+  author = {J. J. Halliwell and H. Beck and B. K. B. Lee and S. O'Brien},
+  title = {Quasiprobability for the arrival-time problem with links to backflow and the Leggett-Garg inequalities},
+  journal = {Phys. Rev. A},
+  volume = {99},
+  pages = {012124},
+  year = {2019},
+  doi = {10.1103/PhysRevA.99.012124},
+  eprint = {1810.10976},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record checked and eqs. (2.3)-(2.6) read 2026-11-10: q = p + Re D with the same D as halliwell2016; cited in nb 17}
+}
+
+@article{williamsjordan2008,
+  author = {N. S. Williams and A. N. Jordan},
+  title = {Weak Values and the Leggett-Garg Inequality in Solid-State Qubits},
+  journal = {Phys. Rev. Lett.},
+  volume = {100},
+  pages = {026804},
+  year = {2008},
+  doi = {10.1103/PhysRevLett.100.026804},
+  note = {status: verified-online; Crossref checked 2026-11-10; passages not read; cited in nb 17}
+}
+
+@article{pusey2014,
+  author = {M. F. Pusey},
+  title = {Anomalous Weak Values Are Proofs of Contextuality},
+  journal = {Phys. Rev. Lett.},
+  volume = {113},
+  pages = {200401},
+  year = {2014},
+  doi = {10.1103/PhysRevLett.113.200401},
+  eprint = {1409.1535},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record checked 2026-11-10; passages not read; cited in nb 17}
+}
+
+@article{pan2020,
+  author = {A. K. Pan},
+  title = {Interference experiment, anomalous weak value, and Leggett-Garg test of macrorealism},
+  journal = {Phys. Rev. A},
+  volume = {102},
+  pages = {032206},
+  year = {2020},
+  doi = {10.1103/PhysRevA.102.032206},
+  eprint = {2012.13875},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; Crossref checked 2026-11-10; passages not read; cited in nb 17}
+}
+
+% ---------- Added 2026-11-16: notebooks 18 and 19 (quantization, spinors) ----------
+
+@article{wallstrom1994,
+  author = {T. C. Wallstrom},
+  title = {Inequivalence between the Schr{\"o}dinger equation and the Madelung hydrodynamic equations},
+  journal = {Phys. Rev. A},
+  volume = {49},
+  pages = {1613--1617},
+  year = {1994},
+  doi = {10.1103/PhysRevA.49.1613},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read (the objection is cited through Derakhshani and Schmelzer's restatements); cited in nb 18}
+}
+
+@article{gillespie1994,
+  author = {D. T. Gillespie},
+  title = {Why quantum mechanics cannot be formulated as a Markov process},
+  journal = {Phys. Rev. A},
+  volume = {49},
+  pages = {1607--1612},
+  year = {1994},
+  doi = {10.1103/PhysRevA.49.1607},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read; cited in nb 18 for the two-level Rabi case}
+}
+
+@misc{schmelzer1101_5774,
+  author = {I. Schmelzer},
+  title = {An answer to the Wallstrom objection against Nelsonian stochastics},
+  year = {2011},
+  eprint = {1101.5774},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record checked 2026-11-16; v3 read on the page for the 2026-11-15 literature check (notes/lit-quantization-wallstrom-2026-11-15.md); no journal version found; cited in nb 18}
+}
+
+@misc{derakhshani1510_06391,
+  author = {M. Derakhshani},
+  title = {A Suggested Answer To Wallstrom's Criticism: Zitterbewegung Stochastic Mechanics I},
+  year = {2015},
+  eprint = {1510.06391},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record checked 2026-11-16 (v6); read on the page for the 2026-11-15 literature check; no journal version found; cited in nb 18}
+}
+
+@book{kuipers2023,
+  author = {F. Kuipers},
+  title = {Stochastic Mechanics and the Unification of Quantum Mechanics with Brownian Motion},
+  publisher = {Springer (SpringerBriefs in Physics)},
+  year = {2023},
+  doi = {10.1007/978-3-031-31448-3},
+  eprint = {2301.05467},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record checked 2026-11-16 (arXiv journal reference and DOI); HTML read for the 2026-11-15 literature check; cited in nb 18}
+}
+
+@misc{smolin2006,
+  author = {L. Smolin},
+  title = {Could quantum mechanics be an approximation to another theory?},
+  year = {2006},
+  eprint = {quant-ph/0609109},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record checked 2026-11-16; section IV (the ring) read for the 2026-11-15 literature check; no journal version found; cited in nb 18}
+}
+
+@misc{fritschehaugk2009,
+  author = {L. Fritsche and M. Haugk},
+  title = {Stochastic Foundation of Quantum Mechanics and the Origin of Particle Spin},
+  year = {2009},
+  eprint = {0912.3442},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record checked 2026-11-16 (v1); section VIII read for the 2026-11-15 literature check; no journal version found; cited in nb 18}
+}
+
+@article{reddigerpoirier2023,
+  author = {M. Reddiger and B. Poirier},
+  title = {Towards a mathematical theory of the Madelung equations: Takabayasi's quantization condition, quantum quasi-irrotationality, weak formulations, and the Wallstrom phenomenon},
+  journal = {J. Phys. A: Math. Theor.},
+  volume = {56},
+  pages = {193001},
+  year = {2023},
+  doi = {10.1088/1751-8121/acc7db},
+  eprint = {2207.11367},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; Crossref and arXiv record checked 2026-11-16 (arXiv v1 title is shorter: Towards a mathematical Theory of the Madelung Equations; the journal title is the full Crossref title); abstract read for the 2026-11-15 literature check; cited in nb 18}
+}
+
+@incollection{foskett2020,
+  author = {M. S. Foskett and C. Tronci},
+  title = {Holonomy and vortex structures in quantum hydrodynamics},
+  booktitle = {Hamiltonian Systems: Dynamics, Analysis, Applications (eds. A. Fathi, P. J. Morrison, T. M-Seara, S. Tabachnikov), Math. Sci. Res. Inst. Pub. 72},
+  publisher = {Cambridge University Press},
+  pages = {173--214},
+  year = {2024},
+  doi = {10.1017/9781009320733.005},
+  eprint = {2003.08664},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record and Crossref checked 2026-11-16; passages not read; cited in nb 18}
+}
+
+@article{ruelle1969,
+  author = {D. Ruelle},
+  title = {A remark on bound states in potential-scattering theory},
+  journal = {Nuovo Cimento A},
+  volume = {61},
+  pages = {655--662},
+  year = {1969},
+  doi = {10.1007/BF02819607},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read; the RAGE theorem (Ruelle; Amrein and Georgescu; Enss), cited in nb 18}
+}
+
+@article{amreingeorgescu1973,
+  author = {W. O. Amrein and V. Georgescu},
+  title = {On the characterization of bound states and scattering states in quantum mechanics},
+  journal = {Helv. Phys. Acta},
+  volume = {46},
+  pages = {635--658},
+  year = {1973},
+  note = {status: best-match-unconfirmed; volume, pages and year confirmed 2026-11-16 from the reference list of Enss 1978 (Crossref record of doi:10.1007/BF01940771); the title is from memory and the paper has no Crossref record; cited in nb 18}
+}
+
+@article{enss1978,
+  author = {V. Enss},
+  title = {Asymptotic completeness for quantum mechanical potential scattering. I. Short range potentials},
+  journal = {Commun. Math. Phys.},
+  volume = {61},
+  pages = {285--291},
+  year = {1978},
+  doi = {10.1007/BF01940771},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read; the RAGE theorem, cited in nb 18}
+}
+
+@article{bocchieriloinger1957,
+  author = {P. Bocchieri and A. Loinger},
+  title = {Quantum Recurrence Theorem},
+  journal = {Phys. Rev.},
+  volume = {107},
+  pages = {337--338},
+  year = {1957},
+  doi = {10.1103/PhysRev.107.337},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read; cited in nb 18}
+}
+
+@article{rauch1975,
+  author = {H. Rauch and A. Zeilinger and G. Badurek and A. Wilfing and W. Bauspiess and U. Bonse},
+  title = {Verification of coherent spinor rotation of fermions},
+  journal = {Phys. Lett. A},
+  volume = {54},
+  pages = {425--427},
+  year = {1975},
+  doi = {10.1016/0375-9601(75)90798-7},
+  note = {status: verified-online; Crossref checked 2026-11-16 (Bonse confirmed as an author); passages not read; cited in nb 19}
+}
+
+@article{werner1975,
+  author = {S. A. Werner and R. Colella and A. W. Overhauser and C. F. Eagen},
+  title = {Observation of the Phase Shift of a Neutron Due to Precession in a Magnetic Field},
+  journal = {Phys. Rev. Lett.},
+  volume = {35},
+  pages = {1053--1055},
+  year = {1975},
+  doi = {10.1103/PhysRevLett.35.1053},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read; cited in nb 19}
+}
+
+@article{aharonovsusskind1967,
+  author = {Y. Aharonov and L. Susskind},
+  title = {Observability of the Sign Change of Spinors under 2π Rotations},
+  journal = {Phys. Rev.},
+  volume = {158},
+  pages = {1237--1238},
+  year = {1967},
+  doi = {10.1103/PhysRev.158.1237},
+  note = {status: verified-online; Crossref checked 2026-11-16; not re-read (see notes/lit-spinor-4pi-2026-11-16.md); a critical remark by Hegerfeldt and Kraus, Phys. Rev. 170, 1185 (1968), exists and is not cited; cited in nb 19}
+}
+
+@article{kochenspecker1967,
+  author = {S. Kochen and E. P. Specker},
+  title = {The Problem of Hidden Variables in Quantum Mechanics},
+  journal = {J. Math. Mech.},
+  volume = {17},
+  pages = {59--87},
+  year = {1967},
+  doi = {10.1512/iumj.1968.17.17004},
+  note = {status: verified-online; Crossref checked 2026-11-16 (the journal was renamed Indiana University Mathematics Journal in 1968, and Crossref files the paper there); section 6 is the classical spin-1/2 model cited in nb 19; passages not read}
+}
+
+@article{bell1966,
+  author = {J. S. Bell},
+  title = {On the Problem of Hidden Variables in Quantum Mechanics},
+  journal = {Rev. Mod. Phys.},
+  volume = {38},
+  pages = {447--452},
+  year = {1966},
+  doi = {10.1103/RevModPhys.38.447},
+  note = {status: verified-online; Crossref checked 2026-11-16; not re-read (see notes/lit-spinor-4pi-2026-11-16.md); cited in nb 19}
+}
+
+@article{dingrhee2014,
+  author = {J. Ding and N. H. Rhee},
+  title = {When a Matrix and Its Inverse Are Nonnegative},
+  journal = {Missouri J. Math. Sci.},
+  volume = {26},
+  pages = {98--103},
+  year = {2014},
+  doi = {10.35834/mjms/1404997113},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read; cited in nb 19 (a stochastic matrix with a stochastic inverse is a permutation)}
+}
+
+@article{kingman1962,
+  author = {J. F. C. Kingman},
+  title = {The imbedding problem for finite Markov chains},
+  journal = {Z. Wahrscheinlichkeitstheorie verw. Gebiete},
+  volume = {1},
+  pages = {14--24},
+  year = {1962},
+  doi = {10.1007/BF00531768},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read; cited in nb 19}
+}
+
+@article{goodman1970,
+  author = {G. S. Goodman},
+  title = {An intrinsic time for non-stationary finite Markov chains},
+  journal = {Z. Wahrscheinlichkeitstheorie verw. Gebiete},
+  volume = {16},
+  pages = {165--180},
+  year = {1970},
+  doi = {10.1007/BF00534594},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read; cited in nb 19 as the embedding result alongside Kingman}
+}
+
+@article{bargmann1954,
+  author = {V. Bargmann},
+  title = {On Unitary Ray Representations of Continuous Groups},
+  journal = {Ann. Math.},
+  volume = {59},
+  pages = {1--46},
+  year = {1954},
+  doi = {10.2307/1969831},
+  note = {status: verified-online; Crossref checked 2026-11-16 (start page 1; the last page 46 is from memory); passages not read; cited in nb 19}
+}
+
+@article{schulman1968,
+  author = {L. S. Schulman},
+  title = {A Path Integral for Spin},
+  journal = {Phys. Rev.},
+  volume = {176},
+  pages = {1558--1569},
+  year = {1968},
+  doi = {10.1103/PhysRev.176.1558},
+  note = {status: verified-online; Crossref checked 2026-11-16; passages not read; distinct from schulman1998 (the Zeno paper); cited in nb 19 for the homotopy reading of half-integer spin}
+}
+
+@article{kult2008,
+  author = {D. Kult and J. {\AA}berg and E. Sj{\"o}qvist},
+  title = {Holonomy for Quantum Channels},
+  journal = {Phys. Rev. A},
+  volume = {77},
+  pages = {012114},
+  year = {2008},
+  doi = {10.1103/PhysRevA.77.012114},
+  eprint = {0711.2140},
+  archiveprefix = {arXiv},
+  note = {status: verified-online; arXiv record checked 2026-11-16 (v2, journal reference and DOI); passages not read; cited in nb 19}
+}
+
+@article{dankel1970,
+  author = {T. G. Dankel},
+  title = {Mechanics on manifolds and the incorporation of spin into Nelson's stochastic mechanics},
+  journal = {Arch. Rational Mech. Anal.},
+  volume = {37},
+  pages = {192--221},
+  year = {1970},
+  doi = {10.1007/BF00281477},
+  note = {status: verified-online; Crossref checked 2026-11-16; full text not read (paywalled; see notes/lit-spinor-4pi-2026-11-16.md, still unchecked: whether the configuration manifold is SO(3) or SU(2)); cited in nb 19}
+}
+
+@incollection{dohrn1979,
+  author = {D. Dohrn and F. Guerra and P. Ruggiero},
+  title = {Spinning particles and relativistic particles in the framework of Nelson's stochastic mechanics},
+  booktitle = {Feynman Path Integrals, Lecture Notes in Physics 106},
+  publisher = {Springer},
+  pages = {165--181},
+  year = {1979},
+  doi = {10.1007/3-540-09532-2_72},
+  note = {status: verified-online; Crossref checked 2026-11-16 (title, authors, pages, volume title Feynman Path Integrals; year 1979 is from the notebook, as Crossref gives no date); full text not read; cited in nb 19}
+}
+
+@article{faris1982,
+  author = {W. G. Faris},
+  title = {Spin correlation in stochastic mechanics},
+  journal = {Found. Phys.},
+  volume = {12},
+  pages = {1--26},
+  year = {1982},
+  doi = {10.1007/BF00726872},
+  note = {status: verified-online; Crossref checked 2026-11-16; full text not read; cited in nb 19 on Stern-Gerlach and spin correlations}
 }
 
 % ---------- Other (lectures, transcripts, web pages) ----------

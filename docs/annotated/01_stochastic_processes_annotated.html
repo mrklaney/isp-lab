@@ -7924,7 +7924,7 @@ exactly what that run produced. Earlier copies of this notebook are in
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isp.stochastic</span><span class="w"> </span><span class="kn">import</span> <span class="n">StochasticProcess</span><span class="p">,</span> <span class="n">make_markov_chain</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">isp.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_probability_evolution</span><span class="p">,</span> <span class="n">plot_transition_matrix</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isp.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_probability_evolution</span>
 </pre></div>
 </div>
 </div>
@@ -7957,7 +7957,7 @@ $\mathbf{p}$ with non-negative entries summing to 1.</p>
 <li><strong>The conditions on a distribution</strong> are the ordinary ones: $0 \le p(i,t) \le 1$ and $\sum_i p(i,t) = 1$ (2507.21192, eq. 1; 2302.10778, eqs. 2–3).</li>
 </ul>
 <p><strong>Why this matters for the code.</strong> The vector <code>p</code> in the next cell is the contingent part. You may set it to anything that is non-negative and sums to 1, and the transition matrices of Section 2 are not supposed to change when you do. Keep that separation in mind: later notebooks ask whether a <em>law</em> (a matrix) can be split in time, and the answer must not depend on which starting vector you happened to pick.</p>
-<p><strong>About the ket labels.</strong> The code prints <code>|0⟩</code> and <code>|1⟩</code>. That is borrowed quantum notation, used here only as labels for the two configurations. Nothing in this notebook is a quantum state vector; <code>p</code> holds probabilities, not amplitudes.</p>
+<p><strong>About the labels.</strong> The code prints "Configuration 0" and "Configuration 1", not quantum kets such as <code>|0⟩</code>. Nothing in this notebook is a quantum state vector; <code>p</code> holds probabilities, not amplitudes.</p>
 </div>
 </div>
 </div>
@@ -7972,8 +7972,8 @@ $\mathbf{p}$ with non-negative entries summing to 1.</p>
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Two-state system: coin with bias 70/30</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.7</span><span class="p">,</span> 
               <span class="mf">0.3</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"State |0⟩ probability: </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"State |1⟩ probability: </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Configuration 0 probability: </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Configuration 1 probability: </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Normalization check (should be 1.0): </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
 </pre></div>
@@ -7988,8 +7988,8 @@ $\mathbf{p}$ with non-negative entries summing to 1.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>State |0⟩ probability: 0.7
-State |1⟩ probability: 0.3
+<pre>Configuration 0 probability: 0.7
+Configuration 1 probability: 0.3
 Normalization check (should be 1.0): 1.0
 [[0.7]
  [0.3]]
@@ -8044,7 +8044,9 @@ Normalization check (should be 1.0): 1.0
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="2.-Transition-Matrices">2. Transition Matrices<a class="anchor-link" href="#2.-Transition-Matrices">¶</a></h2><p>A transition matrix $T$ maps one distribution to the next:
 $$\mathbf{p}(t_2) = T \cdot \mathbf{p}(t_1)$$</p>
-<p>Each <strong>column</strong> of $T$ must sum to 1 — it's a probability distribution
+<p>Entry $T_{ij} = p(i, t_2 \mid j, t_1)$ is the probability of configuration $i$ at $t_2$ given
+configuration $j$ at $t_1$. This is Barandes's $\Gamma_{ij}(t_2 \leftarrow t_1)$ (Paper 1, eq. 1).
+Each <strong>column</strong> of $T$ must sum to 1 — it's a probability distribution
 over next states given a current state.</p>
 </div>
 </div>
@@ -8336,6 +8338,17 @@ t=3.0: P(heads)=0.574  P(tails)=0.426
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-07b-process-note">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>What <code>StochasticProcess</code> assumes.</strong> It stores one matrix per step and obtains the matrix from $t=0$ to $t=3$ as the product $T_3 T_2 T_1$. When every stored step is a stochastic matrix, as here, a process built this way is divisible at its stored times by construction, before any test is run. Barandes instead specifies a process by $\Gamma(t \leftarrow t_0)$ from its conditioning times, with no such product assumed (Paper 1, §2.1; Paper 3, §2.2, p. 9). The indivisible examples in notebooks 03–05 start from $\Gamma(t \leftarrow 0)$.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-01-anno-process-vs-family">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8573,7 +8586,7 @@ columns of $L$ sum to 0.</p>
 \textbf{indivisible} \;\Longrightarrow\; \textbf{non-Markovian}$$</p>
 <p>Barandes' claim is that quantum systems live on the right-hand side: their transition matrices are generically indivisible. Be careful with the word "memory" here. Divisibility constrains only the first-order transition matrices $\Gamma(t \leftarrow t')$ (Paper 1, §2.2). Any textbook process with indivisible first-order matrices must be non-Markovian, but the indivisible process itself specifies no higher-order conditional probabilities; what it exhibits is first-order matrices that fail to compose. Barandes says as much: indivisible processes are not "non-Markovian only in the familiar sense of requiring the specification of higher-order conditional probabilities" (Paper 3, §1, p. 1).</p>
 <blockquote>
-<p>⚠️ <strong>The converse fails, and the distinction is the whole point.</strong> Not every non-Markovian process is indivisible. Plenty of ordinary classical processes have memory and are still divisible — you can still factor them through intermediate times using valid stochastic matrices. <strong>Indivisibility is a strictly stronger condition than "has memory."</strong> It is also the <em>generic</em> case: Barandes notes that a transition matrix $\Gamma(t \leftarrow t_0)$ "will generically be indivisible" (2302.10778 §2.1, in the sentence introducing eq. 6, citing Milz &amp; Modi 2021), and his stochastic-quantum correspondence covers a "highly general class" of processes, divisible or not (Paper 1, §1; Paper 2, abstract), with indivisible as the generic case. So the line this lab tracks is divisible versus indivisible, not simple versus complicated classical behavior. Notebook 02 makes the test concrete; notebook 03 finds a process that fails it.</p>
+<p>⚠️ <strong>The converse fails, and the distinction is the whole point.</strong> Not every non-Markovian process is indivisible. Plenty of ordinary classical processes have memory and are still divisible — you can still factor them through intermediate times using valid stochastic matrices. <strong>Indivisibility is a strictly stronger condition than "has memory."</strong> It is also the <em>generic</em> case: Barandes notes that a transition matrix $\Gamma(t \leftarrow t_0)$ "will generically be indivisible" (2302.10778 §2.1, in the sentence introducing eq. 6, citing Milz &amp; Modi 2021), and his stochastic-quantum correspondence covers a "highly general class" of processes (Paper 1, §1), which includes Markov chains (Paper 2, abstract), with indivisible as the generic case. So the line this lab tracks is divisible versus indivisible, not simple versus complicated classical behavior. Notebook 02 makes the test concrete; notebook 03 finds a process that fails it.</p>
 </blockquote>
 <h4 id="Two-clarifications-on-the-formula">Two clarifications on the formula<a class="anchor-link" href="#Two-clarifications-on-the-formula">¶</a></h4><p><strong>(a) $\Delta t$ can be any length.</strong> $T(\Delta t) = e^{L\Delta t}$ is not an infinitesimal-step formula: it holds for <strong>any</strong> elapsed interval $\Delta t \geq 0$, however large — and that's how the code uses it. In <code>isp/stochastic.py</code>:</p>
 <div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">times</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>      <span class="c1"># a finite gap, e.g. 0.26</span>
@@ -8622,9 +8635,9 @@ columns of $L$ sum to 0.</p>
 <h4 id="Way-2-%E2%80%94-memorylessness-forces-the-exponential">Way 2 — memorylessness <em>forces</em> the exponential<a class="anchor-link" href="#Way-2-%E2%80%94-memorylessness-forces-the-exponential">¶</a></h4><p>This is the deepest answer to "how does this relate to a Markov chain," and it is worth sitting with.</p>
 <p>Being Markov and time-homogeneous means the process can be cut anywhere, with elapsed times simply adding:</p>
 <p>$$T(t + s) \;=\; T(t)\,T(s), \qquad T(0) = I$$</p>
-<p>Now ask: what functions actually satisfy that? For scalars, $f(t+s) = f(t)f(s)$ with $f$ continuous has exactly one family of solutions — $f(t) = e^{at}$. (This is the Cauchy exponential functional equation.) The matrix case is the same, and the unique continuous solution is</p>
+<p>Now ask: what functions actually satisfy that? For scalars, $f(t+s) = f(t)f(s)$ with $f$ continuous and $f(0) = 1$ has exactly one family of solutions — $f(t) = e^{at}$. (This is the Cauchy exponential functional equation.) The matrix case is the same, and the unique continuous solution is</p>
 <p>$$T(t) = e^{Lt}, \qquad L \equiv T'(0)$$</p>
-<p>So the exponential is <strong>not a modeling choice.</strong> Nobody looked at Markov chains and decided an exponential would be convenient. Given memorylessness plus a fixed rate matrix (which together supply the semigroup property) and continuity, $e^{Lt}$ is the <em>only</em> form the answer can take. <strong>The exponential form and the semigroup property are the same statement written two ways.</strong> The Markov property is one way to get the semigroup property, but not the only one: a process's first-order transition matrices can compose like this while its higher-order conditional probabilities still carry memory (notebook 08).</p>
+<p>So the exponential is <strong>not a modeling choice.</strong> Nobody looked at Markov chains and decided an exponential would be convenient. Given memorylessness plus a fixed rate matrix (which together supply the semigroup property) and continuity, $e^{Lt}$ is the <em>only</em> form the answer can take. <strong>The exponential form and the semigroup property are the same statement written two ways.</strong> The Markov property is one way to get the semigroup property, but not the only one: a process's first-order transition matrices can compose like this while its higher-order conditional probabilities still carry memory (Rivas, Huelga &amp; Plenio 2014, §2.2, gives an example).</p>
 <p>There's a matching fact one level down: the exponential distribution is the unique <em>memoryless</em> continuous distribution, which is why holding times in a Markov chain must be exponential. Memorylessness at the level of the matrix $\Rightarrow$ matrix exponential. Memorylessness at the level of the waiting time $\Rightarrow$ scalar exponential. Same principle, twice. The code cell verifies the waiting-time version directly.</p>
 <h4 id="Way-3-%E2%80%94-a-physical-example-you-already-know">Way 3 — a physical example you already know<a class="anchor-link" href="#Way-3-%E2%80%94-a-physical-example-you-already-know">¶</a></h4><p>Take radioactive decay with decay constant $\lambda$. It is a two-state continuous-time Markov chain: <em>undecayed</em> $\to$ <em>decayed</em>, with <strong>no way back</strong> (state 1 is absorbing, so its column is all zeros):</p>
 <p>$$L = \begin{pmatrix} -\lambda &amp; 0 \\ \lambda &amp; 0 \end{pmatrix}$$</p>
@@ -8902,9 +8915,9 @@ e^{Lt} \;\equiv\; \sum_{k=0}^{\infty} \frac{(Lt)^k}{k!} \;=\; I + Lt + \frac{(Lt
 <blockquote>
 <p><strong>A continuous-time Markov chain cannot fail the divisibility test.</strong> Divisibility is not a lucky property these processes happen to have — it is a structural consequence of being generated by a single fixed $L$ acting the same way at every instant.</p>
 </blockquote>
-<p>Which sharpens the question notebook 03 answers. A quantum system does define a perfectly legitimate stochastic process: its transition matrices measured <strong>from the initial time</strong>, $T(t, t_0)$, are all valid stochastic matrices — non-negative, columns summing to 1. What fails is the <em>derived</em> intermediate: the matrix that would have to carry the process from $t_1$ to $t_2$ has negative entries, even though (as we saw above) its columns still sum to 1.</p>
+<p>Which sharpens the question notebook 03 answers. A quantum system does define a perfectly legitimate stochastic process: its transition matrices measured <strong>from the initial time</strong>, $T(t, t_0)$, are all valid stochastic matrices — non-negative, columns summing to 1. What fails is the <em>derived</em> intermediate: the matrix that would have to carry the process from $t_1$ to $t_2$ <em>can</em> have negative entries (for the qubit below, exactly when $|\cos t_2| &gt; |\cos t_1|$), even though (as we saw above) its columns still sum to 1.</p>
 <blockquote>
-<p>⚠️ Note the asymmetry — it matters. It is <strong>not</strong> that a quantum process lacks a single generator while still having good transition matrices between arbitrary times. The matrices from the initial time are good; the ones bridging <em>intermediate</em> times are not. The initial time is privileged in how the process is specified, though not physically unique: Barandes notes that "the initial time 0 is not a unique time but is instead only one of many division events" for a system in contact with an environment (Paper 1, §3.7, p. 19). Notebook 02's annotations develop this, and it is why Barandes speaks of <strong>division events</strong> — the special times at which a process <em>can</em> be cleanly restarted.</p>
+<p>⚠️ Note the asymmetry — it matters. It is <strong>not</strong> that a quantum process lacks a single generator while still having good transition matrices between arbitrary times. The matrices from the initial time are good; the ones bridging <em>intermediate</em> times need not be. The initial time is privileged in how the process is specified, though not physically unique: Barandes notes that "the initial time 0 is not a unique time but is instead only one of many division events" for a system in contact with an environment (Paper 1, §3.7, p. 19). Notebook 02's annotations develop this, and it is why Barandes speaks of <strong>division events</strong>: the allowed conditioning times of a process (Paper 3, §2.2, p. 9), which arise where interaction with an environment makes $\Gamma(t \leftarrow 0)$ divisible at $t'$ (Paper 1, §3.7).</p>
 </blockquote>
 <p><strong>Indivisibility is the failure of "this evolution can be assembled from valid stochastic pieces at all."</strong></p>
 </div>
@@ -8991,13 +9004,24 @@ e^{Lt} \;\equiv\; \sum_{k=0}^{\infty} \frac{(Lt)^k}{k!} \;=\; I + Lt + \frac{(Lt
 <h3 id="%F0%9F%A7%AD-How-to-use-this-cell-/-what-to-look-at">🧭 How to use this cell / what to look at<a class="anchor-link" href="#%F0%9F%A7%AD-How-to-use-this-cell-/-what-to-look-at">¶</a></h3><ul>
 <li><strong>What it computes:</strong> a CTMC with the generator $L$ above, sampled at 20 evenly spaced times from 0 to 5 (spacing $5/19 \approx 0.263$). <code>make_markov_chain</code> turns each gap into an increment <code>expm(L * dt)</code>, so internally this is a <code>StochasticProcess</code> whose increments happen to all be equal.</li>
 <li><strong>What to look at:</strong> the printed column sums <code>[0. 0.]</code>, then the figure. State 0 starts at 1 and decays smoothly toward 0.375; state 1 rises toward 0.625. These are the stationary values derived in the 🧮 cell above, not values printed by this cell. The worked formula predicts $p_0(5) = 0.375 + 0.625\,e^{-4} \approx 0.386$, so the curve is close to, but not yet at, its limit by the right edge of the plot.</li>
-<li><strong>What the shape tells you:</strong> a single exponential approach with rate $a + b = 0.8$. No oscillation, no overshoot. A two-state Markov chain cannot oscillate, because its only non-zero eigenvalue is real and negative. Quantum two-state probabilities, by contrast, oscillate ($\cos^2$), which is the first visible hint that they cannot come from a generator like this.</li>
+<li><strong>What the shape tells you:</strong> a single exponential approach with rate $a + b = 0.8$. No oscillation, no overshoot. A two-state <em>continuous-time</em> Markov chain cannot oscillate, because its only non-zero eigenvalue is real and negative. Quantum two-state probabilities, by contrast, oscillate ($\cos^2$), which is the first visible hint that they cannot come from a generator like this.</li>
 </ul>
 <p><strong>Try this.</strong></p>
 <ol>
 <li>Make state 1 absorbing: <code>L = [[-0.5, 0.0], [0.5, 0.0]]</code>. Predict: state 0 decays as $e^{-0.5t}$ all the way to 0; this is the decay generator of WAY 3 with $\lambda = 0.5$.</li>
 <li>Break the rule on purpose: <code>L = [[-0.5, -0.3], [0.5, 0.3]]</code> (a negative off-diagonal). The column sums still print 0, but state 0's probability heads toward $-1.5$ (it passes about $-0.58$ by $t = 5$), leaving $[0, 1]$ and the plot's fixed axis range. Column sums alone do not make a generator, just as they do not make a transition matrix.</li>
 </ol>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-10b-figures-note">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Reading the two figures.</strong> In the Section 2 figure, $P(\text{heads})$ steps through 1.000, 0.800, 0.740, 0.574, one stored matrix per step (the printout above it). In the Section 3 figure, $P(0)$ relaxes as $0.375 + 0.625\,e^{-0.8t}$ toward the stationary distribution $(0.375, 0.625)$, with no oscillation; at $t = 5$ it is 0.386.</p>
 </div>
 </div>
 </div>
@@ -9377,13 +9401,19 @@ $T(\Delta t) = e^{L \cdot \Delta t}$ for any elapsed time $\Delta t \ge 0$</li>
 </ul>
 <p><strong>Next:</strong> Notebook 02 examines the <em>divisibility</em> of these processes: whether the transition
 matrix from the start can be factored through an intermediate time using a valid stochastic
-matrix. Every Markov chain passes. The condition constrains first-order transition matrices
-only (Paper 1, §2.2), so a divisible process can still have memory in its higher-order
-statistics, and an indivisible one is not simply a process "with memory" in the usual sense.
-Barandes's stochastic-quantum correspondence covers a "highly general class" of processes,
-divisible or not (Paper 1, §1; Paper 2, abstract). Indivisible is the generic case (Paper 1, §2.1,
+matrix. Every Markov chain passes. The condition (Paper 1, eq. 6) involves only first-order
+transition matrices, so a divisible process can still have memory in its higher-order
+statistics; this is standard (Rivas, Huelga &amp; Plenio, <em>Rep. Prog. Phys.</em> 77, 094001 (2014),
+§2.2, which gives an example). Conversely, an indivisible process is non-Markovian, but not
+"only in the familiar sense of requiring the specification of higher-order conditional
+probabilities" (Paper 3, §1, p. 1). Barandes's stochastic-quantum correspondence covers a
+"highly general class" of processes (Paper 1, §1), which includes Markov chains (Paper 2,
+abstract). Indivisible is the generic case (Paper 1, §2.1,
 in the sentence introducing eq. 6, citing Milz &amp; Modi (2021)), and it is the case unitary quantum
 evolution typically produces (Paper 1, §3.5).</p>
+<p><strong>Prior work.</strong> This notebook restates textbook material (Norris, <em>Markov Chains</em>, 1997,
+ch. 1–2, written here in the column convention) and Barandes's definitions (Paper 1, §2.1;
+Paper 3, §2). It contains no new results.</p>
 </div>
 </div>
 </div>

@@ -7906,10 +7906,13 @@ Sum: 1.0000
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-Quantum-Evolution-Is-Indivisible">2. Quantum Evolution Is Indivisible<a class="anchor-link" href="#2.-Quantum-Evolution-Is-Indivisible">¶</a></h2><p>The sigma_x qubit process is indivisible. Let's verify this formally and compute its
-indivisibility signature. As notebook 03 explains, the signature is a detector, not a measure
+<h2 id="2.-Quantum-Evolution-Is-Indivisible">2. Quantum Evolution Is Indivisible<a class="anchor-link" href="#2.-Quantum-Evolution-Is-Indivisible">¶</a></h2><p>This is Barandes's own example (arXiv:2302.10778, §2.1, eq. 7, a $2\times2$ $\Gamma(t \leftarrow 0)$ with diagonal
+$f(t) = \cos^2\omega t$). Here $H = \tfrac{\omega}{2}\sigma_x$, so $f = \cos^2(\omega t/2)$: the same family with his $\omega$
+replaced by $\omega/2$. He states that it is provably indivisible; the check below confirms it on a grid of times and
+computes its indivisibility signature. As notebook 03 explains, the signature is a detector, not a measure
 of how quantum a process is: the value printed below comes from the sampled times closest to
-$\omega t = \pi/2$ and $3\pi/2$ (each paired with $t = 2\pi$), where $\Gamma(t \leftarrow 0)$ is nearly singular, and it changes with the grid.</p>
+$\omega t = \pi/2$ and $3\pi/2$ (each paired with $\omega t = 2\pi$), where $|\det\Gamma(t \leftarrow 0)| = |\cos\omega t|$ is
+smallest among the samples (about 0.22; the two give the same value), and it changes with the grid.</p>
 </div>
 </div>
 </div>
@@ -7963,7 +7966,7 @@ $P(\text{outcome}) = \text{Tr}(M \rho)$ gives the probability.</p>
 <li><strong>In the configuration basis it holds by construction.</strong> For $M = |i\rangle\langle i|$, $\text{Tr}(M\rho) = \rho_{ii} = p_i$,
 the stochastic state itself (Barandes, arXiv:2302.10778, §3.2, eq. 16). The check below confirms exactly this.</li>
 <li><strong>For other observables it is a claim, not a definition.</strong> Barandes argues that the textbook Born rule follows from the
-stochastic structure once the measuring device is modelled as a system with its own configurations (same paper, §4, eq. 78).
+stochastic structure once the measuring device is modelled as a system with its own configurations (same paper, §4.2, eq. 78).
 This notebook does not test that part.</li>
 </ul>
 </div>
@@ -8101,17 +8104,25 @@ max |Γ route − full ρ|                    = 0.200
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><ul>
 <li>Density matrices project onto stochastic states via their diagonal</li>
-<li>Qubit evolution under $\sigma_x$ produces an indivisible process: a bridge $t' \to t$ is valid exactly when $|\cos\omega t| \le |\cos\omega t'|$.
-The process restricted to $0 \le \omega t \le \pi/2$ is divisible (Pimenta, arXiv:2505.08785, eqs. 59–60), any window
+<li>Qubit evolution under $\sigma_x$ produces an indivisible process. The bridge
+$\Gamma(t \leftarrow t') = \Gamma(t \leftarrow 0)\,\Gamma(t' \leftarrow 0)^{-1}$ ($t &gt; t'$, $\cos\omega t' \ne 0$) is stochastic exactly when
+$|\cos\omega t| \le |\cos\omega t'|$. So the process restricted to $0 \le \omega t \le \pi/2$ is divisible, any window
 containing a revival of $|\cos\omega t|$ is not, and at $\omega t' = k\pi$, $\Gamma(t' \leftarrow 0)$ is a permutation
-and the process divides there exactly</li>
+and the process divides there exactly (Pimenta, arXiv:2505.08785, p. 18: "every passage through a permutation matrix
+constitutes a proper division event")</li>
+<li>Pimenta treats the same oscillator (arXiv:2505.08785, §V C, p. 17). His eq. 59 is this $\Gamma$ with his $t$ equal to
+$\omega t/\pi$, his eq. 60 is the bridge above, and he notes that the dynamics is divisible "as long as the stochastic
+matrix moves towards the centre", which is the condition above. The range he lists after eq. 59, $0 \le t' \le t &lt; 1$,
+is half a period ($\omega t &lt; \pi$); eq. 60 is not stochastic on all of it (his $t' = 0.4$, $t = 0.8$ gives an entry of
+$-0.81$). The window that follows from eq. 60 is the quarter period $0 \le \omega t \le \pi/2$</li>
 <li>The Born rule holds by construction in the configuration basis; for other observables Barandes derives it from the
 stochastic structure plus a model of the measuring device (not tested here)</li>
 <li>$\Gamma(t \leftarrow 0)$ acting on the diagonal reproduces the quantum populations when $\rho(0)$ is diagonal; a $\rho$ with
 configuration-basis coherences carries information the present probabilities do not</li>
 <li>This is the core of Barandes' stochastic-quantum correspondence: a quantum system, measuring devices included, can be
-modelled as an indivisible stochastic process, and every indivisible stochastic process (finite configuration space)
-is a subsystem of a unistochastic one (arXiv:2309.03085)</li>
+modelled as an indivisible stochastic process (argued in arXiv:2302.10778), and every indivisible stochastic process
+with a finite configuration space can be regarded as a subsystem of a unistochastic one (the stochastic-quantum
+theorem, arXiv:2309.03085, §4.1)</li>
 </ul>
 <p><strong>Next:</strong> Notebook 05 builds the payoff — a double-slit model where
 interference emerges from indivisibility.</p>

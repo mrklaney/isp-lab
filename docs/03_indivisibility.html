@@ -7809,7 +7809,7 @@ exactly why — negative entries in the intermediate matrix.</p>
 <li>Construct an indivisible stochastic process from a qubit unitary</li>
 <li>Identify which failure mode is triggered and at which times</li>
 <li>Compute the indivisibility signature and interpret its value</li>
-<li>See indivisibility in a smooth, non-quantum 2×2 matrix and explain it as lost-then-recovered information</li>
+<li>See indivisibility in a smooth, non-periodic 2×2 matrix written directly as probabilities, and explain it as lost-then-recovered information</li>
 </ul>
 </div>
 </div>
@@ -7867,7 +7867,7 @@ The unitary is:
 $$U(dt) = e^{-iH\,dt} = \begin{pmatrix} \cos\tfrac{\omega\,dt}{2} &amp; -i\sin\tfrac{\omega\,dt}{2} \\ -i\sin\tfrac{\omega\,dt}{2} &amp; \cos\tfrac{\omega\,dt}{2} \end{pmatrix}$$</p>
 <p>The stochastic transition matrix takes $|U_{ij}|^2$:
 $$T(dt) = \begin{pmatrix} \cos^2\tfrac{\omega\,dt}{2} &amp; \sin^2\tfrac{\omega\,dt}{2} \\ \sin^2\tfrac{\omega\,dt}{2} &amp; \cos^2\tfrac{\omega\,dt}{2} \end{pmatrix}$$</p>
-<p>This is the second example in Barandes's Paper 1 (§2.1, eq. 7: $f(t) = \cos^2\omega t$, his $\omega$ being our $\omega/2$), which he calls "provably indivisible"; this notebook checks it numerically.</p>
+<p>This is the second example in Barandes's Paper 1 (§2.1, eq. 7: $f(t) = \cos^2\omega t$, his $\omega$ being our $\omega/2$), which he calls "provably indivisible"; this notebook checks it numerically. Pimenta (arXiv:2505.08785, eqs. 59–60) works out this oscillator's $\Gamma(t \leftarrow t')$ explicitly.</p>
 <p>Each column sums to 1. All entries are non-negative. Looks perfectly classical — or does it?</p>
 </div>
 </div>
@@ -8045,8 +8045,9 @@ Column sums: [1. 1.]
 <h2 id="2.-The-Indivisibility-Signature">2. The Indivisibility Signature<a class="anchor-link" href="#2.-The-Indivisibility-Signature">¶</a></h2><p>The indivisibility signature turns the divisibility test into a number.
 It is the magnitude of the most negative entry found across all candidate
 intermediate matrices at the sampled times. Zero means no failure was found at those
-times; any positive value proves the process is indivisible. The size of a positive
-value mostly reflects how close the inverted matrix is to singular, so read the
+times; any value clearly above floating-point round-off proves the process is indivisible
+(the code applies no tolerance to the entries, so at times where the process divides exactly it
+can return values near $10^{-30}$). The size of a positive value mostly reflects how close the inverted matrix is to singular, so read the
 signature as a detector, not as a measure of how quantum a process is.</p>
 </div>
 </div>
@@ -8131,18 +8132,38 @@ Qubit sigma_x signature: 0.112372  (&gt; 0: indivisible at these times)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=448b5767">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=630893f0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.-A-Smooth-Example:-The-Gaussian-Matrix">3. A Smooth Example: The Gaussian Matrix<a class="anchor-link" href="#3.-A-Smooth-Example:-The-Gaussian-Matrix">¶</a></h2><p>Indivisibility does not need a qubit. Barandes's Paper 1 (§2.1, eq. 7) and his lecture
-<em>A New Formulation of Quantum Theory</em> (slide at ~17 min) give a 2×2 matrix that is smooth,
-non-periodic, and "provably indivisible" (Paper 1's words). With $p(t) = e^{-t^2/\tau^2}$:</p>
+<p>The 50 values of $\omega$ use the fixed times $[0, 3\pi/4, 5\pi/6]$, so the signature only tests the step from
+$3\pi/4$ to $5\pi/6$. It is exactly zero at 29 of the 50 values: those are the $\omega$ where
+$|\cos(5\pi\omega/6)| \le |\cos(3\pi\omega/4)|$, i.e. where the process divides at these particular times.
+The spike (16.35 at $\omega \approx 1.99$) is where $|\det T(t_1 \to t_2)| = |\cos(3\pi\omega/4)|$ is only
+$0.0144$: a near-singular inverse, not a "more quantum" process.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6cf9c130">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="3.-A-Smooth-Example:-The-Gaussian-Matrix">3. A Smooth Example: The Gaussian Matrix<a class="anchor-link" href="#3.-A-Smooth-Example:-The-Gaussian-Matrix">¶</a></h2><p>Indivisibility does not need a periodic law or a time-independent Hamiltonian. Barandes's Paper 1
+(§2.1, eq. 7) and his lecture <em>A New Formulation of Quantum Theory</em> (slide at ~17 min) give a 2×2
+matrix that is smooth, non-periodic, and "provably indivisible" (Paper 1's words). It is written
+directly as probabilities. With $p(t) = e^{-t^2/\tau^2}$:</p>
 <p>$$\Gamma(t \leftarrow 0) = \begin{pmatrix} p(t) &amp; 1-p(t) \\ 1-p(t) &amp; p(t) \end{pmatrix}$$</p>
 <p>At $t=0$ it is the identity (stay put). As $t \to \infty$ it becomes a flip.
 At $t^* = \tau\sqrt{\ln 2} \approx 0.833\,\tau$ it is a pure coin flip. Time is in units of $\tau$.</p>
+<p>This is not a non-quantum example. Like every 2×2 doubly stochastic matrix it is unistochastic
+("All 2 × 2 doubly stochastic matrices are unistochastic", Paper 2, §3.5): it equals $|U(t)|^2$ for
+$U(t) = e^{-i\theta(t)\sigma_x}$ with $\cos^2\theta(t) = p(t)$, a qubit driven by a time-dependent field.
+Only the clock differs from Section 1.</p>
 <p>The process is given only as $\Gamma(t \leftarrow 0)$. Divisibility asks whether</p>
 <p>$$\Gamma(t \leftarrow t') = \Gamma(t \leftarrow 0)\,\Gamma(t' \leftarrow 0)^{-1}$$</p>
 <p>is a <strong>valid</strong> stochastic matrix: every entry $\ge 0$, every column summing to 1.
@@ -8155,7 +8176,7 @@ $\lambda(t) = 2p(t) - 1$ for the stretch of $\Gamma(t \leftarrow 0)$, the candid
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=56b498bf">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0b614867">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8253,7 +8274,7 @@ $\lambda(t) = 2p(t) - 1$ for the stretch of $\Gamma(t \leftarrow 0)$, the candid
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=28a3b649">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8380ad40">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8266,9 +8287,11 @@ reveals about the start.</strong></p>
 <p>A valid stochastic step can move the dots and can push them together (blurring), but it can
 never pull them further apart. So a valid $\Gamma(t \leftarrow t')$ needs the gap at $t$ to be no
 bigger than the gap at $t'$.</p>
-<p>This gap rule is known. Rivas, Huelga and Plenio (2014, Theorem 2.4) state it for classical
-processes: a process is divisible exactly when its transition matrices never increase the $L^1$ norm
-of any vector. Buscemi and Datta (2016) prove the general equivalence between divisibility and
+<p>This gap rule is known. Rivas, Huelga and Plenio (2014, Theorem 2.4) state the general version for
+classical processes: a process is divisible exactly when its transition matrices between any two times
+(here the derived steps $\Gamma(t \leftarrow 0)\,\Gamma(t' \leftarrow 0)^{-1}$) never increase the
+$L^1$ norm of any vector. The gap rule is that condition applied to the difference between the two
+dots' distributions at $t'$. Buscemi and Datta (2016) prove the general equivalence between divisibility and
 monotonic decrease of information, via the Blackwell–Sherman–Stein theorem. Pimenta (2025) gives the
 complete two-state condition geometrically: there the gap is $|\det\Gamma|$, a valid step cannot
 increase it, and the gap rule is the necessary part of his condition. In open-systems language, a
@@ -8277,14 +8300,15 @@ shrinking of the gap is done by a valid step), and the map at the end of this se
 it. For a general 2×2 process it is only necessary. Dots at 0.9 and 0.5 that move to 0.5 and
 0.2 come closer (gap 0.4 → 0.3), yet the only candidate step has an entry −0.175: a valid step
 is a straight-line map of the 0…1 bar into itself, and the line through the two required moves
-runs off the bar. In a random sample of 20,000 pairs of 2×2 stochastic matrices, about 13%
-blur like this and still have no valid step (columns drawn by normalizing uniform random entries;
-the share depends on the sampling, and is about 17% with columns uniform on the simplex).</p>
+runs off the bar. In a random sample of 20,000 pairs of 2×2 stochastic matrices, about 13% of all
+pairs (about a quarter of the pairs that blur) blur like this and still have no valid step (columns
+drawn by normalizing uniform random entries; the share depends on the sampling, and is about 17% of
+all pairs, a third of those that blur, with columns uniform on the simplex).</p>
 <p>The plot shows the two dots over time and the three cases worked below.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9cecfd66">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7cedcc70">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8336,7 +8360,7 @@ the share depends on the sampling, and is about 17% with columns uniform on the 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=12fdc2f2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc401a99">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8350,7 +8374,7 @@ even a system <em>known</em> to be in state 0 or 1 at $t'$ lands at 0.549 or 0.4
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=079e57ae">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cd1abac1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8403,7 +8427,7 @@ Any valid stochastic matrix exists (linear-program search): True
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=804a1ec8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19cdc3db">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8417,7 +8441,7 @@ The arithmetic tries anyway by stretching 14.5×, which shoots the pure states t
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a3920f4d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9ea8638c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8470,7 +8494,7 @@ Any valid stochastic matrix exists (linear-program search): False
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d7f8d1a2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b49bbd8a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8496,7 +8520,7 @@ That is the meaning of the negative entry.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f89d370d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fd922a54">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8548,7 +8572,7 @@ Any valid stochastic matrix exists (linear-program search): False
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=496cdae0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fa54f699">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8595,20 +8619,20 @@ Any valid stochastic matrix exists (linear-program search): False
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e84e379">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=33cf9de8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="The-whole-picture:-every-pair-of-times">The whole picture: every pair of times<a class="anchor-link" href="#The-whole-picture:-every-pair-of-times">¶</a></h3><p>Repeating the test for every $t' &lt; t$ gives a map of where $\Gamma(t \leftarrow t')$ fails.
-The rule from the two-dot picture predicts it exactly: the candidate is invalid whenever
+The rule from the two-dot picture predicts it exactly: the candidate is invalid exactly when
 $|\lambda(t)| &gt; |\lambda(t')|$. At $t' = t^*$ (white stripe) $\Gamma(t^* \leftarrow 0)$ is singular,
 so no intermediate matrix exists at all, not even a signed one.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=eaf9ff4c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a6c56bc0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8680,10 +8704,10 @@ so no intermediate matrix exists at all, not even a signed one.</p>
 <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><ul>
 <li>A process can have valid individual transition matrices but still be indivisible</li>
 <li>Indivisibility shows up as negative entries in the <em>candidate</em> intermediate matrix</li>
-<li>This is the gap quantum processes live in: Barandes asserts that transition matrices are generically indivisible (Paper 1, §2.1, in the sentence introducing eq. 6, citing Milz &amp; Modi (2021)); this notebook checks it on one qubit, which is his own eq. 7 example</li>
-<li>The qubit is not indivisible at every time: at $\omega t' = k\pi$, $\Gamma(t' \leftarrow 0)$ is the identity or the swap (a permutation), its inverse is stochastic, and the process divides there exactly (the inverse of a stochastic matrix is stochastic only for permutations: Paper 1, §3.5, eqs. 37–38)</li>
-<li>The indivisibility signature detects indivisibility at the sampled times: a positive value proves it, zero means nothing was found there, and its size mostly reflects how near-singular the inverted matrix is</li>
-<li>Indivisibility is not special to qubits: the smooth Gaussian matrix fails whenever the starting state, once nearly forgotten, becomes more distinguishable again</li>
+<li>This is the territory quantum processes occupy: Barandes asserts that transition matrices are generically indivisible (Paper 1, §2.1, in the sentence introducing eq. 6, citing Milz &amp; Modi (2021)); this notebook checks it on one qubit, which is his own eq. 7 example</li>
+<li>Only at $\omega t' = k\pi$ does the qubit divide at $t'$ for every later time: there $\Gamma(t' \leftarrow 0)$ is the identity or the swap (a permutation), its inverse is stochastic, and $\Gamma(t \leftarrow t')$ is stochastic for every $t &gt; t'$ (the inverse of a stochastic matrix is stochastic only for permutations: Paper 1, §3.5, eqs. 37–38). At any other $t'$, $|\cos\omega t|$ later climbs back above $|\cos\omega t'|$, so some later step fails. Individual steps taken while the process is still forgetting (e.g. $\omega t' = \pi/4 \to \omega t = \pi/3$) do divide</li>
+<li>The indivisibility signature detects indivisibility at the sampled times: a value above round-off proves it, zero means nothing was found there, and its size mostly reflects how near-singular the inverted matrix is</li>
+<li>Indivisibility is not special to periodic evolution: the smooth, non-periodic Gaussian matrix (itself $|U(t)|^2$ for a qubit under a time-dependent field, Paper 2, §3.5) fails whenever the starting state, once nearly forgotten, becomes more distinguishable again</li>
 <li>A valid step can never un-blur, so un-blurring forces a negative entry. The converse needs care: for the symmetric matrices here any blurring is achieved by a valid step, but for a general 2×2 process blurring is necessary, not sufficient. The rule is known (Rivas–Huelga–Plenio (2014), Thm 2.4; Buscemi–Datta (2016); Pimenta (2025), who gives the complete two-state condition)</li>
 </ul>
 <p><strong>Next:</strong> Notebook 04 builds the formal bridge: a qubit density matrix's diagonal is a

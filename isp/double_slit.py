@@ -35,7 +35,8 @@ def far_field_propagator(n_modes: int) -> np.ndarray:
 
     Column m is the amplitude reaching each screen pixel from slit m. Columns are
     orthonormal because the matrix is unitary, so distinct slits contribute
-    non-overlapping amplitudes and probabilities normalise on their own.
+    orthogonal amplitude vectors: the cross term sums to zero over the screen and
+    probabilities normalise on their own.
     """
     k = np.arange(n_modes)
     return np.exp(2j * np.pi * np.outer(k, k) / n_modes) / np.sqrt(n_modes)
