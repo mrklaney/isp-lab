@@ -84,7 +84,7 @@ uvx --with-requirements requirements.txt --from pytest pytest tests/ -v
 `notebooks/` holds each notebook twice:
 
 - `NN_name.ipynb` is **the clean original**: succinct, minimal, the executable proof sketch. This is the version to read, run, or hand to someone else.
-- `NN_name_annotated.ipynb` is **the study copy**: the same content plus long-form explanation, derivations, glossaries and quoted passages from the papers. Some notebooks mention files from the author's local reading folder or working notes (`notes/…`); those files are not part of this repository.
+- `NN_name_annotated.ipynb` is **the study copy**: the same content plus long-form explanation, derivations, glossaries and quoted passages from the papers. Some notebooks mention files from the author's local reading folder or working notes (`notes/…`); those are not part of this repository, except the two literature checks behind notebooks 18 and 19 (`notes/lit-quantization-wallstrom-2026-11-15.md`, `notes/lit-spinor-4pi-2026-11-16.md`).
 
 Rendered pages for both tracks are in `docs/` and served at https://mrklaney.github.io/isp-lab/.
 
