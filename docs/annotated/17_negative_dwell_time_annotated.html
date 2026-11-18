@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6401e1cc">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7f34ceac">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7805,17 +7805,21 @@ a.anchor-link {
 <h1 id="Notebook-17:-Negative-Dwell-Time,-or-What-a-Weak-Probe-Reports">Notebook 17: Negative Dwell Time, or What a Weak Probe Reports<a class="anchor-link" href="#Notebook-17:-Negative-Dwell-Time,-or-What-a-Weak-Probe-Reports">¶</a></h1><p><strong>Goal:</strong> In 2024 Angulo, Steinberg and co-workers measured how long the atoms of a cold cloud stay excited because of a photon that is <em>transmitted</em>, and found a
 negative time (arXiv:2409.03680). Build a closed model of that experiment, split the measured quantity into a recorded part and an indivisibility part, and ask
 what an ISP can and cannot say about "time spent". This is a translation of published work (Angulo et al., Thompson et al., Halliwell, Steinberg) into Barandes's terms, not new physics.</p>
-<p><strong>The point in ISP terms.</strong> In an indivisible stochastic process the atoms are excited or not at every moment (Barandes, Paper 1, §5.3, p. 31), so every run has a definite,
-non-negative excitation time, and any probabilities for whole trajectories (which Paper 1 leaves unspecified, §2.2, p. 6) give a non-negative average over the transmitted runs.
-The negative number the weak probe reports therefore cannot be a readout of that history: it is a property of the joint indivisible process of atoms, light and probe pointer, read off the pointer at the end.
+<p><em>References.</em> "Paper 1" is J. A. Barandes, "The Stochastic-Quantum Correspondence", arXiv:2302.10778v3; "Paper 3" is J. A. Barandes, "Quantum Systems as Indivisible Stochastic Processes",
+arXiv:2507.21192v1. Section, page and equation numbers refer to those versions.</p>
+<p><strong>The point in ISP terms.</strong> In an indivisible stochastic process with the configurations of section 1 (or any choice in which "excited or not" is a beable), the atoms are excited or not at
+every moment (Paper 1, §5.3, p. 31), so every run has a definite, non-negative excitation time. Paper 1 leaves the probabilities of whole trajectories unspecified (§2.2, p. 6), but every
+non-Markovian realizer (Paper 3, §2.2, pp. 10–11), and indeed the actual runs themselves, give a non-negative average over the transmitted runs.
+The negative number the weak probe reports therefore cannot be a readout of that history: it is a statistical property of the post-selected runs (an "ensemble observable" in Barandes's terms,
+arXiv:2602.09380, §2.1), read off the pointer at the end of the joint process of atoms, light and pointer.
 By Halliwell's identity it equals the probability you would get by recording "excited or not" at each time, plus half the amount by which that recording would change the probability of
-transmission, so a negative value shows that such a recording would change the outcome statistics. This is consistent with Barandes's own argument, made without ISP machinery, that weak values
-do not reveal properties of individual systems (arXiv:2602.09380); the notebook supplies an ISP-language version of it for this experiment.</p>
+transmission, so a negative value shows that such a recording would change the outcome statistics. This is consistent with Barandes's own argument, made without ISP machinery, that "weak values
+do not reveal interesting physical or metaphysical properties of individual quantum systems" (arXiv:2602.09380, §5); the notebook reaches that conclusion in ISP terms for this experiment.</p>
 <p>By the end of this notebook you will be able to:</p>
 <ul>
 <li>State and prove the identity $q = P_\text{seq} + \Delta/2$ that connects a weak value to a recorded probability and an indivisibility defect (the model's numerics reproduce it to machine precision, a consistency check of the code)</li>
 <li>Reproduce the negative excitation time and its equality with the group delay in a model of atoms in a one-way waveguide</li>
-<li>Say what the split does mean (a negative value shows that recording in/out would change the outcome statistics) and what it doesn't (the recorded part is not an "honest" time), and compute the which-atom split, the one native to Barandes's framework</li>
+<li>Say what the split does mean (a negative value shows that recording in/out would change the outcome statistics) and what it doesn't (the recorded part is not an "honest" time), and compute the which-atom record's recorded part, the one native to Barandes's framework</li>
 <li>Watch the negative time turn positive, then vanish, as the probe gets stronger</li>
 <li>Find the same effect in a second system: a reflected particle "spends negative time" behind a tunnelling barrier</li>
 </ul>
@@ -7823,7 +7827,7 @@ do not reveal properties of individual systems (arXiv:2602.09380); the notebook 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c4613c46">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=922fb2e9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7840,15 +7844,17 @@ and pointer, and it shows that recording "excited or not" at those times would c
 barrier, go back to Steinberg (1995). What may be new is only the reading (see the 🔭 cell at the end).</p>
 <p><strong>Audit (2026-11-10).</strong> An independent rerun with separate code confirmed the identity and every printed number. It found that the split depends on how the question is recorded, that the
 strong-probe limit is detuning rather than the Zeno effect, and that the model's line is not quite a dilute cloud's. This version says so.</p>
-<p><strong>Review (2026-11-17).</strong> Rewritten as a translation for Barandes: trajectory probabilities are <em>unspecified</em> in his framework, not absent; a division event "of the in/out variable" is
-labelled as our extension of his per-system and measuring-device division events; the which-atom record is promoted as the native split; his "The Trouble with Weak Values" is cited.</p>
+<p><strong>Review (2026-11-17).</strong> Rewritten as a translation for Barandes: trajectory probabilities are <em>unspecified</em> in his framework, not absent; the which-atom record is promoted as the native
+record; his "The Trouble with Weak Values" is cited. A second review the same day corrected two points. The recorder's division event is Barandes's own (Paper 1 §4.2, eq. 80, for any
+observable), not our extension; what is open is whether the atoms and light divide under a coarse beable record. And the which-atom record's second piece is the remainder
+$\tau_T - \tau_\text{seq}$ (interference terms), not half its defect: the "half each" identity is for yes/no records only.</p>
 </blockquote>
 <hr/>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a8613803">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e40d23f0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7857,7 +7863,7 @@ labelled as our extension of his per-system and measuring-device division events
 <h3 id="%F0%9F%93%96-In-depth:-what-%CE%93-explains-about-negative-dwell-times,-and-what-it-doesn't">📖 In depth: what Γ explains about negative dwell times, and what it doesn't<a class="anchor-link" href="#%F0%9F%93%96-In-depth:-what-%CE%93-explains-about-negative-dwell-times,-and-what-it-doesn't">¶</a></h3><p><strong>What Γ explains</strong></p>
 <ul>
 <li><strong>Why the report is not a time spent.</strong> Each run has a definite, non-negative excitation time; Barandes leaves trajectory probabilities unspecified, and any choice of them gives a non-negative
-conditional average. The negative report is a property of the joint process, read off the pointer (section 4).</li>
+conditional average. The negative report is a statistical property of the post-selected runs, read off the pointer (section 4).</li>
 <li><strong>Where the negative number comes from.</strong> It is half the coarse-grained defect (how much recording in/out would change $P(f)$) showing through the weak probe (sections 2–3).</li>
 <li><strong>What happens when you look harder.</strong> A stronger probe disturbs more, and the number turns positive and then vanishes (section 5). In this model the disturbance is a detuning of the atoms, not a record at each moment.</li>
 </ul>
@@ -7914,7 +7920,7 @@ are needed. The whole notebook takes about four minutes; most of it is section 3
 <li><strong>Post-selection $f$.</strong> Keeping only the runs with a given final outcome, here "the photon was transmitted".</li>
 <li><strong>Weak value.</strong> What a probe too gentle to disturb the system reports, averaged over the post-selected runs. It can lie outside the range of the measured quantity, including negative.</li>
 <li><strong>Quasiprobability $q$ (Margenau–Hill, Kirkwood–Dirac).</strong> The weak value times $P(f)$. It adds up like a probability but can be negative.</li>
-<li><strong>$P_\text{seq}$.</strong> The joint probability of "in at $t$, then $f$" when a device records the in/out answer at $t$ (in Barandes's terms a division event for the recorder; extending it to a coarse record is ours, see section 2).</li>
+<li><strong>$P_\text{seq}$.</strong> The joint probability of "in at $t$, then $f$" when a device records the in/out answer at $t$ (in Barandes's terms a division event for the recorder, for any observable, Paper 1 §4.2; whether the atoms and light also divide under such a coarse record is open, see section 2).</li>
 <li><strong>Indivisibility defect $\Delta_f$.</strong> How much that recording changes $P(f)$: $P(f) - \sum_b P_\text{seq}(b, f)$.</li>
 <li><strong>Excitation time $\tau_T$.</strong> $\int q\,dt / P(f)$: the probe's report of how long the atoms were excited, per transmitted photon. <strong>$\tau_0$</strong> is the same without post-selection.</li>
 <li><strong>Group delay $\tau_g$.</strong> $d\varphi/d\omega$, the derivative of the transmitted light's phase with respect to frequency: how late the peak of a smooth pulse comes out.</li>
@@ -7924,7 +7930,7 @@ are needed. The whole notebook takes about four minutes; most of it is section 3
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=669841d5">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=90ae913b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7948,7 +7954,7 @@ are needed. The whole notebook takes about four minutes; most of it is section 3
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d0139ca">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34d7bb16">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7969,7 +7975,7 @@ attention and clicking interfere (looking changes whether you click), the faint 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc0ca044">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c1adf22a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7983,7 +7989,7 @@ probability times $\tau_\text{sp}$. In a dilute cloud the two agree. In the mode
 $\int\langle \hat N_e\rangle\,dt = P_\text{scatt}\,\tau_\text{sp}/0.9$. The notebook uses the defining integral; dividing by $P_\text{scatt}\,\tau_\text{sp}$ instead multiplies every ratio by $1/0.9$ (section 3 prints both).
 The experiment integrates both traces only inside a window cut where the tails of the theory curve reach 30% of its peak; the model integrates over the whole run.</p>
 <p>The model is the single-excitation sector of $N$ two-level atoms in a one-way (chiral) waveguide. Its configurations are: atom $j$ is excited; the photon is in forward mode $k$; or the photon is in
-atom $j$'s private loss mode (light scattered out of the beam). It is notebook 10's level+band model with two kinds of band, and it is closed, so $\Gamma = |U|^2$. The pulse, though, starts as a
+atom $j$'s private loss mode (light scattered out of the beam). It is a level+band model (excited levels coupled to bands of modes) with two kinds of band, and it is closed, so $\Gamma = |U|^2$. The pulse, though, starts as a
 superposition of mode configurations: in Barandes's terms its last division event is at emission, before $t = 0$, so $|U|^2$ applied to $|\psi_0|^2$ does not give $P(f)$, and the notebook computes probabilities from the state. Units: $\tau_\text{sp} = 1$,
 with a coupling into the beam $\Gamma_\text{1d} = 0.1$ and out of it $\Gamma_\text{loss} = 0.9$. Five atoms give optical depth 2.2 and nine give 4.0, the two depths of the experiment.</p>
 <p><strong>How close to the real cloud.</strong> Each model atom has optical depth 0.45, so a few atoms each block a lot of light. A real cloud is many atoms each blocking very little, and its line shape
@@ -8016,7 +8022,7 @@ but as a sign that recording would change the outcome statistics rather than a t
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=613b7ed5">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=418a31f7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8082,7 +8088,7 @@ N = 9: 2209 configurations, optical depth 4.02, recurrence time 63 τ_sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ffdb638f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=afb48e39">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8094,15 +8100,17 @@ The weak probe reports the real part of the weak value; multiplied by $P(f)$ it 
 <p>Insert $\Pi_\text{in}(t) + \Pi_\text{out}(t) = 1$ between $\Pi_f(T)$ and $|\psi\rangle$ and it splits into two pieces:</p>
 <p>$$q(\text{in}, f; t) = P_\text{seq}(\text{in}, f; t) + \tfrac12\,\Delta_f(t), \qquad \Delta_f = P(f) - P_\text{seq}(\text{in}, f) - P_\text{seq}(\text{out}, f).$$</p>
 <ul>
-<li>$P_\text{seq}$ is the probability of "in at $t$, then $f$" when a device <em>records</em> in/out at $t$. It is never negative. In Barandes's terms (Paper 1, §4.2, eq. 80), $t$ is then a division
-event for the recording device; applying that to a coarse record, whose one outcome covers many configurations, is our extension. The atoms and light themselves divide at $t$ (Paper 1, §3.7,
-eqs. 45 and 56) only under a record fine enough to fix their configuration; the which-atom record of section 4 does that whenever an atom is excited.</li>
-<li>$\Delta_f$ is how much recording in/out at $t$ changes the final probability of $f$: for this coarse variable, the analogue of the indivisibility defect of notebooks 05 and 10. It is $2\,\mathrm{Re}\,D$ in the
+<li>$P_\text{seq}$ is the probability of "in at $t$, then $f$" when a device <em>records</em> in/out at $t$. It is never negative. In Barandes's terms (Paper 1, §4.2, eq. 80, p. 25), $t$ is then a division
+event for the recording device, for any observable. "Excited or not" is a beable in the sense of eq. (19), and §4.2 says that for an emergeable, by contrast, "the subject system S does not
+experience a division event". But this beable is coarse: one outcome covers many configurations. The atoms and light themselves divide at $t$ (Paper 1, §3.7, eqs. 45 and 56) in general only
+under a record fine enough to fix their configuration; the which-atom record of section 4 does that whenever an atom is excited. Whether a coarse beable record makes the subject divide is the open part.</li>
+<li>$\Delta_f$ is how much recording in/out at $t$ changes the final probability of $f$: for this coarse variable, the analogue of the indivisibility defect $\Gamma(T\leftarrow 0) - \Gamma(T\leftarrow t)\,\Gamma(t\leftarrow 0)$ (the failure of divisibility at $t$). It is $2\,\mathrm{Re}\,D$ in the
 language of decoherent histories, and a nonzero $\Delta_f$ is a violation of no-signalling in time (Kofler &amp; Brukner, PRA 87, 052115 (2013)). Each of the two answers gets exactly half of it.</li>
 <li>The sum $q$ does not depend on how the question is recorded, but the two pieces do: record <em>which</em> atom is excited instead of <em>whether</em> one is, and the split changes (section 4).</li>
 </ul>
 <p>The proof is two lines of algebra. After the insertion, $\Pi_\text{in}$ paired with $\Pi_\text{in}$ gives $P_\text{seq}(\text{in}, f)$ and the cross term is $\mathrm{Re}\,\langle\psi|\Pi_\text{in}(t)\Pi_f(T)\Pi_\text{out}(t)|\psi\rangle$;
-expanding $P(f) = \langle\psi|\Pi_f(T)|\psi\rangle$ the same way shows that this cross term is $\Delta_f/2$. The code below therefore does not test the identity; its residual only checks that the model's time evolution is computed consistently.</p>
+expanding $P(f) = \langle\psi|\Pi_f(T)|\psi\rangle$ the same way shows that this cross term is $\Delta_f/2$. The code below therefore does not test the identity; its residual only checks that the model's time evolution is computed consistently.
+The proof uses exactly two projectors, so the identity is for a yes/no record: for a record with more than two outcomes (such as the which-atom record of section 4) the cross terms do not split evenly, and $q - P_\text{seq}$ is not $\Delta_f/2$.</p>
 <p>The identity is Halliwell's (arXiv:1508.02271, PRA 93, 022123 (2016), eqs. (2.1), (2.4)–(2.5)). The arXiv version (v5) prints $q = p + 2\,\mathrm{Re}\,D$, a factor its own definition of $D$ does not
 support (the typeset journal page was not checked); the corrected form $q = p + \mathrm{Re}\,D$ is in Halliwell et al., PRA 99, 012124 (2019), eq. (2.3). The excitation time is the identity's time integral, $\tau_T = \int q\,dt / P(f)$.</p>
 </div>
@@ -8131,7 +8139,7 @@ In the experiment the "rare" outcome is a resonant photon surviving the cloud.</
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0a4de629">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a52a938a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8177,7 +8185,7 @@ P(transmitted) = 0.227;  τ_T = -0.598 = τ_seq +0.994 + τ_defect -1.592   (uni
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a1b6ce71">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4d12c917">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8208,7 +8216,7 @@ So the cross term is $\Delta_f/2$. With more than two answers the cross terms no
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c390657f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b5b667a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8216,9 +8224,9 @@ So the cross term is $\Delta_f/2$. With more than two answers the cross terms no
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="3.-The-Excitation-Time-Is-the-Group-Delay">3. The Excitation Time Is the Group Delay<a class="anchor-link" href="#3.-The-Excitation-Time-Is-the-Group-Delay">¶</a></h2><p>Thompson et al. (arXiv:2310.00432) predicted that $\tau_T$ equals the group delay of the transmitted light, even when that is negative. The integrated quasiprobability is
 $\int q\,dt = -\mathrm{Im}\,\langle\text{out}_f|\partial_\eta\,\text{out}_f\rangle$: the derivative of the transmitted light's phase with respect to a shift $\eta$ of the atomic levels, and shifting the atoms is the same as shifting the light's frequency (Angulo et al. give this argument heuristically, their eqs. (2)–(5)). Below, the four pulse lengths of the experiment and a longer
-one, at both optical depths. The like-for-like comparison is with the group delay of the model's own transmitted light. The ideal continuum formula is printed too: it differs by up to about 17% at
-OD 4, because the finite loss bands reshape the atomic line slightly (doubling their width moves the model toward the continuum). That matters most where $\tau_T$ is near zero: at 27 ns, OD 4
-the two even have opposite signs, so that point's sign is not a prediction. One extra point, seven atoms (OD 3.1) at 36 ns, matches the depth of the experiment's narrowband point.</p>
+one, at both optical depths. The like-for-like comparison is with the group delay of the model's own transmitted light. The ideal continuum formula is printed too: at 36 ns, OD 4 it differs
+from the model's own group delay by 15–18% (depending on which of the two is the base), because the finite loss bands reshape the atomic line slightly (doubling their width moves the model toward the continuum). That matters most where $\tau_T$ is near zero: at 27 ns, OD 4
+the two even have opposite signs ($-0.036$ against $+0.015$), so that point's sign is not a prediction. One extra point, seven atoms (OD 3.1) at 36 ns, matches the depth of the experiment's narrowband point.</p>
 </div>
 </div>
 </div>
@@ -8246,7 +8254,7 @@ spreads past it, and its resonant part is absorbed most, so the positive wings w
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2322f48d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dcd436a7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8383,7 +8391,7 @@ P_scatt τ_sp / τ_0 over the ten runs above: 0.9000 to 0.9000  (Γ_loss τ_sp =
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9f7d0fd6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80a4d7ed">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8418,7 +8426,7 @@ light re-emitted into the beam is not scattered), and with it the same two point
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1ad54012">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0fde116a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8428,23 +8436,26 @@ light re-emitted into the beam is not scattered), and with it the same two point
 <p><strong>Tempting but wrong: "$\tau_\text{seq}$ is the honest time and the defect is a correction."</strong> $\tau_\text{seq}$ is what you would get by <em>checking</em> at each time whether the particle is inside. Checking disturbs.
 A tunnelling particle shows how badly: projecting it into the barrier gives it the large momenta needed to cross, so when transmission is rare $\tau_\text{seq}$ can be hundreds of times the
 time the probe reports, with a defect of nearly the same size and opposite sign.</p>
-<p><strong>Also wrong: "the split is a fixed fact about the experiment."</strong> The two pieces depend on details that leave $\tau_T$ alone. Spacing the atoms further apart changes nothing about the light
-that comes out (it changes only phases inside the guide), yet $\tau_\text{seq}$ falls from about $+1.0$ to $+0.5$. Recording <em>which</em> atom is excited, instead of <em>whether</em> one is, changes it again.
+<p><strong>Also wrong: "the split is a fixed fact about the experiment."</strong> The two pieces depend on details that leave $\tau_T$ (almost) alone. Spacing the atoms further apart barely changes $\tau_T$
+($\pm 0.004$; it changes mainly phases inside the guide), yet $\tau_\text{seq}$ falls from about $+1.0$ to $+0.5$. Recording <em>which</em> atom is excited, instead of <em>whether</em> one is, changes it again.
 At other settings (nine atoms, a 10 ns pulse, spacing 0.5 or 1.0) the defect part even changes sign. The second code cell below shows all of this.</p>
 <p><strong>What survives: a negative value shows that recording would change the outcome statistics.</strong> $P_\text{seq} \ge 0$ at every time. So if the probe reports a negative time, $\Delta_f \ne 0$
 at some probed times (at every time where $q &lt; 0$): recording in/out there would change $P(f)$. No account with a record, coarse or fine, at every probed time gives a negative number, because every
 $P_\text{seq}$ is non-negative. Strictly, this is a coarse-grained violation of no-signalling in time, not by itself indivisibility at the level of configurations, which is a different sum of
 interference terms. In this model that is large too: recording every configuration at the time of the most negative $q$ changes $P(f)$ from 0.227 to 0.555 (last line of the second code cell below).</p>
-<p><strong>The ISP reading.</strong> In an ISP systems "always have definite configurations of some kind at every moment in time" (Paper 1, §5.3, p. 31), so the atoms are excited or not at every moment and each
-run has a definite, non-negative excitation time. Barandes leaves the probabilities of whole trajectories unspecified ("probabilities assigned to whole trajectories ... are then left unspecified as
-well", Paper 1, §2.2, p. 6), but any choice of them gives a non-negative average over the transmitted runs. The probe's negative number therefore cannot be a readout of that history. It is a
-property of the joint indivisible process of atoms, light and pointer, read off the pointer at the end.</p>
-<p><strong>The split native to Barandes's framework</strong> is the which-atom record. It fixes the configuration whenever an atom is excited, so its $P_\text{seq}$ is $\sum_{k \in f}\sum_j \Gamma_{kj}(T\leftarrow t)\,p_j(t)$,
-the "in" part of his division-event formula (eq. 56) with $\Gamma = |U|^2$ re-rooted at $t$. For the 36 ns pulse it gives $\tau_\text{seq} = +0.246$ and $\tau_\text{defect} = -0.843$ (second code
-cell below), against $+0.994$ and $-1.592$ for the in/out record.</p>
+<p><strong>The ISP reading.</strong> In an ISP systems "always have definite configurations of some kind at every moment in time" (Paper 1, §5.3, p. 31). With the configurations of section 1 (or any choice in
+which "excited or not" is a beable), the atoms are therefore excited or not at every moment and each run has a definite, non-negative excitation time. Barandes leaves the probabilities of whole
+trajectories unspecified ("probabilities assigned to whole trajectories ... are then left unspecified as well", Paper 1, §2.2, p. 6), but every non-Markovian realizer (Paper 3, §2.2, pp. 10–11),
+and indeed the actual runs themselves, give a non-negative average over the transmitted runs. The probe's negative number therefore cannot be a readout of that history. It is a statistical
+property of the post-selected runs (an "ensemble observable" in his terms, arXiv:2602.09380, §2.1), read off the pointer at the end of the joint process of atoms, light and pointer.</p>
+<p><strong>The record native to Barandes's framework</strong> is the which-atom record. It fixes the configuration whenever an atom is excited, so its $P_\text{seq}$ is $\sum_{k \in f}\sum_j \Gamma_{kj}(T\leftarrow t)\,p_j(t)$,
+the "in" part of his division-event formula (eq. 56) with $\Gamma = |U|^2$ re-rooted at $t$. For the 36 ns pulse it gives $\tau_\text{seq} = +0.246$ (second code cell below), against $+0.994$ for the
+in/out record. The remainder $\tau_T - \tau_\text{seq} = -0.843$ is made of interference terms; for a record with more than two outcomes it is not $\Delta_f/2$ (section 2), so it is not
+comparable term by term with the in/out record's $-1.592$.</p>
 <p><strong>Prior arguments.</strong> Anomalous weak values have long been read as signs of measurement disturbance and Leggett–Garg violation (Williams &amp; Jordan, PRL 100, 026804 (2008)) and as proofs of
 contextuality (Pusey, PRL 113, 200401 (2014)). Barandes himself argues, without ISP machinery, that "weak values do not reveal interesting physical or metaphysical properties of individual quantum
-systems" ("The Trouble with Weak Values", arXiv:2602.09380, §5), building on the post-selection fallacy of his ABL paper (arXiv:2602.07402); that paper does not discuss negative times.
+systems" ("The Trouble with Weak Values", arXiv:2602.09380, §5), using three fallacies introduced in his ABL paper (arXiv:2602.07402): the ensemble, post-selection and measurementist fallacies,
+of which the ensemble fallacy is the closest to this section. Neither paper discusses negative or dwell times.
 Sokolovski &amp; Matzkin (arXiv:2507.19105) argue for wave-packet delays, using an interferometer analogue of tunnelling, that "[t]here is no justification for invoking 'superluminal' or 'negative' times", and Sokolovski, Alonso &amp; Brouard
 (arXiv:2603.12927) that anomalous post-selected pointer readings "result from mere 'reshaping' of a broad distribution obtained earlier". This section is consistent with those arguments; what it
 adds is the reading in Barandes's terms.</p>
@@ -8462,13 +8473,16 @@ adds is the reading in Barandes's terms.</p>
 <h3 id="%F0%9F%93%9A-From-the-papers:-division-events,-and-why-the-report-is-not-a-%22time-spent%22">📚 From the papers: division events, and why the report is not a "time spent"<a class="anchor-link" href="#%F0%9F%93%9A-From-the-papers:-division-events,-and-why-the-report-is-not-a-%22time-spent%22">¶</a></h3><ul>
 <li><strong>Barandes</strong>, <em>The Stochastic-Quantum Correspondence</em> (arXiv:2302.10778), Paper 1 §3.7 "Division events and the Markov approximation". When an
 environment records the configuration at $t'$ (eq. 45), $\Gamma^S(t\leftarrow 0)$ "is a transition matrix that is manifestly divisible at $t'$" (eq. 56), and "it is therefore natural
-to refer to the new conditioning time $t'$ as a division event." In §4.2 a measurement makes "the time $t'$ ... a division event for the measuring device" (eq. 80).</li>
+to refer to the new conditioning time $t'$ as a division event." In §4.2 (p. 25) a measurement of any observable makes "the time $t'$ ... a division event for the measuring device" (eq. 80),
+and: "If the observable $\tilde A^S$ is an emergeable, as opposed to one of the subject system's (diagonal) random variables, or beables, (19), then the subject system S does not experience a
+division event at $t'$, in contrast with the measuring device D."</li>
 <li><strong>Trajectories are unspecified, not absent.</strong> Paper 1 §2.2, p. 6: "probabilities assigned to whole trajectories ... are then left unspecified as well". And §5.3, p. 31: systems "always
 have definite configurations of some kind at every moment in time".</li>
 <li><strong>What follows for this notebook.</strong> The laws fix a joint probability for "excited at $t$ <em>and</em> transmitted at $T$" only if something records the answer at $t$; that is $P_\text{seq}$, and it is a
 different experiment. Without a record, each run still has a definite, non-negative excitation time, and any trajectory measure averages to a non-negative number. The negative report is
-therefore not a readout of the history but a property of the joint process of atoms, light and pointer. Calling the in/out record a division event of the atoms is our extension: it is one
-for the recorder; the atoms and light divide only under a record that fixes their configuration (the which-atom record of section 4, whenever an atom is excited).</li>
+therefore not a readout of the history but a statistical property of the post-selected runs. The in/out record is a division event for the recorder by Barandes's eq. 80. "Excited or not" is a
+beable, but a coarse one; the atoms and light divide in general only under a record that fixes their configuration (the which-atom record of section 4, whenever an atom is excited). Whether
+a coarse beable record makes them divide is the open question.</li>
 <li><strong>Halliwell</strong> (arXiv:1508.02271, PRA 93, 022123 (2016)) writes the same split in the language of decoherent histories and Leggett–Garg tests: the quasiprobability (eq. (2.1)) equals
 the sequential probability plus the real part of the decoherence functional (eqs. (2.4)–(2.5); the printed "2 Re D" is a slip, corrected in Halliwell et al., PRA 99, 012124 (2019), eq. (2.3)),
 and consistency, $\mathrm{Re}\,D = 0$ (eq. (2.6)), makes the quasiprobability equal the sequential probability and the no-signalling-in-time condition (Kofler &amp; Brukner 2013) hold. In Barandes's terms
@@ -8498,7 +8512,7 @@ time the particle "really" spent; it changes what the particle does.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7b29b7b9">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=14e37342">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8543,13 +8557,13 @@ time the particle "really" spent; it changes what the particle does.</p>
 <li>$P_\text{seq} \ge 0$ always. So a negative reported time rules out every account in which in/out is recorded at every probed time (and at the times where $q &lt; 0$, at any of them): recording would change $P(f)$.</li>
 <li>That is a coarse-grained no-signalling-in-time violation. Recording every configuration also changes $P(f)$ a lot here (0.227 to 0.555), but that is a separate check.</li>
 <li>The converse reading fails: $\tau_\text{seq}$ is not the "true" time with a correction on top. Checking is invasive, and for rare outcomes $\tau_\text{seq}$ can be hundreds of times $\tau$.</li>
-<li>The split is not unique either: atom spacing moves $\tau_\text{seq}$ from $+0.99$ to $+0.53$ with $\tau_T$ fixed at $-0.60$, and the which-atom record, the split native to Barandes's framework, gives $+0.25$.</li>
+<li>The split is not unique either: atom spacing moves $\tau_\text{seq}$ from $+0.99$ to $+0.53$ while $\tau_T$ moves by at most 0.004 ($-0.598$ to $-0.594$), and the which-atom record, the record native to Barandes's framework, gives $+0.25$ (its remainder, $-0.84$, is interference terms, not $\Delta_f/2$).</li>
 <li>In an ISP the atoms are excited or not at every moment, so each run has a definite, non-negative excitation time; trajectory probabilities are left unspecified, and any choice of them averages to a non-negative number. The negative report is a property of the joint process of atoms, light and pointer, read off the pointer at the end.</li>
 </ul>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=afa63600">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3e086bfa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8580,7 +8594,8 @@ time the particle "really" spent; it changes what the particle does.</p>
         <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">pt</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
         <span class="n">seq</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">'T'</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">)[</span><span class="n">c</span><span class="o">.</span><span class="n">forward</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="n">tau_seq_fine</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">seq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">seq</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'t'</span><span class="p">])))</span> <span class="o">/</span> <span class="n">d</span><span class="p">[</span><span class="s1">'P_f'</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"which-atom record:  τ_T = </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">'tau'</span><span class="p">]</span><span class="si">:</span><span class="s2">+.3f</span><span class="si">}</span><span class="s2"> = τ_seq </span><span class="si">{</span><span class="n">tau_seq_fine</span><span class="si">:</span><span class="s2">+.3f</span><span class="si">}</span><span class="s2"> + τ_defect </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">'tau'</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tau_seq_fine</span><span class="si">:</span><span class="s2">+.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"which-atom record:  τ_T = </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">'tau'</span><span class="p">]</span><span class="si">:</span><span class="s2">+.3f</span><span class="si">}</span><span class="s2"> = τ_seq </span><span class="si">{</span><span class="n">tau_seq_fine</span><span class="si">:</span><span class="s2">+.3f</span><span class="si">}</span><span class="s2"> + remainder τ_T − τ_seq </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">'tau'</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tau_seq_fine</span><span class="si">:</span><span class="s2">+.3f</span><span class="si">}</span><span class="s2">"</span>
+      <span class="s2">"   (interference terms; for a multi-outcome record this is not Δ_f/2)"</span><span class="p">)</span>
 
 <span class="c1"># record EVERY configuration (atom, forward mode, loss mode) at the time where q is most negative:</span>
 <span class="c1"># a division event of the whole atoms-and-light system (Paper 1 §3.7), then Γ = |U|² from t to T</span>
@@ -8643,7 +8658,7 @@ time the particle "really" spent; it changes what the particle does.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>which-atom record:  τ_T = -0.598 = τ_seq +0.246 + τ_defect -0.843
+<pre>which-atom record:  τ_T = -0.598 = τ_seq +0.246 + remainder τ_T − τ_seq -0.843   (interference terms; for a multi-outcome record this is not Δ_f/2)
 every configuration recorded at t = 12.8:  P(f) = 0.555  (unrecorded: 0.227)
 </pre>
 </div>
@@ -8651,7 +8666,7 @@ every configuration recorded at t = 12.8:  P(f) = 0.555  (unrecorded: 0.227)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=751adfd2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8b44c322">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8660,7 +8675,7 @@ every configuration recorded at t = 12.8:  P(f) = 0.555  (unrecorded: 0.227)
 <h2 id="5.-Turning-Up-the-Probe">5. Turning Up the Probe<a class="anchor-link" href="#5.-Turning-Up-the-Probe">¶</a></h2><p>The experiment's probe is very weak: its phase noise is about 120 mrad against a peak signal of 10 to 20 µrad, so each parameter set needs tens of millions of atom cycles (about ten hours of data). Model the probe as a pointer coupled by
 $H_\text{int} = \chi\,p\,\Pi_\text{in}$ for the whole run, with position resolution $\sigma_x$. This pointer records the <em>total</em> excitation time, not whether the atom is excited at each moment.
 Each value of the pointer's momentum shifts the atoms by a fixed amount $\chi p$, so the conditional shift of the pointer is an average of the group delay over shifted atoms. A very poor
-resolution gives the weak value; a sharp one has a wide momentum spread, which detunes the atoms far off resonance, and the photon goes through untouched. That is not the Zeno effect of notebook 11:
+resolution gives the weak value; a sharp one has a wide momentum spread, which detunes the atoms far off resonance, and the photon goes through untouched. That is not the Zeno effect (freezing by frequent records):
 nothing is recorded at intermediate times, and the atoms are simply no longer excited.</p>
 <p>For speed, the curve uses the ideal continuum line, so its weak limit is the continuum value ($-0.558$) rather than the closed model's own $-0.598$ from section 2. The last line checks one point against
 the closed model.</p>
@@ -8688,7 +8703,7 @@ $N_f(\eta) = -\mathrm{Im}\,\langle\text{out}_f(\eta)|\partial_\eta\,\text{out}_f
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=04635852">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4eebef4f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8759,7 +8774,7 @@ $N_f(\eta) = -\mathrm{Im}\,\langle\text{out}_f(\eta)|\partial_\eta\,\text{out}_f
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e7ab6fbe">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5868e0e8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8793,7 +8808,7 @@ but only the quantum part of that noise, roughly a quarter of it, disturbs the a
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=94068b0b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4824285f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8803,7 +8818,7 @@ but only the quantum part of that noise, roughly a quarter of it, disturbs the a
 reflected. The answers for transmitted and reflected particles, weighted by their probabilities, must add up to the unconditioned time (a sum rule the quasiprobability satisfies exactly).</p>
 <p>This effect is not new. Steinberg found it in 1995 (PRL 74, 2405, quant-ph/9501015): the reflected particle's conditional time density beyond the barrier is nonzero and oscillates in
 sign, $d\tau_R(x) \propto \sin(2kx + \arg t)\,dx$, and averages to zero over a long region. Our 10 sites span two to three periods of that oscillation (period $\pi/k$, about 3 sites at $k_0 = 1$ and 5 at $k_0 = 0.6$); what is left over is small and negative.
-The oscillating density is Steinberg's; the small net negative value comes from our choice of a finite 10-site region. What this notebook adds is only the split into a recorded part and half the defect.</p>
+The oscillating density is Steinberg's; the small net negative value comes from our choice of a finite 10-site region. What this notebook does is apply Halliwell's split to it: a recorded part and half the defect.</p>
 <p>The last printed column, the defects summed over both outcomes, would be zero if "transmitted" and "reflected" covered every ending. They don't quite: cutting the wave function down to the
 region at $t$ also loads states localized on the barrier that sit above the top of the lattice band. These are lattice artifacts (a repulsive barrier in the continuum has no bound states); their
 weight ends in neither outcome, so the sum is small and positive.</p>
@@ -8828,7 +8843,7 @@ recorded process can also end "still in the barrier", because cutting the wave f
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=845315da">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b5ff831b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8900,7 +8915,7 @@ recorded process can also end "still in the barrier", because cutting the wave f
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8f54834d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=209f56a7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8928,7 +8943,7 @@ Halliwell et al., PRA 99, 012124 (2019), eq. (2.3), give the corrected form $q =
 <li>Anomalous weak values as signs of disturbance and of Leggett–Garg violation: Williams &amp; Jordan, PRL 100, 026804 (2008); Pan, PRA 102, 032206 (2020); as proofs of contextuality: Pusey,
 PRL 113, 200401 (2014). No-signalling in time: Kofler &amp; Brukner, PRA 87, 052115 (2013). Section 4's argument is of this kind.</li>
 <li>Barandes, "The Trouble with Weak Values" (arXiv:2602.09380, 2026) and "The ABL Rule and the Perils of Post-Selection" (arXiv:2602.07402, 2026): weak values and post-selection, argued without
-ISP machinery; no discussion of negative times. Sokolovski &amp; Matzkin (arXiv:2507.19105) and Sokolovski, Alonso &amp; Brouard (arXiv:2603.12927): negative delays and anomalous weak readings are not
+ISP machinery, using the ensemble, post-selection and measurementist fallacies; neither paper discusses negative or dwell times. Sokolovski &amp; Matzkin (arXiv:2507.19105) and Sokolovski, Alonso &amp; Brouard (arXiv:2603.12927): negative delays and anomalous weak readings are not
 durations or values (checked 2026-11-17, full texts).</li>
 <li>Not found in our searches: an ISP-language reading of this experiment; the probe-strength curve for this experiment.
 No related work from NIST, JILA or CU Boulder was found. Literature notes: <code>notes/lit-negative-dwell-time-2026-11-09.md</code>.</li>
@@ -8948,21 +8963,22 @@ No related work from NIST, JILA or CU Boulder was found. Literature notes: <code
 division event. Interference (notebook 05) is the defect between "recorded which slit" and "not recorded". Collapse (notebook 06) is a division event. This notebook applies the same move to
 anomalous weak values: half the (coarse-grained) defect, showing through a probe gentle enough not to make a record. The move itself is not new: anomalous weak values have been read as signs of
 disturbance and Leggett–Garg violation since Williams &amp; Jordan (2008), and Barandes's own "The Trouble with Weak Values" (arXiv:2602.09380) argues, without ISP machinery, that weak values do
-not reveal properties of individual systems. This notebook is consistent with that paper and gives an ISP-language version of it for one experiment. Two limits apply. How the number splits depends on what a division event would record. And section 5's strong probe
+not reveal "interesting physical or metaphysical properties of individual quantum systems". This notebook's conclusion agrees with that paper's; it reaches it in ISP terms for one experiment. Two limits apply. How the number splits depends on what a division event would record. And section 5's strong probe
 removes the anomaly by detuning the atoms, not by recording them, so it does not test the division-event reading. A probe that records "excited or not" at each moment would.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=313b0d5e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c9b20f8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><ul>
-<li><strong>The point in ISP terms.</strong> Each run has a definite, non-negative excitation time, and any trajectory probabilities (left unspecified by Barandes) average to a non-negative number, so the
-negative report is not a readout of that history. It is a property of the joint indivisible process of atoms, light and pointer, read off the pointer at the end.</li>
+<li><strong>The point in ISP terms.</strong> With the configurations of section 1 (or any choice in which "excited or not" is a beable), each run has a definite, non-negative excitation time, and every
+non-Markovian realizer (trajectory probabilities, left unspecified by Barandes), and indeed the actual runs themselves, average to a non-negative number, so the negative report is not a readout
+of that history. It is a statistical property of the post-selected runs (an "ensemble observable" in Barandes's terms), read off the pointer at the end.</li>
 <li><strong>The identity.</strong> For a yes/no question at time $t$ and a post-selection $f$, what a weak probe reports splits exactly into a recorded part and half the indivisibility defect:
 $q = P_\text{seq} + \Delta_f/2$ (Halliwell's identity; a two-line proof, which the model's numerics reproduce to $10^{-15}$).</li>
 <li><strong>The experiment reproduced.</strong> In a closed model of atoms in a one-way waveguide, the excitation time caused by a transmitted photon tracks the group delay of the model's own transmitted light (Thompson et al.'s prediction), and
@@ -8970,10 +8986,10 @@ $\tau_T/\tau_0$ runs from $+0.41$ (10 ns, OD 4) to $-0.45$ (36 ns, OD 4) and $-0
 ($\tau_0 = \int\langle\hat N_e\rangle\,dt$, the paper's definition; normalizing by the scattering probability times $\tau_\text{sp}$ instead gives $+0.45$, $-0.50$ and $-0.77$.)
 This is a one-dimensional model, not a fit.</li>
 <li><strong>What the split means.</strong> A negative reported time shows that recording in/out at some probed times would change $P(f)$, a coarse-grained violation of no-signalling in time: no account with
-a record, coarse or fine, at every probed time can give it. The which-atom record, which fixes the atoms' configuration, is the split native to Barandes's framework: $\tau_\text{seq} = +0.246$,
-$\tau_\text{defect} = -0.843$ (36 ns, OD 2.2).</li>
+a record, coarse or fine, at every probed time can give it. The which-atom record, which fixes the atoms' configuration whenever an atom is excited, is the record native to Barandes's framework:
+$\tau_\text{seq} = +0.246$, and the remainder $\tau_T - \tau_\text{seq} = -0.843$ (36 ns, OD 2.2) is made of interference terms (for a multi-outcome record this is not $\Delta_f/2$).</li>
 <li><strong>What it doesn't mean.</strong> The recorded part is not an "honest" time: checking disturbs, and for rare outcomes it can exceed the reported time by a factor of hundreds. Nor is the split
-unique: it changes with the grain of the record and even with the atom spacing, while $\tau_T$ does not.</li>
+unique: it changes with the grain of the record and even with the atom spacing, while $\tau_T$ is unchanged by the grain and barely changes with the spacing ($\pm 0.004$).</li>
 <li><strong>Probe strength.</strong> The negative time belongs to weak probes only. With a pointer of resolution better than about $0.7\,\tau_\text{sp}$ the sign flips, and a sharp pointer detunes the atoms so far that the photon passes them untouched.</li>
 <li><strong>A second case.</strong> A particle that is finally reflected "spends a negative time" in the region just behind a barrier (the oscillating density is Steinberg's 1995 result; the small net
 negative value comes from our finite region), with the sum rule over outcomes exact.</li>
@@ -8984,13 +9000,13 @@ inside a window cut where the tails reach 30% of the peak; and in this model the
 <p>Prior work: the identity is Halliwell (arXiv:1508.02271), with Goldstein–Page linear positivity behind it; weak-value dwell times, and the negative time behind a barrier, are Steinberg (PRA 52, 32 and
 PRL 74, 2405 (1995)); the experiment and its theory are Angulo et al. (arXiv:2409.03680) and Thompson et al. (arXiv:2310.00432); anomalous weak values as signs of disturbance and Leggett–Garg
 violation are Williams &amp; Jordan (2008), as proofs of contextuality Pusey (2014), and no-signalling in time is Kofler &amp; Brukner (2013). Barandes argues, without ISP machinery, that weak values do
-not reveal properties of individual systems (arXiv:2602.09380); Sokolovski &amp; Matzkin (arXiv:2507.19105) and Sokolovski, Alonso &amp; Brouard (arXiv:2603.12927) argue that negative delays and anomalous
+not reveal "interesting physical or metaphysical properties of individual quantum systems" (arXiv:2602.09380); Sokolovski &amp; Matzkin (arXiv:2507.19105) and Sokolovski, Alonso &amp; Brouard (arXiv:2603.12927) argue that negative delays and anomalous
 weak readings are not durations or values. This notebook is consistent with those arguments. Not found in our searches: an ISP-language reading of this experiment.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=164825ee">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc98f1d1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9000,7 +9016,7 @@ weak readings are not durations or values. This notebook is consistent with thos
 the amount by which recording would change the outcome. The second piece is a coarse-grained form of Barandes's indivisibility defect. In a closed model of the 2024 experiment the reported time equals the group
 delay (a consequence of the derivative relation of section 3, not of the split) and is negative for narrowband pulses, as measured. Since the recorded piece is never negative, a negative report shows
 that recording would change the outcome statistics. In an ISP each run has a definite, non-negative excitation time, and Barandes leaves the probabilities of whole trajectories unspecified; any
-choice of them averages to a non-negative time, so the negative report is not a readout of that history but a property of the joint process read off the pointer. How the number divides between the two pieces depends on what is recorded; that it can be
+choice of them (every non-Markovian realizer) averages to a non-negative time, so the negative report is not a readout of that history but a statistical property of the post-selected runs, read off the pointer. How the number divides between the two pieces depends on what is recorded; that it can be
 negative does not. Stronger probes push the number positive and then to zero. The same thing happens to a particle reflected from a barrier, which "spends negative time" just behind it, as
 Steinberg found in 1995.</p>
 </div>
@@ -9026,7 +9042,7 @@ The size of $\tau_T$ is a phase derivative (the group delay), invisible to $|U|^
 <li><em>What happens to the negative time if the probe gets stronger?</em>
 It turns positive below a resolution of about $0.7\,\tau_\text{sp}$, then goes to zero as the pointer's momentum spread detunes the atoms. This is not the Zeno effect.</li>
 <li><em>Is the split into $\tau_\text{seq}$ and $\tau_\text{defect}$ a property of the experiment?</em>
-No. It changes with the grain of the record and even with the atom spacing, while $\tau_T$ stays put. What is fixed is the sum, and the fact that a negative sum rules out any record.</li>
+No. It changes with the grain of the record and even with the atom spacing, while $\tau_T$ barely moves ($\pm 0.004$). What is fixed is the sum, and the fact that a negative sum rules out any record.</li>
 </ol>
 </div>
 </div>
