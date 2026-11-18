@@ -390,6 +390,21 @@ Bibliographic details checked 2026-11-10 against the arXiv records or Crossref (
 - **M. F. Pusey** "Anomalous Weak Values Are Proofs of Contextuality." Phys. Rev. Lett., 113, 200401 (2014). arXiv:1409.1535. doi:10.1103/PhysRevLett.113.200401. **verified 2026-11-10**
 - **A. K. Pan** "Interference experiment, anomalous weak value, and Leggett-Garg test of macrorealism." Phys. Rev. A, 102, 032206 (2020). arXiv:2012.13875. doi:10.1103/PhysRevA.102.032206. **verified 2026-11-10**
 
+## Added 2026-11-17: notebook 17 rewrite for Barandes
+
+Full texts saved in the 2026-11-17 prior-art search (session scratchpad, `nb17-priorart/`) were read for the four arXiv preprints; Kofler & Brukner was checked against its arXiv record and abstract only.
+
+- **J. A. Barandes** "The Trouble with Weak Values." (2026). arXiv:2602.09380. **verified 2026-11-17 (full text)**
+  - Cited in: 17. Note: argues that weak values "do not reveal interesting physical or metaphysical properties of individual quantum systems" (§5). Uses no ISP machinery; no discussion of negative times, dwell times or Angulo et al.
+- **J. A. Barandes** "The ABL Rule and the Perils of Post-Selection." (2026). arXiv:2602.07402. **verified 2026-11-17 (full text)**
+  - Cited in: 17. Note: defines the post-selection fallacy that 2602.09380 builds on; no ISP analysis.
+- **D. Sokolovski, A. Matzkin** "Wave packets, “negative times” and the elephant in the room." (2025; v2 2026). arXiv:2507.19105. **verified 2026-11-17 (full text)**
+  - Cited in: 17. Note: Mach-Zehnder analogue of tunnelling delays; "There is no justification for invoking 'superluminal' or 'negative' times". No ISP.
+- **D. Sokolovski, D. Alonso, S. Brouard** "Inaccurate (weak) measurements classical and quantum." (2026). arXiv:2603.12927. **verified 2026-11-17 (full text)**
+  - Cited in: 17. Note: anomalous post-selected pointer readings "result from mere 'reshaping' of a broad distribution obtained earlier". No ISP; no negative times.
+- **J. Kofler, Č. Brukner** "Condition for macroscopic realism beyond the Leggett-Garg inequalities." Phys. Rev. A, 87, 052115 (2013). arXiv:1207.3666. doi:10.1103/PhysRevA.87.052115. **verified 2026-11-17**
+  - Cited in: 17. Note: no-signalling in time; abstract only, full text not read.
+
 ## Added 2026-11-16: sources for notebooks 18 and 19
 
 Bibliographic details were checked on 2026-11-16 against Crossref or the arXiv record (**verified 2026-11-16**), except where an entry says otherwise. Passages were not read unless noted. The literature searches behind these are `notes/lit-quantization-wallstrom-2026-11-15.md` (notebook 18) and `notes/lit-spinor-4pi-2026-11-16.md` (notebook 19). Wiener's theorem (nonzero long-time average of an overlap if and only if the point spectrum is involved), which notebook 18 cites with RAGE, is cited as a named theorem and has no entry here.
