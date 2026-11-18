@@ -7808,10 +7808,11 @@ interference and indivisibility appear together, and see exactly how far that li
 <ul>
 <li>Build the double slit as a unistochastic process on transverse modes</li>
 <li>Test Barandes' divisibility condition on that same model, without matrix inversion</li>
-<li>Show that the fringe pattern <em>is</em> the divisibility defect, entry for entry</li>
+<li>Reproduce Barandes's eq. 43 on this model: the fringe pattern equals the (matched) divisibility defect, entry for entry</li>
 <li>Tune the coherence and watch interference and indivisibility vanish together on this model</li>
 <li>Tell <em>existential</em> divisibility (some valid middle step exists) from <em>matched</em> divisibility
-(the process's own middle step composes), and see a completion where fringes and divisibility coexist</li>
+(the eq. 42 middle step abs(U2)^2 composes), and see a fine-tuned completion where partial fringes (c ≤ 1/2)
+and existential divisibility coexist</li>
 </ul>
 </div>
 </div>
@@ -7872,7 +7873,7 @@ They are markdown cells. Every stored output is from the notebook's own run.</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <!-- expansion:05:before-you-start -->
-<h3 id="%F0%9F%A7%AD-Before-you-start">🧭 Before you start<a class="anchor-link" href="#%F0%9F%A7%AD-Before-you-start">¶</a></h3><p><strong>Purpose.</strong> Notebooks 01–04 built the vocabulary: transition matrices, the divisibility condition, and unistochastic processes. This notebook spends it on the double slit and asks: <em>is the interference pattern something quantum mechanics adds on top of probability, or is it exactly the failure of the process's own two-step composition?</em> The answer here is computed, not argued — the fringes and the (matched) divisibility defect come out as the same array of numbers. Section 7 then shows why "matched" matters: Barandes' existential divisibility can survive fringes.</p>
+<h3 id="%F0%9F%A7%AD-Before-you-start">🧭 Before you start<a class="anchor-link" href="#%F0%9F%A7%AD-Before-you-start">¶</a></h3><p><strong>Purpose.</strong> Notebooks 01–04 built the vocabulary: transition matrices, the divisibility condition, and unistochastic processes. This notebook spends it on the double slit and asks: <em>is the interference pattern something quantum mechanics adds on top of probability, or is it exactly the failure of the process's own two-step composition?</em> The answer here is computed, not argued — the fringes and the (matched) divisibility defect come out as the same array of numbers, which reproduces Barandes' Eq. (43) on this model. Section 7 then shows why "matched" matters: on one fine-tuned completion, Barandes' existential divisibility survives partial fringes ($c \le 1/2$), though not full coherence.</p>
 <p><strong>Prerequisites.</strong></p>
 <ul>
 <li>Notebook 01: column-stochastic transition matrices and $\mathbf p(t) = \Gamma(t \leftarrow t_0)\,\mathbf p(t_0)$.</li>
@@ -7906,7 +7907,7 @@ They are markdown cells. Every stored output is from the notebook's own run.</p>
 <li><strong>Cross term / interference term.</strong> The extra $\mathrm{Re}(A\bar B)$ from squaring a sum instead of summing squares. Positive or negative; sums to zero over the screen.</li>
 <li><strong>Fringe visibility.</strong> $V = (p_{\max} - p_{\min})/(p_{\max} + p_{\min})$: 1 for fringes with true zeros, 0 for a flat pattern.</li>
 <li><strong>Divisibility defect matrix $D$.</strong> $\Gamma(t_2,t_0) - \Gamma(t_2,t_1)\Gamma(t_1,t_0)$ with the <em>specific</em> middle matrix $\lvert U_2\rvert^2$.</li>
-<li><strong>Existential vs matched divisibility.</strong> <em>Existential</em>: <strong>some</strong> stochastic middle matrix exists (Barandes' eq. 6; the LP tests it). <em>Matched</em>: the process's <strong>own</strong> middle matrix $\lvert U_2\rvert^2$ composes, i.e. $D = 0$. Interference always breaks matched divisibility; section 7 shows a completion where it does not break existential divisibility.</li>
+<li><strong>Existential vs matched divisibility.</strong> <em>Existential</em>: <strong>some</strong> stochastic middle matrix exists (Barandes' eq. 6; the LP tests it). <em>Matched</em>: the process's <strong>own</strong> middle matrix $\lvert U_2\rvert^2$ composes, i.e. $D = 0$. Interference always breaks matched divisibility; section 7 shows a fine-tuned completion where, for $c \le 1/2$ only, it does not break existential divisibility. The labels "existential" and "matched" are ours.</li>
 <li><strong>LP defect.</strong> A different number: the <em>smallest</em> $L_1$ residual $\lVert M\,\Gamma(t_1,t_0) - \Gamma(t_2,t_0)\rVert_1$ over <strong>all</strong> stochastic $M$. Zero exactly when divisible. ($L_1$ norm = sum of absolute values.)</li>
 <li><strong>Linear program (LP).</strong> Unknowns enter only linearly, under linear equalities and inequalities. A <strong>feasibility LP</strong> only asks whether any point satisfies the constraints. Solved here by SciPy <code>linprog</code> (HiGHS).</li>
 <li><strong>Witness.</strong> The intermediate $M$ the LP returns when the process is divisible.</li>
@@ -8003,7 +8004,7 @@ slit-to-screen matrix does (section 3).</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <!-- expansion:05:papers-divisibility-def -->
 <h3 id="%F0%9F%93%9A-From-the-papers:-the-condition-this-notebook-tests">📚 From the papers: the condition this notebook tests<a class="anchor-link" href="#%F0%9F%93%9A-From-the-papers:-the-condition-this-notebook-tests">¶</a></h3><ul>
-<li><strong>Divisibility.</strong> A transition matrix is indivisible when, for $t &gt; t' &gt; t_0$, "there will not generally exist a genuinely stochastic matrix $\tilde\Gamma(t \leftarrow t')$ satisfying the composition law or divisibility condition" $\Gamma(t\leftarrow t_0) = \tilde\Gamma(t\leftarrow t')\,\Gamma(t'\leftarrow t_0)$. — <em>Barandes, "The Stochastic-Quantum Correspondence", Section 2, Eq. (6).</em> The question is whether <strong>any</strong> stochastic $\tilde\Gamma$ exists — exactly what section 3's linear program asks.</li>
+<li><strong>Divisibility.</strong> $\Gamma(t\leftarrow t_0)$ "will generically be indivisible", meaning that for $t &gt; t' &gt; t_0$ "there will not generally exist a genuinely stochastic matrix $\tilde\Gamma(t \leftarrow t')$ satisfying the composition law or divisibility condition" $\Gamma(t\leftarrow t_0) = \tilde\Gamma(t\leftarrow t')\,\Gamma(t'\leftarrow t_0)$. — <em>Barandes, "The Stochastic-Quantum Correspondence", Section 2, Eq. (6), p. 4.</em> Note the hedges "generically" and "not generally". The question is whether <strong>any</strong> stochastic $\tilde\Gamma$ exists — exactly what section 3's linear program asks.</li>
 <li><strong>Origin of the term.</strong> The same passage credits "divisible" to Wolf and Cirac (2008), for quantum channels. Their <em>Dividing Quantum Channels</em> (abstract, Fig. 1) asks whether a channel factors as $T = T_1T_2$ with any non-trivial factors (Fig. 1: "any non-trivial product decomposition"); Barandes fixes the earlier step, the right-hand factor, to the process's own $\Gamma(t'\leftarrow t_0)$. This notebook uses Barandes' version.</li>
 <li><strong>Unistochastic.</strong> "A square matrix whose individual entries are the modulus-squares of the corresponding entries of a unitary matrix." Every unistochastic matrix is also doubly stochastic. — <em>Same paper, §3.4, Eqs. (30)–(32).</em></li>
 <li><strong>Division events.</strong> An indivisible process has "only first-order transition probabilities connecting target times $t$ with conditioning times $t_0$", and "allowed conditioning times $t_0$ are called division events". — <em>Barandes, "Quantum Systems as Indivisible Stochastic Processes", Section 2.2, Eq. (18).</em> Here the source time $t_0$ is a division event; the slit time $t_1$ is not, unless something records the slit — section 5's coherence $c$ is a dial for that.</li>
@@ -8440,9 +8441,9 @@ cross term in both cases:</p>
 </tr>
 </tbody>
 </table>
-<p><strong>A matched-divisible process is one where you may sum over the intermediate state, using its
-own $\lvert U\rvert^2$ steps, and be done.</strong> Matched divisibility (section 7) <em>is</em> the statement that
-summing over which-slit with the process's own slit-to-screen matrix is legitimate. Interference
+<p><strong>A matched-divisible process is one where you may sum over the intermediate state, using the
+$\lvert U\rvert^2$ steps of Barandes' eq. 42, and be done.</strong> Matched divisibility (section 7) <em>is</em> the
+statement that summing over which-slit with the eq. 42 matrix $\lvert U_2\rvert^2$ is legitimate. Interference
 is what you get when it is not. Whether <em>some other</em> stochastic middle step exists (Barandes'
 eq. 6) is a separate question; section 7 shows it can have a different answer.</p>
 <p>A likeness in form is not yet a demonstration. Section 4 supplies one: the two cross
@@ -8520,7 +8521,7 @@ G(t2,t1) satisfy G(t2,t0) = G(t2,t1) G(t1,t0)? That is a linear program, and nee
 inverse. The printed <code>defect</code> is the smallest L1 residual over all stochastic middle matrices.
 Only zero versus non-zero matters: its size is not physical and depends on the arbitrary
 completion of U1 (section 6).
-For two configurations, Pimenta (arXiv:2505.08785, §III.1) characterises divisibility geometrically,
+For two configurations, Pimenta (arXiv:2505.08785, §III A) characterises divisibility geometrically,
 singular G(t1,t0) included; the LP handles any number of configurations.</p>
 </div>
 </div>
@@ -8535,7 +8536,7 @@ singular G(t1,t0) included; the LP handles any number of configurations.</p>
 <!-- expansion:05:papers-inverse -->
 <h3 id="%F0%9F%93%9A-From-the-papers:-why-the-inverse-route-is-limited">📚 From the papers: why the inverse route is limited<a class="anchor-link" href="#%F0%9F%93%9A-From-the-papers:-why-the-inverse-route-is-limited">¶</a></h3><ul>
 <li>Barandes considers the construction notebooks 02–03 use: if $\Gamma(t'\leftarrow 0)$ is invertible, set $\tilde\Gamma = \Gamma(t\leftarrow 0)\,\Gamma^{-1}(t'\leftarrow 0)$. But "the inverse of a stochastic matrix can only be stochastic if both matrices are permutation matrices", so $\tilde\Gamma$ "is not generically stochastic". — <em>Stochastic-Quantum Correspondence, Section 3.5, Eqs. (37)–(38).</em> When the inverse exists, $\tilde\Gamma$ is the <em>only</em> solution, so its negative entries settle the question.</li>
-<li>When $\Gamma(t'\leftarrow 0)$ is singular, solutions may be many or none and an inverse cannot say which. Eq. (6) only asks whether a stochastic one <em>exists</em>, and that question survives singularity. (This singular-case framing is not a quotation from Barandes. Pimenta, arXiv:2505.08785, gives a complete geometric characterisation of divisibility for two configurations, singular $\Gamma(t'\leftarrow 0)$ included.)</li>
+<li>When $\Gamma(t'\leftarrow 0)$ is singular, solutions may be many or none and an inverse cannot say which. Eq. (6) only asks whether a stochastic one <em>exists</em>, and that question survives singularity. (This singular-case framing is not a quotation from Barandes. Pimenta, arXiv:2505.08785, §III A, gives a complete geometric characterisation of divisibility for two configurations, singular $\Gamma(t'\leftarrow 0)$ included.)</li>
 </ul>
 </div>
 </div>
@@ -8658,23 +8659,11 @@ decohered  (coherence=0.0):
   divisible    = True
   failure_mode = None
   defect       = 0.000000
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
+
 the decohered process has a valid intermediate matrix:
   non-negative: True
   columns sum to 1: True
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  and abs(U2)^2 is itself one such solution: True
+  and abs(U2)^2 is itself one such solution: True
 </pre>
 </div>
 </div>
@@ -8752,13 +8741,7 @@ the decohered process has a valid intermediate matrix:
   n= 8:  rows identical True,  rank  7 of 8,  smallest singular value 2.77e-17
   n=16:  rows identical True,  rank 15 of 16,  smallest singular value 1.57e-17
   n=24:  rows identical True,  rank 23 of 24,  smallest singular value 9.69e-18
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  n=32:  rows identical True,  rank 31 of 32,  smallest singular value 2.55e-17
+  n=32:  rows identical True,  rank 31 of 32,  smallest singular value 2.55e-17
 
 what the inverse-based test reports if you force it through:
   divisible    = None
@@ -8767,7 +8750,13 @@ what the inverse-based test reports if you force it through:
 
 the LP test answers on the same matrices, both ways:
   coherent  -&gt; divisible False
-  decohered -&gt; divisible True
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  decohered -&gt; divisible True
 </pre>
 </div>
 </div>
@@ -8833,10 +8822,13 @@ the LP test answers on the same matrices, both ways:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-The-Fringe-Pattern-Is-the-Divisibility-Defect">4. The Fringe Pattern <em>Is</em> the Divisibility Defect<a class="anchor-link" href="#4.-The-Fringe-Pattern-Is-the-Divisibility-Defect">¶</a></h2><p>Define the defect matrix</p>
+<h2 id="4.-Barandes's-Eq.-43-on-This-Model:-the-Fringes-and-the-Divisibility-Defect">4. Barandes's Eq. 43 on This Model: the Fringes and the Divisibility Defect<a class="anchor-link" href="#4.-Barandes's-Eq.-43-on-This-Model:-the-Fringes-and-the-Divisibility-Defect">¶</a></h2><p>Define the defect matrix</p>
 <pre><code>D = G(t2,t0) - G(t2,t1) G(t1,t0)</code></pre>
 <p>which is zero exactly when the process composes classically through G(t2,t1) = abs(U2)^2.
-Its source column is the interference pattern. Not analogous to it, equal to it.</p>
+Its source column is the interference pattern, exactly, not approximately. This is Barandes's eq. 43
+(Paper 1, §3.5, p. 14), reproduced here on this model: he writes the discrepancy between Γ(t←0) and
+its "would-be division" Γ(t←t′)Γ(t′←0) as a sum of cross terms, and on the source column those cross
+terms are the fringes.</p>
 </div>
 </div>
 </div>
@@ -8854,7 +8846,7 @@ Its source column is the interference pattern. Not analogous to it, equal to it.
       <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">interference</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">D</span><span class="p">[:,</span><span class="w"> </span><span class="n">source</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">.2e</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'D[:, source] goes negative at </span><span class="si">{</span><span class="p">(</span><span class="n">D</span><span class="p">[:,</span><span class="w"> </span><span class="n">source</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">-</span><span class="mf">1e-12</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s1"> of </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> pixels'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'  those are the dark fringes'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'  below the flat 1/n level (the dark side of each fringe)'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'D ranges from </span><span class="si">{</span><span class="n">D</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">D</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">))</span>
@@ -8881,7 +8873,7 @@ Its source column is the interference pattern. Not analogous to it, equal to it.
 <pre>max abs( (p_quantum - p_classical) - D[:, source] ) = 0.00e+00
 
 D[:, source] goes negative at 9 of 24 pixels
-  those are the dark fringes
+  below the flat 1/n level (the dark side of each fringe)
 D ranges from -0.041667 to 0.215282
 </pre>
 </div>
@@ -9016,7 +9008,7 @@ property of the full matrix (two cells below).</p>
 <p>Set columns $A$ and $B$ of $M$ both equal to $\mathbf p_{\text{quantum}}$ and fill the rest with anything stochastic. It works. So the fringe pattern on its own <em>is</em> reproducible by some stochastic middle step — just not by $\lvert U_2\rvert^2$.</p>
 <p><strong>The full process cannot be matched, and one vector shows why.</strong> $\Gamma(t_1,t_0)$ has rank 23, so besides the left null vector $\mathbf e_A - \mathbf e_B$ of section 3 it has a right null vector $\mathbf w$ with $\Gamma(t_1,t_0)\,\mathbf w = \mathbf 0$. Any $M$ at all, stochastic or not, with $M\,\Gamma(t_1,t_0) = \Gamma(t_2,t_0)$ would force $\Gamma(t_2,t_0)\,\mathbf w = \mathbf 0$. The columns of $\Gamma(t_1,t_0)$ sum to 1, so the entries of $\mathbf w$ sum to 0, and the decohered part (every entry $1/n$) sends $\mathbf w$ to zero. That leaves</p>
 <p>$$\Gamma_c(t_2,t_0)\,\mathbf w = c\,\lvert U_2U_1\rvert^2\,\mathbf w .$$</p>
-<p>For a unit $\mathbf w$, $\lVert\,\lvert U_2U_1\rvert^2\mathbf w\rVert$ is $0.174$ at seed 7 and between $0.17$ and $0.20$ for all five seeds of section 6. So for every $c &gt; 0$ the defining equation has no solution of any kind, and the LP's <code>no_valid_intermediate_matrix</code> follows from linear algebra before positivity is even reached. To check it: <code>w = np.linalg.svd(m['gamma_10'])[2][-1]</code>, then <code>np.linalg.norm(m['gamma_20_coherent'] @ w)</code>.</p>
+<p>For a unit $\mathbf w$, $\lVert\,\lvert U_2U_1\rvert^2\mathbf w\rVert$ is $0.174$ at seed 7; section 6 prints it for all five seeds. So for every $c &gt; 0$ the defining equation has no solution of any kind, and the LP's <code>no_valid_intermediate_matrix</code> follows from linear algebra before positivity is even reached. To check it: <code>w = np.linalg.svd(m['gamma_10'])[2][-1]</code>, then <code>np.linalg.norm(m['gamma_20_coherent'] @ w)</code>.</p>
 <p><strong>What rests on what.</strong> <em>Fringes $= D[:,s]$</em> depends on no arbitrary choice. <em>No valid $M$ exists</em> is a property of the full transition matrix, which Barandes' definition requires; $\mathbf w$ depends on the completion, so this is checked completion by completion (five here), not proved for all. "The fringes are the divisibility defect" refers to $D$, the gap to the which-path composition through $\lvert U_2\rvert^2$ — the quantity in Barandes' Eq. (43).</p>
 </div>
 </div>
@@ -9045,8 +9037,8 @@ property of the full matrix (two cells below).</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5.-Interference-and-Indivisibility-Together,-on-This-Model">5. Interference and Indivisibility Together, on This Model<a class="anchor-link" href="#5.-Interference-and-Indivisibility-Together,-on-This-Model">¶</a></h2><p>Dephasing the slit-plane density matrix by a factor c on its off-diagonal entries and
-propagating gives, for every input mode,</p>
+<h2 id="5.-Interference-and-Indivisibility-Together,-on-This-Model">5. Interference and Indivisibility Together, on This Model<a class="anchor-link" href="#5.-Interference-and-Indivisibility-Together,-on-This-Model">¶</a></h2><p>Dephase at the slit plane: multiply every off-diagonal entry of the density matrix ρ, in the
+mode basis, by c. Doing this for every input column of U1 and propagating gives</p>
 <pre><code>G_c(t2,t0) = (1 - c) G(t2,t1) G(t1,t0)  +  c abs(U2 U1)^2</code></pre>
 <p>so c = 1 is a fully coherent particle and c = 0 is a which-path measurement.
 Sweep c and measure both quantities on the same process.</p>
@@ -9091,7 +9083,9 @@ the null-vector argument at the end of section 4 extends it to every $c$ in $(0,
 each completion tested.</li>
 </ul>
 <p>So on this model, with this completion, interference and indivisibility appear together in both
-directions. Section 7 shows that this is a property of the completion, not a law.</p>
+directions. Section 7 shows that this is a property of the completion, not a law: on a fine-tuned
+completion a partly dephased process ($c \le 1/2$) shows fringes and is still divisible, though the
+fully coherent one is not.</p>
 </div>
 </div>
 </div>
@@ -9230,7 +9224,7 @@ every c &gt; 0, not just the grid: right null vector w of G(t1,t0)
 <!-- expansion:05:recap-5 -->
 <h3 id="%F0%9F%93%9D-Recap:-section-5">📝 Recap: section 5<a class="anchor-link" href="#%F0%9F%93%9D-Recap:-section-5">¶</a></h3><ul>
 <li>Dephasing the slit-plane density matrix by $c$ gives $\Gamma_c = (1-c)\lvert U_2\rvert^2\lvert U_1\rvert^2 + c\,\lvert U_2U_1\rvert^2$ for every input — derived, not assumed.</li>
-<li>Visibility $= c$ exactly; this completion is divisible only at $c = 0$. The LP shows it on the grid, and the null vector of $\Gamma(t_1,t_0)$ extends it to every $c &gt; 0$. Section 7 shows a completion where this fails.</li>
+<li>Visibility $= c$ exactly; this completion is divisible only at $c = 0$. The LP shows it on the grid, and the null vector of $\Gamma(t_1,t_0)$ extends it to every $c &gt; 0$. Section 7 shows a fine-tuned completion where this fails for $0 &lt; c \le 1/2$, though not at $c = 1$.</li>
 <li>Barandes' Section 3.7 derives the $c = 0$ case from an environment that records the configuration. Notebook 06 takes this up.</li>
 </ul>
 </div>
@@ -9250,6 +9244,8 @@ Vary that completion and check that nothing observable moves.</p>
 change. The divisibility verdict uses the whole matrix. The source column on its own can always be matched by a valid
 intermediate step: give slits A and B the coherent screen distribution as their columns. So "indivisible" is a statement
 about the full process, and here it is confirmed for these five completions, not proved for all of them.
+For each completion the cell also repeats section 5's null-vector check, so the verdict covers every c &gt; 0,
+not only c = 1.
 Section 7 shows why that caveat matters.</p>
 </div>
 </div>
@@ -9269,7 +9265,10 @@ Section 7 shows why that caveat matters.</p>
     <span class="n">same</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">screen_distribution</span><span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">key</span><span class="p">),</span> <span class="n">screen_distribution</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
                <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">'gamma_20_coherent'</span><span class="p">,</span> <span class="s1">'gamma_20_decohered'</span><span class="p">))</span>
     <span class="n">verdict</span> <span class="o">=</span> <span class="n">check_divisibility_lp</span><span class="p">(</span><span class="n">make_double_slit_process</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">))[</span><span class="s1">'divisible'</span><span class="p">]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">ms</span><span class="p">[</span><span class="s1">'gamma_10'</span><span class="p">])[</span><span class="mi">2</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># section 5's null vector, for this completion</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'seed </span><span class="si">{</span><span class="n">seed</span><span class="si">:</span><span class="s1">5d</span><span class="si">}</span><span class="s1">: identical screen distributions </span><span class="si">{</span><span class="n">same</span><span class="si">}</span><span class="s1">,  divisible </span><span class="si">{</span><span class="n">verdict</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'             null vector: norm G(t1,t0) w = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">ms</span><span class="p">[</span><span class="s2">"gamma_10"</span><span class="p">]</span><span class="w"> </span><span class="o">@</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="si">:</span><span class="s1">.1e</span><span class="si">}</span><span class="s1">,  '</span>
+          <span class="sa">f</span><span class="s1">'norm abs(U2 U1)^2 w = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">ms</span><span class="p">[</span><span class="s2">"gamma_20_coherent"</span><span class="p">]</span><span class="w"> </span><span class="o">@</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9283,16 +9282,21 @@ Section 7 shows why that caveat matters.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>seed     1: identical screen distributions True,  divisible False
+             null vector: norm G(t1,t0) w = 9.8e-17,  norm abs(U2 U1)^2 w = 0.1887
 seed     7: identical screen distributions True,  divisible False
+             null vector: norm G(t1,t0) w = 9.9e-17,  norm abs(U2 U1)^2 w = 0.1744
 seed    42: identical screen distributions True,  divisible False
+             null vector: norm G(t1,t0) w = 2.0e-16,  norm abs(U2 U1)^2 w = 0.1988
+seed    99: identical screen distributions True,  divisible False
+             null vector: norm G(t1,t0) w = 1.4e-16,  norm abs(U2 U1)^2 w = 0.1992
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>seed    99: identical screen distributions True,  divisible False
-seed  2026: identical screen distributions True,  divisible False
+<pre>seed  2026: identical screen distributions True,  divisible False
+             null vector: norm G(t1,t0) w = 1.3e-16,  norm abs(U2 U1)^2 w = 0.1917
 </pre>
 </div>
 </div>
@@ -9307,8 +9311,8 @@ seed  2026: identical screen distributions True,  divisible False
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <!-- expansion:05:howto-seeds -->
 <h3 id="%F0%9F%A7%AD-How-to-use-this-cell-/-what-to-look-at">🧭 How to use this cell / what to look at<a class="anchor-link" href="#%F0%9F%A7%AD-How-to-use-this-cell-/-what-to-look-at">¶</a></h3><p><strong>What it computes.</strong> Five seeds = five random completions of $U_1$'s 23 non-physical columns. Each is checked against the seed-7 screen distributions, and the LP verdict is recomputed.</p>
-<p><strong>What to look at.</strong> Every line reads <code>identical screen distributions True, divisible False</code>. <code>slit_preparation()</code> fixes phases after QR so the source column is exactly $(\mathbf e_A + \mathbf e_B)/\sqrt2$ for any seed. For the screen distributions this check is confirmatory — section 2's derivation shows they depend only on that column. For the verdict it is empirical: five completions, not all of them.</p>
-<p><strong>Try this.</strong> Add <code>seed=0</code> and <code>seed=12345</code>. <em>Prediction:</em> same <code>True</code> / <code>False</code>. A <code>divisible True</code> at full coherence for some seed would be a genuine finding worth recording.</p>
+<p><strong>What to look at.</strong> Every seed reads <code>identical screen distributions True, divisible False</code>, and its second line repeats section 5's null-vector check: $\lVert\Gamma(t_1,t_0)\mathbf w\rVert \sim 10^{-16}$ and a non-zero $\lVert\,\lvert U_2U_1\rvert^2\mathbf w\rVert$, so for each of these completions no middle step exists for any $c &gt; 0$, not only at $c = 1$. <code>slit_preparation()</code> fixes phases after QR so the source column is exactly $(\mathbf e_A + \mathbf e_B)/\sqrt2$ for any seed. For the screen distributions this check is confirmatory — section 2's derivation shows they depend only on that column. For the verdict it is empirical: five completions, not all of them.</p>
+<p><strong>Try this.</strong> Add <code>seed=0</code> and <code>seed=12345</code>. <em>Prediction:</em> same <code>True</code> / <code>False</code>, with a non-zero null-vector norm. A <code>divisible True</code> at full coherence for some seed would be a genuine finding worth recording.</p>
 </div>
 </div>
 </div>
@@ -9363,13 +9367,7 @@ seed  2026: identical screen distributions True,  divisible False
 <pre>     7 |       0.603553390593 |            11.998165
     42 |       0.603553390593 |            11.267116
     99 |       0.603553390593 |            12.718425
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  2026 |       0.603553390593 |            11.012509
+  2026 |       0.603553390593 |            11.012509
 
 The middle column is identical to 12 decimal places: it depends only on the
 source column of U1, which is the physical content of the model.
@@ -9420,13 +9418,20 @@ tried. That is a property of those completions, not a law. Two different questio
 word "divisible":</p>
 <ul>
 <li><strong>Existential divisibility</strong> (Barandes's definition, Paper 1, eq. 6): does <em>some</em> valid
-stochastic G(t2,t1) satisfy G(t2,t0) = G(t2,t1) G(t1,t0)? The LP tests this.</li>
-<li><strong>Matched divisibility</strong>: does the process's <em>own</em> slit-to-screen matrix, G(t2,t1) = abs(U2)^2,
-compose with G(t1,t0)? That is D = 0 in section 4. Calvo (arXiv:2601.18720), Fig. 2, and
-Doukas (arXiv:2602.22095), footnote 9, use this notion.</li>
+stochastic G(t2,t1) satisfy G(t2,t0) = G(t2,t1) G(t1,t0)? The LP tests this. Barandes's wording
+there is hedged: Γ "will generically be indivisible", and such a matrix will "not generally
+exist" (Paper 1, p. 4).</li>
+<li><strong>Matched divisibility</strong>: does the eq. 42 matrix, G(t2,t1) = abs(U(t2←t1))^2 = abs(U2)^2,
+compose with G(t1,t0)? That is D = 0 in section 4, the comparison in Barandes's eq. 43.
+Calvo (arXiv:2601.18720v2) states the existential factorisation as necessary for a division
+event (eq. 4, "for some stochastic matrix") and the matched one as necessary and sufficient
+(Fig. 2), without separating them as two notions of divisibility. Doukas (arXiv:2602.22095v3,
+footnote 9) calls the matched condition "re-rooted matching", notes its use in Gillespie's
+two-state example (citing Garbaczewski and Olkiewicz), and explicitly does not impose it.
+The labels "existential" and "matched" are ours.</li>
 </ul>
-<p>Interference always breaks matched divisibility: the fringes <em>are</em> the source column of D. It need
-not break existential divisibility. Take n = 8, source 0, slits 3 and 5 (symmetric about the
+<p>Interference always breaks matched divisibility: the fringes <em>are</em> the source column of D. For a
+partly dephased process it need not break existential divisibility. Take n = 8, source 0, slits 3 and 5 (symmetric about the
 source on the ring of modes: A + B ≡ 2s mod n), the same DFT second stage, and complete U1 with a
 real block on {source, A, B} and the identity elsewhere:</p>
 <p>$$U_1\big|_{\{0,3,5\}} = \begin{pmatrix} 0 &amp; 1/\sqrt2 &amp; -1/\sqrt2 \\ 1/\sqrt2 &amp; -1/2 &amp; -1/2 \\ 1/\sqrt2 &amp; 1/2 &amp; 1/2 \end{pmatrix}$$</p>
@@ -9490,13 +9495,7 @@ c = 0.51:  visibility 0.51   existential: divisible False   matched: sum abs(D) 
 c = 0.75:  visibility 0.75   existential: divisible False   matched: sum abs(D) = 0.75
 c = 1.00:  visibility 1.00   existential: divisible False   matched: sum abs(D) = 1.00
 
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>lab completion (n = 24, seed 7) at c = 0.01: divisible False
+lab completion (n = 24, seed 7) at c = 0.01: divisible False
 </pre>
 </div>
 </div>
@@ -9510,21 +9509,30 @@ c = 1.00:  visibility 1.00   existential: divisible False   matched: sum abs(D) 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Up to c = 1/2 the fringes are there (visibility c), yet a valid slit-to-screen matrix exists: the
-process is divisible in Barandes's sense (eq. 6). It is divisible exactly for c ≤ 1/2. The columns of
-U1 outside {0, 3, 5} are identity columns, so they fix the matching columns of any middle step;
-columns 3 and 5 of G(t2,t0) are equal; and the one remaining condition is
-2 G(t2,t0)[:, A] ≥ G(t2,t0)[:, s] entrywise, which works out to (1 − 2c cos(2πkΔ/n))/n ≥ 0, i.e.
-c ≤ 1/2. Matched divisibility fails for every c &gt; 0. The lab's own completion is already
-indivisible at c = 0.01.</p>
+process is divisible in Barandes's sense (eq. 6). It is divisible exactly for c ≤ 1/2, so only as a
+dephased mixture. At c = 1, the fully coherent unistochastic process abs(U2 U1)^2 that eq. 43 is about,
+this completion is indivisible too.</p>
+<p>Why exactly c ≤ 1/2. Write G20 = G(t2,t0) and M_x for column x of a middle step M. The columns of U1
+outside {0, 3, 5} are identity columns, so they fix the matching columns of M. Columns s, A, B of
+G(t1,t0) give G20[:, A] = 1/2 M_s + 1/4 (M_A + M_B) (and the same for B, so columns 3 and 5 of G20
+are equal) and G20[:, s] = 1/2 (M_A + M_B). So M_s = 2 G20[:, A] − G20[:, s] is forced, and it sums
+to 1; M_A = M_B = G20[:, s] is a valid choice for the other two. A middle step therefore exists if
+and only if M_s ≥ 0. With Δ = 2 that is (1 − 2c cos(πk/2))/n ≥ 0, which holds exactly when c ≤ 1/2.
+Matched divisibility fails for every c &gt; 0. The lab's own completion is already indivisible at
+c = 0.01.</p>
 <p>How typical is this completion? Keep the identity outside {source, A, B}. The real orthogonal
 completions of the source column are then one rotation angle θ of the other two block columns, plus
 a reflection; θ = 45° and 135° both give the abs(U1)^2 of the block above. The next cell scans
 θ on a 1° grid at c = 1/4. The symmetric slit pairs (3, 5), (2, 6) and (1, 7) are divisible only
 at θ = 45° and 135°, and one degree away the residual is already non-zero. For the asymmetric pairs
-(2, 5), (1, 4), (1, 2) and (3, 4) no scanned completion is divisible. So the divisible completion
-is fine-tuned, not typical. Still, interference does not by itself make every completion
-indivisible in the eq. 6 sense. What it always does is break the composition through the
-process's own G(t2,t1). Which completions admit a stochastic middle step is not characterised here.</p>
+(2, 5), (1, 4), (1, 2) and (3, 4) no scanned completion is divisible. So within this real one-angle
+family, at c = 1/4, on a 1° grid, the divisible completion is fine-tuned, not typical. Still, partial
+interference does not by itself make every completion indivisible in the eq. 6 sense. What
+interference always does is break the composition through the eq. 42 matrix abs(U2)^2. Which
+completions admit a stochastic middle step is not characterised here.</p>
+<p>This is consistent with Barandes's wording: he says Γ "will generically be indivisible" (Paper 1,
+p. 4), and this completion is a non-generic exception that also needs partial dephasing. The
+question it leaves: is such a fine-tuned, partly dephased exception ever physically relevant?</p>
 </div>
 </div>
 </div>
@@ -9686,24 +9694,36 @@ residual one degree away, slits (3, 5): 0.0169 at 44 deg
 </table>
 <p>Every row of that table was computed on the same three matrices, with the lab's completion of U1.
 The existential row concerns the full transition matrix, and it depends on the completion: for the
-source column alone a valid G(t2,t1) always exists (section 6), and section 7's symmetric
-completion stays divisible up to c = 1/2 while showing fringes.</p>
-<p><strong>The interference pattern is the matched-divisibility defect.</strong> G(t2,t0) - G(t2,t1) G(t1,t0)
-is not merely correlated with the fringes; its source column equals them exactly. Summing over
-which-slit with the process's own slit-to-screen matrix is legitimate only when D = 0, and
+source column alone a valid G(t2,t1) always exists (section 6), and section 7's fine-tuned
+symmetric completion stays divisible up to c = 1/2 while showing fringes (visibility at most 1/2);
+at c = 1 it is indivisible too.</p>
+<p><strong>The interference pattern is the matched-divisibility defect</strong> (Barandes's eq. 43, reproduced on
+this model). G(t2,t0) - G(t2,t1) G(t1,t0) is not merely correlated with the fringes; its source
+column equals them exactly. Summing over which-slit with the eq. 42 matrix abs(U2)^2 is legitimate
+only when D = 0, and
 interference is what you get when it is not. Whether <em>some other</em> valid middle step exists is a
 separate question, answered by the LP, and its answer depends on the arbitrary completion.</p>
-<p>Prior work: the fringe identity is Paper 1, eq. 43 (§3.5). In the same paragraph Barandes calls
-interference "a generic discrepancy between the actual indivisible stochastic dynamics and a
-heuristic-approximate divisible stochastic dynamics", and also writes that "interference is a direct
-consequence of the stochastic dynamics not generally being divisible" and "Interference encodes the
-fact that the underlying stochastic dynamics is indivisible". The divisible dynamics in eq. 43 is the
-specific product Γ(t←t′)Γ(t′←0) with Γ(t←t′) = abs(U(t←t′))^2 (eq. 42), which is matched divisibility
-in this notebook's terms; section 4 reproduces that identity on this model. Section 7 is offered as a
-question, not a counterexample: those lines are compatible with section 7 if "divisible" there means
-the eq. 42 comparison, and section 7 shows fringes on a process that is still divisible in the eq. 6
-sense. Which reading is intended? See also LeBlond (arXiv:2511.02863). The existential/matched distinction follows Calvo (arXiv:2601.18720) and
-Doukas (arXiv:2602.22095).</p>
+<p>Prior work: the fringe identity is Paper 1, eq. 43 (§3.5, p. 14). It compares Γ(t←0) with its
+"would-be division" Γ(t←t′)Γ(t′←0), Γ(t←t′) = abs(U(t←t′))^2 (eq. 42), which is matched divisibility
+in this notebook's terms; section 4 reproduces that identity on this model.</p>
+<p>Barandes's statements about divisibility are hedged. At eq. 6 (p. 4) Γ "will generically be
+indivisible", and a stochastic middle matrix will "not generally exist". In §3.5 (p. 14) "interference
+is a direct consequence of the stochastic dynamics not generally being divisible", and interference is
+"a generic discrepancy between the actual indivisible stochastic dynamics and a heuristic-approximate
+divisible stochastic dynamics"; the same paragraph adds that "Interference encodes the fact that the
+underlying stochastic dynamics is indivisible". That section concerns a unistochastic
+Γ(t←0) = abs(U(t←0))^2 (eq. 41). Section 7 is consistent with all of this. On its completion the fully
+coherent process (c = 1) is indivisible too; the eq. 6-divisible cases are dephased mixtures (c ≤ 1/2)
+on a fine-tuned completion. So section 7 is not a counterexample. It shows only that the generic link
+can fail on a fine-tuned completion. The question it leaves: is such a fine-tuned, partly dephased
+exception ever physically relevant?</p>
+<p>Related work. LeBlond (arXiv:2511.02863) models the electron double slit numerically from an ISP
+perspective, with a which-path qubit that is inactive, remembers or forgets; he does not test
+divisibility, vary the coherence continuously, or separate existential from matched divisibility.
+Calvo (arXiv:2601.18720v2) states the existential factorisation (eq. 4) as necessary for a division
+event and the matched one (Fig. 2) as necessary and sufficient. Doukas (arXiv:2602.22095v3, fn. 9)
+calls the matched condition "re-rooted matching" and explicitly does not impose it. The
+existential/matched terminology is ours.</p>
 </div>
 </div>
 </div>
@@ -9717,7 +9737,7 @@ Doukas (arXiv:2602.22095).</p>
 <!-- expansion:05:papers-claims -->
 <h3 id="%F0%9F%93%9A-From-the-papers:-what-is-and-is-not-being-claimed">📚 From the papers: what is and is not being claimed<a class="anchor-link" href="#%F0%9F%93%9A-From-the-papers:-what-is-and-is-not-being-claimed">¶</a></h3><ul>
 <li><strong>Mathematical claim — verified here on one model.</strong> The gap between a unistochastic process and its would-be division is the interference formula (<em>Stochastic-Quantum Correspondence, Section 3.5, Eq. 43</em>).</li>
-<li><strong>His stronger lines, and the question section 7 raises.</strong> Next to "a generic discrepancy", the same paragraph says that "interference is a direct consequence of the stochastic dynamics not generally being divisible" and that "Interference encodes the fact that the underlying stochastic dynamics is indivisible" (<em>same section</em>). The divisible dynamics in Eq. 43 is the specific product with $\Gamma(t\leftarrow t') = \lvert U(t\leftarrow t')\rvert^2$ (Eq. 42), which is matched divisibility in this notebook's terms. Section 7 has fringes on a process that is still divisible in the Eq. 6 sense. That is a question for him, not a counterexample: do those lines refer to the Eq. 42 comparison, or to Eq. 6 divisibility?</li>
+<li><strong>His wording is hedged, and section 7 is consistent with it.</strong> At Eq. 6 (p. 4) $\Gamma$ "will generically be indivisible" and a stochastic middle matrix will "not generally exist". In §3.5 (p. 14) interference is "a direct consequence of the stochastic dynamics not generally being divisible" and "a generic discrepancy between the actual indivisible stochastic dynamics and a heuristic-approximate divisible stochastic dynamics"; the same paragraph adds that "Interference encodes the fact that the underlying stochastic dynamics is indivisible". His §3.5 concerns a unistochastic $\Gamma(t\leftarrow 0) = \lvert U(t\leftarrow 0)\rvert^2$ (Eq. 41), and Eq. 43 compares it with the specific product using $\Gamma(t\leftarrow t') = \lvert U(t\leftarrow t')\rvert^2$ (Eq. 42), which is matched divisibility in this notebook's terms. On section 7's completion the fully coherent process ($c = 1$) is indivisible too; the Eq. 6-divisible cases are dephased mixtures ($c \le 1/2$) on a fine-tuned completion. So section 7 is not a counterexample. It shows only that the generic link can fail on a fine-tuned completion. The open question is whether such an exception is ever physically relevant.</li>
 <li><strong>Interpretive claim — not testable by a notebook.</strong> "The particle always fundamentally has a single location and is never in both holes simultaneously," and interference "does not imply that matter has a physically wavelike nature"; the wave picture is "an unfortunate accident of history" (<em>same section</em>). The model here has no waves in physical space — just 24 labelled configurations — which fits that reading but cannot settle it.</li>
 <li><strong>Barandes' own caveat.</strong> If quantum fields are fundamental, matter does inherit wavelike properties, but "there is nothing about the analysis of the double-slit experiment alone that calls for positing quantum fields" (<em>same section</em>).</li>
 <li><strong>Experimental footnote.</strong> Ballentine (Ch. 5) cites Tonomura et al. (1989), who watched the electron fringe pattern build up one arrival at a time: "The interference pattern is only a statistical distribution of scattered particles."</li>
@@ -9739,7 +9759,8 @@ are worth stating out loud rather than leaving for a reader to find.</p>
 24-mode double slit. It shows the two phenomena coincide in a case anyone can rerun;
 it does not re-derive the stochastic-quantum correspondence, which is Barandes' paper's
 job. Section 7 shows the coincidence of fringes and (existential) indivisibility is not
-general: it holds for the lab's completions, not for every completion.</p>
+general: it holds for the lab's completions, not for every completion. The exception is
+fine-tuned and needs partial dephasing ($c \le 1/2$), consistent with Barandes' "generically".</p>
 </li>
 <li><p><strong>The completion of $U_1$ is arbitrary.</strong> Only its source column is physical. Section 6
 shows the observable predictions never move when the completion changes, and the
@@ -9778,7 +9799,7 @@ process as a cross-check.</p>
 <li>Coherent composition gives $(1+\cos(2\pi k\Delta/n))/n$; decohered gives flat $1/n$; the difference is the cross term, which sums to zero.</li>
 <li>A balanced slit preparation makes $\lvert U_1\rvert^2$ singular along $\mathbf e_A - \mathbf e_B$, so the inverse test cannot run; an LP asks Barandes' existence question directly.</li>
 <li>The source column of $D$ <strong>is</strong> the interference term (<code>0.00e+00</code>); it is negative wherever the coherent pattern falls below the classical one.</li>
-<li>Visibility tracks coherence $c$ exactly. The lab's completions are divisible only at $c = 0$; section 7's symmetric completion stays divisible up to $c = 1/2$ with fringes present. Interference always breaks <em>matched</em> divisibility, not always <em>existential</em> divisibility.</li>
+<li>Visibility tracks coherence $c$ exactly. The lab's completions are divisible only at $c = 0$; section 7's fine-tuned symmetric completion stays divisible up to $c = 1/2$ with fringes present, and is indivisible at $c = 1$. Interference always breaks <em>matched</em> divisibility, not always <em>existential</em> divisibility.</li>
 <li>Everything measurable is seed-independent; whole-matrix defect sizes are not.</li>
 </ol>
 <p>Keep one distinction from section 4 in mind: the fringe identity concerns the specific classical composition through $\lvert U_2\rvert^2$; the indivisibility verdict concerns the whole process.</p>

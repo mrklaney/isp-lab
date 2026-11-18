@@ -264,7 +264,7 @@ These were added when the notebooks were brought in line with the 2026-10-29 lit
 - **S. Milz, D. Egloff, P. Taranto, T. Theurer et al.** "When is a non-Markovian quantum process classical?." Phys. Rev. X, 10, 041049 (2020). arXiv:1907.05807. **verified 2026-10-29**
   - Cited in: 10, README. Note: the defect Δ.
 - **D. LeBlond** "The electron double-slit experiment from an ISP perspective." (2025). arXiv:2511.02863. **verified 2026-10-29**
-  - Cited in: 05, README. Note: preprint; double slit in ISP.
+  - Cited in: 05, README. Note: preprint; numerical ISP model of the electron double slit (N = 2000, R code) with a which-path qubit that is inactive, remembers or forgets. Full text checked 2026-11-17: no divisibility test, no partial coherence, no existential/matched distinction.
 - **S. Calvo** "On the Stochastic-Quantum Correspondence." (2026). arXiv:2601.18720. **verified 2026-10-29**
   - Cited in: 05, 06. Note: preprint; matched divisibility, division-event criteria.
 - **J. Doukas** "On the emergence of quantum mechanics from stochastic processes." (2026). arXiv:2602.22095. **verified 2026-10-29**
