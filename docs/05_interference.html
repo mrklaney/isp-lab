@@ -7808,11 +7808,11 @@ interference and indivisibility appear together, and see exactly how far that li
 <ul>
 <li>Build the double slit as a unistochastic process on transverse modes</li>
 <li>Test Barandes' divisibility condition on that same model, without matrix inversion</li>
-<li>Reproduce Barandes's eq. 43 on this model: the fringe pattern equals the (matched) divisibility defect, entry for entry</li>
+<li>Reproduce Barandes's eq. 43 on this model: the fringe pattern equals the source column of the (matched) divisibility defect, pixel for pixel</li>
 <li>Tune the coherence and watch interference and indivisibility vanish together on this model</li>
 <li>Tell <em>existential</em> divisibility (some valid middle step exists) from <em>matched</em> divisibility
-(the eq. 42 middle step abs(U2)^2 composes), and see a fine-tuned completion where partial fringes (c ≤ 1/2)
-and existential divisibility coexist</li>
+(the eq. 42 middle step abs(U2)^2 composes), and see a fine-tuned completion (a choice of the model's
+unphysical columns, section 6) where partial fringes (c ≤ 1/2) and existential divisibility coexist</li>
 </ul>
 </div>
 </div>
@@ -8075,8 +8075,8 @@ fringe visibility, decohered = 2.50e-16
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.-Divisibility,-Tested-on-This-Model">3. Divisibility, Tested on This Model<a class="anchor-link" href="#3.-Divisibility,-Tested-on-This-Model">¶</a></h2><p>Notebooks 02 and 03 test divisibility by solving G(t2,t1) = G(t2,t0) inv(G(t1,t0)) and
-looking for negative entries. That needs G(t1,t0) to be invertible, and here it never is.</p>
+<h2 id="3.-Divisibility,-Tested-on-This-Model">3. Divisibility, Tested on This Model<a class="anchor-link" href="#3.-Divisibility,-Tested-on-This-Model">¶</a></h2><p>The usual test is Barandes's eq. 37 (Paper 1, §3.5): set G̃(t2,t1) = G(t2,t0) inv(G(t1,t0)) and
+look for negative entries. That needs G(t1,t0) to be invertible, and here it never is.</p>
 <p>If a unitary sends the source to the balanced superposition of slits A and B, then rows
 A and B of U1 each have entry 1/sqrt(2) in the source column. Orthonormality of the rows
 forces the Cauchy-Schwarz inequality on the remaining entries to be saturated, so those
@@ -8084,10 +8084,10 @@ row tails must be proportional, which makes rows A and B of abs(U1)^2 <em>identi
 matrix is rank-deficient for every balanced two-slit model. The inverse-based test is
 not inconclusive here; it is unavailable.</p>
 <p>So test the condition the way Barandes states it: does <strong>any</strong> valid stochastic matrix
-G(t2,t1) satisfy G(t2,t0) = G(t2,t1) G(t1,t0)? That is a linear program, and needs no
-inverse. The printed <code>defect</code> is the smallest L1 residual over all stochastic middle matrices.
+G(t2,t1) satisfy G(t2,t0) = G(t2,t1) G(t1,t0)? That is a linear program (LP): the unknowns are the
+entries of G(t2,t1), and every constraint on them is linear. It needs no inverse. The printed <code>defect</code> is the smallest L1 residual over all stochastic middle matrices.
 Only zero versus non-zero matters: its size is not physical and depends on the arbitrary
-completion of U1 (section 6).
+completion of U1, its unphysical columns (section 6).
 For two configurations, Pimenta (arXiv:2505.08785, §III A) characterises divisibility geometrically,
 singular G(t1,t0) included; the LP handles any number of configurations.</p>
 </div>
@@ -8239,6 +8239,8 @@ D ranges from -0.041667 to 0.215282
 mode basis, by c. Doing this for every input column of U1 and propagating gives</p>
 <pre><code>G_c(t2,t0) = (1 - c) G(t2,t1) G(t1,t0)  +  c abs(U2 U1)^2</code></pre>
 <p>so c = 1 is a fully coherent particle and c = 0 is a which-path measurement.
+The c = 0 end is Barandes's division event (Paper 1, §3.7): an environment that records the slit
+makes the slit-to-screen matrix abs(U2)^2 (his eq. 52) and the process divisible at t1 (his eq. 56).
 Sweep c and measure both quantities on the same process.</p>
 <p>The sweep checks 21 values of c, but the verdict holds for every c &gt; 0. G(t1,t0) is rank-deficient,
 so it has a right null vector w with G(t1,t0) w = 0. Any middle step M would then force
@@ -8349,7 +8351,8 @@ every c &gt; 0, not just the grid: right null vector w of G(t1,t0)
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="6.-The-Prediction-Does-Not-Depend-on-the-Arbitrary-Part-of-the-Model">6. The Prediction Does Not Depend on the Arbitrary Part of the Model<a class="anchor-link" href="#6.-The-Prediction-Does-Not-Depend-on-the-Arbitrary-Part-of-the-Model">¶</a></h2><p>Only the source column of U1 is physical. The remaining columns are an arbitrary
-orthonormal completion, needed because a process requires a full transition matrix.
+orthonormal completion (this notebook's "completion" always means these columns), needed because a
+process requires a full transition matrix.
 Vary that completion and check that nothing observable moves.</p>
 <p>What this does and does not show. The screen distributions use only the physical source column, so they cannot
 change. The divisibility verdict uses the whole matrix. The source column on its own can always be matched by a valid
@@ -8425,18 +8428,22 @@ tried. That is a property of those completions, not a law. Two different questio
 word "divisible":</p>
 <ul>
 <li><strong>Existential divisibility</strong> (Barandes's definition, Paper 1, eq. 6): does <em>some</em> valid
-stochastic G(t2,t1) satisfy G(t2,t0) = G(t2,t1) G(t1,t0)? The LP tests this. Barandes's wording
-there is hedged: Γ "will generically be indivisible", and such a matrix will "not generally
-exist" (Paper 1, p. 4).</li>
+stochastic G(t2,t1) satisfy G(t2,t0) = G(t2,t1) G(t1,t0)? The LP tests this.</li>
 <li><strong>Matched divisibility</strong>: does the eq. 42 matrix, G(t2,t1) = abs(U(t2←t1))^2 = abs(U2)^2,
-compose with G(t1,t0)? That is D = 0 in section 4, the comparison in Barandes's eq. 43.
-Calvo (arXiv:2601.18720v2) states the existential factorisation as necessary for a division
-event (eq. 4, "for some stochastic matrix") and the matched one as necessary and sufficient
-(Fig. 2), without separating them as two notions of divisibility. Doukas (arXiv:2602.22095v3,
-footnote 9) calls the matched condition "re-rooted matching", notes its use in Gillespie's
-two-state example (citing Garbaczewski and Olkiewicz), and explicitly does not impose it.
-The labels "existential" and "matched" are ours.</li>
+compose with G(t1,t0)? That is D = 0 in section 4, the comparison in Barandes's eq. 43, and it is
+what his division events supply (§3.7, eqs. 52 and 56).</li>
 </ul>
+<p>Neither the distinction nor the point is new. Calvo (arXiv:2601.18720v2) separates the two
+conditions explicitly: the existential factorisation is necessary for a division event (eq. 4, "for
+some stochastic matrix"), and "the sufficient condition is that the theory indeed gives this
+transition matrix", Γ_ij(t′→t) = |U_ij(t′→t)|^2 (eq. 5). The same split was argued over in the 1990s.
+Gillespie (Phys. Rev. A 49, 1607 (1994)) argued that quantum mechanics cannot be a Markov process
+because, in a two-state example, the transition probabilities |U|^2 do not compose. Garbaczewski and
+Olkiewicz (Phys. Rev. A 54, 1733 (1996), arXiv:quant-ph/9601016) replied that other Markov processes
+can still reproduce the Born-rule probabilities, and Gillespie answered (Phys. Rev. A 54, 1737 (1996)).
+Doukas (arXiv:2602.22095v3, footnote 9) calls the analogous condition for a Markovian realizer
+"re-rooted matching", cites that exchange, and does not impose it. The labels "existential" and
+"matched" are ours.</p>
 <p>Interference always breaks matched divisibility: the fringes <em>are</em> the source column of D. For a
 partly dephased process it need not break existential divisibility. Take n = 8, source 0, slits 3 and 5 (symmetric about the
 source on the ring of modes: A + B ≡ 2s mod n), the same DFT second stage, and complete U1 with a
@@ -8537,9 +8544,10 @@ family, at c = 1/4, on a 1° grid, the divisible completion is fine-tuned, not t
 interference does not by itself make every completion indivisible in the eq. 6 sense. What
 interference always does is break the composition through the eq. 42 matrix abs(U2)^2. Which
 completions admit a stochastic middle step is not characterised here.</p>
-<p>This is consistent with Barandes's wording: he says Γ "will generically be indivisible" (Paper 1,
-p. 4), and this completion is a non-generic exception that also needs partial dephasing. The
-question it leaves: is such a fine-tuned, partly dephased exception ever physically relevant?</p>
+<p>No middle step that exists for 0 &lt; c ≤ 1/2 is abs(U2)^2: every one has the forced column
+M_s = 2 G20[:, A] − G20[:, s], which is not flat, while every column of abs(U2)^2 is 1/n. So this is
+not the matched step that Barandes's double-slit claim is about, and it does not contradict that
+claim. The Summary gives his wording, and the question this section leaves.</p>
 </div>
 </div>
 </div>
@@ -8663,7 +8671,7 @@ residual one degree away, slits (3, 5): 0.0169 at 44 deg
 <tr>
 <th>Property</th>
 <th>Decohered (c = 0)</th>
-<th>Coherent (c &gt; 0)</th>
+<th>Partly or fully coherent (0 &lt; c ≤ 1)</th>
 </tr>
 </thead>
 <tbody>
@@ -8712,25 +8720,39 @@ interference is what you get when it is not. Whether <em>some other</em> valid m
 separate question, answered by the LP, and its answer depends on the arbitrary completion.</p>
 <p>Prior work: the fringe identity is Paper 1, eq. 43 (§3.5, p. 14). It compares Γ(t←0) with its
 "would-be division" Γ(t←t′)Γ(t′←0), Γ(t←t′) = abs(U(t←t′))^2 (eq. 42), which is matched divisibility
-in this notebook's terms; section 4 reproduces that identity on this model.</p>
+in this notebook's terms; section 4 reproduces that identity on this model. The inverse test that
+section 3 cannot use is his eq. 37, and the c = 0 end of section 5 is his §3.7 division event
+(eqs. 52 and 56).</p>
 <p>Barandes's statements about divisibility are hedged. At eq. 6 (p. 4) Γ "will generically be
 indivisible", and a stochastic middle matrix will "not generally exist". In §3.5 (p. 14) "interference
 is a direct consequence of the stochastic dynamics not generally being divisible", and interference is
 "a generic discrepancy between the actual indivisible stochastic dynamics and a heuristic-approximate
 divisible stochastic dynamics"; the same paragraph adds that "Interference encodes the fact that the
 underlying stochastic dynamics is indivisible". That section concerns a unistochastic
-Γ(t←0) = abs(U(t←0))^2 (eq. 41). Section 7 is consistent with all of this. On its completion the fully
-coherent process (c = 1) is indivisible too; the eq. 6-divisible cases are dephased mixtures (c ≤ 1/2)
-on a fine-tuned completion. So section 7 is not a counterexample. It shows only that the generic link
-can fail on a fine-tuned completion. The question it leaves: is such a fine-tuned, partly dephased
-exception ever physically relevant?</p>
+Γ(t←0) = abs(U(t←0))^2 (eq. 41).</p>
+<p>His double-slit claim is about the matched step. The classical description, he writes, "restarts the
+dynamics with that slit as the new initial condition", and "One cannot divide up the particle's
+evolution into, firstly, its transit from the emitter to the slits, and then, secondly, conditioned on
+which slit the particle enters, the particle's transit from the slits to the detection screen"
+(p. 15). Footnote 13 names "the hidden assumption that the behavior of an electron in a double-slit
+experiment can be described by divisible dynamics". Restarting from the slit with the slit-to-screen
+dynamics is composing through abs(U2)^2, and section 4 shows that fails whenever there are fringes.
+Section 7's middle step is a different matrix, so section 7 is not a counterexample to that claim. On
+its completion the fully coherent process (c = 1) is indivisible in the eq. 6 sense too.</p>
+<p>The question section 7 leaves. §3.5 says interference "encodes" indivisibility. Is that meant in the
+eq. 6 sense (no stochastic middle step exists at all) or in the eq. 42/56 sense (no division through
+abs(U(t←t′))^2)? And for a partly decohered process where an eq. 6 middle step other than
+abs(U(t←t′))^2 does exist (here, c ≤ 1/2 on section 7's completion), is t′ a division event, and does
+the theory give that middle step any physical meaning?</p>
 <p>Related work. LeBlond (arXiv:2511.02863) models the electron double slit numerically from an ISP
 perspective, with a which-path qubit that is inactive, remembers or forgets; he does not test
 divisibility, vary the coherence continuously, or separate existential from matched divisibility.
-Calvo (arXiv:2601.18720v2) states the existential factorisation (eq. 4) as necessary for a division
-event and the matched one (Fig. 2) as necessary and sufficient. Doukas (arXiv:2602.22095v3, fn. 9)
-calls the matched condition "re-rooted matching" and explicitly does not impose it. The
-existential/matched terminology is ours.</p>
+Calvo (arXiv:2601.18720v2) separates the two conditions: eq. 4 (existential) is necessary for a
+division event, eq. 5 (Γ = |U|^2) sufficient. The split goes back to Gillespie (Phys. Rev. A 49, 1607
+(1994)), the comment by Garbaczewski and Olkiewicz (Phys. Rev. A 54, 1733 (1996)) and Gillespie's reply
+(Phys. Rev. A 54, 1737 (1996)). Doukas (arXiv:2602.22095v3, fn. 9) calls the analogous condition for a
+Markovian realizer "re-rooted matching" and does not impose it. The existential/matched terminology is
+ours.</p>
 </div>
 </div>
 </div>

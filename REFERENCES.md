@@ -414,7 +414,11 @@ Bibliographic details were checked on 2026-11-16 against Crossref or the arXiv r
 - **T. C. Wallstrom** "Inequivalence between the Schrödinger equation and the Madelung hydrodynamic equations." Phys. Rev. A, 49, 1613 (1994). doi:10.1103/PhysRevA.49.1613. **verified 2026-11-16**
   - Cited in: 18. Note: not read; the objection is taken from Derakhshani's and Schmelzer's restatements. The 1989 paper (Found. Phys. Lett. 2, 113) is not cited.
 - **D. T. Gillespie** "Why quantum mechanics cannot be formulated as a Markov process." Phys. Rev. A, 49, 1607 (1994). doi:10.1103/PhysRevA.49.1607. **verified 2026-11-16**
-  - Cited in: 18 (the two-level Rabi case).
+  - Cited in: 18 (the two-level Rabi case); 05 (added 2026-11-21: the existential/matched split).
+- **P. Garbaczewski, R. Olkiewicz** "Comment on 'Why quantum mechanics cannot be formulated as a Markov process'." Phys. Rev. A, 54, 1733 (1996). arXiv:quant-ph/9601016. doi:10.1103/PhysRevA.54.1733. **verified 2026-11-21**
+  - Cited in: 05. Note: Crossref checked; cited for the reply that other Markov processes can reproduce the Born-rule probabilities.
+- **D. T. Gillespie** "Reply to 'Comment on 'Why quantum mechanics cannot be formulated as a Markov process''." Phys. Rev. A, 54, 1737 (1996). doi:10.1103/PhysRevA.54.1737. **verified 2026-11-21**
+  - Cited in: 05. Note: Crossref checked; passages not read.
 - **I. Schmelzer** "An answer to the Wallstrom objection against Nelsonian stochastics." arXiv:1101.5774 (2011). No journal version found. **verified 2026-11-16**
   - Cited in: 18.
 - **M. Derakhshani** "A Suggested Answer To Wallstrom's Criticism: Zitterbewegung Stochastic Mechanics I." arXiv:1510.06391 (v6, 2015). No journal version found. **verified 2026-11-16**
@@ -468,6 +472,59 @@ Bibliographic details were checked on 2026-11-16 against Crossref or the arXiv r
   - Cited in: 19. Note: full text not read; Crossref gives no date, so 1979 is the notebook's year.
 - **W. G. Faris** "Spin correlation in stochastic mechanics." Found. Phys., 12, 1 (1982). doi:10.1007/BF00726872. **verified 2026-11-16**
   - Cited in: 19 (Stern-Gerlach and spin correlations). Note: full text not read.
+
+## Added 2026-11-21: sources for notebook 20
+
+Bibliographic details were checked on 2026-11-21 against Crossref (journal articles) or the arXiv API (preprints and their journal references) (**verified 2026-11-21**). Englert & Bergou was also read in the original. Other passages were not read unless noted; the literature checks behind notebook 20 are in `notes/lit-quantum-eraser-2026-11-18.md`.
+
+### Notebook 20 (the delayed-choice quantum eraser)
+
+- **Y.-H. Kim, R. Yu, S. P. Kulik, Y. Shih, M. O. Scully** "Delayed 'Choice' Quantum Eraser." Phys. Rev. Lett., 84, 1 (2000). arXiv:quant-ph/9903047. doi:10.1103/PhysRevLett.84.1. **verified 2026-11-21**
+  - Cited in: 20 (the experiment modelled).
+- **M. O. Scully, K. Drühl** "Quantum eraser: A proposed photon correlation experiment concerning observation and 'delayed choice' in quantum mechanics." Phys. Rev. A, 25, 2208 (1982). doi:10.1103/PhysRevA.25.2208. **verified 2026-11-21**
+  - Cited in: 20.
+- **B.-G. Englert, J. A. Bergou** "Quantitative quantum erasure." Opt. Commun., 179, 337 (2000). doi:10.1016/S0030-4018(99)00718-X. **verified 2026-11-21**
+  - Cited in: 20. Note: read in the original; every equation number nb20 cites was checked against the PDF.
+- **S. Dürr, G. Rempe** "Complementarity and quantum erasure in an atom interferometer." Opt. Commun., 179, 323 (2000). doi:10.1016/S0030-4018(99)00492-7. **verified 2026-11-21**
+  - Cited in: 20. Note: Englert & Bergou's reference list gives page 321; Crossref gives 323–335.
+- **W. K. Wootters, W. H. Zurek** "Complementarity in the double-slit experiment: Quantum nonseparability and a quantitative statement of Bohr's principle." Phys. Rev. D, 19, 473 (1979). doi:10.1103/PhysRevD.19.473. **verified 2026-11-21**
+  - Cited in: 20.
+- **D. M. Greenberger, A. Yasin** "Simultaneous wave and particle knowledge in a neutron interferometer." Phys. Lett. A, 128, 391 (1988). doi:10.1016/0375-9601(88)90114-4. **verified 2026-11-21**
+  - Cited in: 20.
+- **G. Jaeger, A. Shimony, L. Vaidman** "Two interferometric complementarities." Phys. Rev. A, 51, 54 (1995). doi:10.1103/PhysRevA.51.54. **verified 2026-11-21**
+  - Cited in: 20.
+- **B.-G. Englert** "Fringe Visibility and Which-Way Information: An Inequality." Phys. Rev. Lett., 77, 2154 (1996). doi:10.1103/PhysRevLett.77.2154. **verified 2026-11-21**
+  - Cited in: 20.
+- **G. Björk, A. Karlsson** "Complementarity and quantum erasure in welcher Weg experiments." Phys. Rev. A, 58, 3477 (1998). doi:10.1103/PhysRevA.58.3477. **verified 2026-11-21**
+  - Cited in: 20.
+- **P. D. D. Schwindt, P. G. Kwiat, B.-G. Englert** "Quantitative wave-particle duality and nonerasing quantum erasure." Phys. Rev. A, 60, 4285 (1999). doi:10.1103/PhysRevA.60.4285. **verified 2026-11-21**
+  - Cited in: 20.
+- **M. Jakob, J. A. Bergou** "Quantitative conditional quantum erasure in two-atom resonance fluorescence." Phys. Rev. A, 66, 062107 (2002). arXiv:quant-ph/0206200. **verified 2026-11-21**
+  - Cited in: 20. Note: abstract only.
+- **M. Jakob, J. A. Bergou** "Quantitative complementarity relations in bipartite systems." arXiv:quant-ph/0302075 (2003). **verified 2026-11-21**
+  - Cited in: 20. Note: abstract only (concurrence, predictability and visibility).
+- **P. J. Coles, J. Kaniewski, S. Wehner** "Equivalence of wave–particle duality to entropic uncertainty." Nat. Commun., 5, 5814 (2014). doi:10.1038/ncomms6814. **verified 2026-11-21**
+  - Cited in: 20.
+- **D. A. Craig** "The Geometry of Consistency: Decohering Histories in Generalized Quantum Theory." arXiv:quant-ph/9704031 (1997). **verified 2026-11-21**
+  - Cited in: 20 (as a statement of the decoherence-functional Cauchy–Schwarz inequality).
+- **L. Catani, M. Leifer, D. Schmid, R. W. Spekkens** "Why interference phenomena do not capture the essence of quantum theory." Quantum, 7, 1119 (2023). arXiv:2111.13727. doi:10.22331/q-2023-09-25-1119. **verified 2026-11-21**
+  - Cited in: 20 (§4.3, the eraser).
+- **L. Catani, M. Leifer, G. Scala, D. Schmid, R. W. Spekkens** "Aspects of the phenomenology of interference that are genuinely nonclassical." Phys. Rev. A, 108, 022207 (2023). arXiv:2211.09850. doi:10.1103/PhysRevA.108.022207. **verified 2026-11-21**
+  - Cited in: 20.
+- **R. B. Griffiths** "Consistent Histories and Quantum Delayed Choice." Fortschr. Phys., 46, 741 (1998). arXiv:quant-ph/9810016. **verified 2026-11-21**
+  - Cited in: 20.
+- **B. J. Hiley, R. E. Callaghan** "Delayed Choice Experiments and the Bohm Approach." Phys. Scr., 74, 336 (2006). arXiv:1602.06100. **verified 2026-11-21**
+  - Cited in: 20.
+- **J. Fankhauser** "Taming the Delayed Choice Quantum Eraser." Quanta, 8, 44 (2019). arXiv:1707.07884. **verified 2026-11-21**
+  - Cited in: 20.
+- **X.-S. Ma et al.** (Kofler, Qarry, Tetik, Scheidl, Ursin, Ramelow, Herbst, Ratschbacher, Fedrizzi, Jennewein, Zeilinger) "Quantum erasure with causally disconnected choice." Proc. Natl. Acad. Sci. USA, 110, 1221 (2013). arXiv:1206.6578. **verified 2026-11-21**
+  - Cited in: 20.
+- **R. V. Li** "A state chaining-based objective collapse model." arXiv:2603.15628 (2026). **verified 2026-11-21**
+  - Cited in: 20.
+- **O. Siltanen, T. Kuusela, J. Piilo** "Interferometric Approach to Open Quantum Systems and Non-Markovian Dynamics." Phys. Rev. A, 103, 032223 (2021). arXiv:2008.02826. **verified 2026-11-21**
+  - Cited in: 20.
+- **C.-F. Kam, K.-W. Wong** "Conditioning on the Future: A Filtration-Theoretic Formalization of Wheeler's Participatory Universe." arXiv:2609.19025 (2026). **verified 2026-11-21**
+  - Cited in: 20.
 
 ## To verify before external sharing
 
